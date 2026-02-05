@@ -1,0 +1,154 @@
+/* ============================================================
+   STATES.CSS
+   ============================================================ */
+
+
+/* ============================================================
+   ACCESSIBILITY – FOCUS VISIBLE (KEYBOARD ONLY)
+   ============================================================ */
+
+:where(
+  a,
+  button,
+  [role="button"],
+  input,
+  textarea,
+  select
+):focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+
+/* ============================================================
+   CURSOR
+   ============================================================ */
+
+button:hover,
+[role="button"]:hover {
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   STATE: ACTIVE
+   ============================================================ */
+
+.is-active {
+  color: var(--color-accent);
+}
+
+.is-active strong {
+  color: var(--color-accent);
+}
+
+.is-active i {
+  color: var(--color-accent);
+}
+
+
+/* ============================================================
+   STATE: CURRENT (ARIA FRIENDLY)
+   ============================================================ */
+
+[aria-current="page"],
+[aria-current="true"] {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   STATE: OPEN / CLOSED
+   Usado para menús, overlays, dropdowns
+   ============================================================ */
+
+.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.is-closed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   STATE: HOVER (GLOBAL, SUTIL)
+   ============================================================ */
+
+.is-hoverable {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+}
+
+.is-hoverable:hover {
+  transform: translateY(-2px);
+}
+
+
+/* ============================================================
+   STATE: ACTIVE (CLICK / PRESS)
+   ============================================================ */
+
+.is-pressable:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+
+/* ============================================================
+   STATE: DISABLED
+   ============================================================ */
+
+.is-disabled,
+:disabled,
+[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+
+/* ============================================================
+   STATE: LOADING / BUSY
+   ============================================================ */
+
+.is-loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+
+/* ============================================================
+   STATE: VISIBILITY (JS / OBSERVER FRIENDLY)
+   ============================================================ */
+
+.is-hidden {
+  display: none !important;
+}
+
+.is-visible {
+  display: block;
+}
+
+
+/* ============================================================
+   MOTION REDUCTION – USER PREFERENCE
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

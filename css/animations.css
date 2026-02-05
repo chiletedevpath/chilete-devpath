@@ -1,0 +1,162 @@
+/* ============================================================
+   ANIMATIONS.CSS – GLOBAL
+   ============================================================ */
+
+
+/* ============================================================
+   KEYFRAMES BASE
+   ============================================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes presentFocus {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+/* ============================================================
+   BASE STATE (ANTES DE ENTRAR)
+   ============================================================ */
+
+.animate{
+  opacity: 0;
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+}
+
+
+/* ============================================================
+   CONTRATO ÚNICO 
+   ============================================================ */
+
+.animate.is-visible{
+  opacity: 1;
+  animation: slideUp 0.8s cubic-bezier(.22,.61,.36,1) both;
+}
+
+
+/* ============================================================
+   VARIANTES DE DIRECCIÓN / TIPO
+   ============================================================ */
+
+.animate.fade.is-visible{
+  animation-name: fadeIn;
+}
+
+.animate.left.is-visible{
+  animation-name: slideInLeft;
+}
+
+.animate.right.is-visible{
+  animation-name: slideInRight;
+}
+
+.animate.present.is-visible{
+  animation: presentFocus 0.9s cubic-bezier(.22,.61,.36,1) both;
+}
+
+
+/* ============================================================
+   INTENSIDAD / INTENCIÓN
+   ============================================================ */
+
+.animate.soft.is-visible{
+  animation-duration: 0.6s;
+}
+
+.animate.subtle.is-visible{
+  animation-duration: 0.9s;
+}
+
+.animate.strong.is-visible{
+  animation-duration: 1s;
+}
+
+
+/* ============================================================
+   DELAYS
+   ============================================================ */
+
+.animate.delay-1{ animation-delay: 120ms; }
+.animate.delay-2{ animation-delay: 240ms; }
+.animate.delay-3{ animation-delay: 360ms; }
+.animate.delay-4{ animation-delay: 480ms; }
+.animate.delay-5{ animation-delay: 600ms; }
+.animate.delay-6{ animation-delay: 720ms; }
+
+
+/* ============================================================
+   EXCLUSIONES (COMPONENTES CON MOTOR PROPIO)
+   ============================================================ */
+
+.life-carousel.animate,
+.life-track.animate,
+.life-slide.animate{
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+/* ============================================================
+   HERO – POST PRELOADER (AISLADO)
+   ============================================================ */
+
+.hero-section{
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 600ms cubic-bezier(.22,.61,.36,1),
+    transform 600ms cubic-bezier(.22,.61,.36,1);
+}
+
+.hero-section.is-ready{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ============================================================
+   ACCESSIBILITY – REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce){
+
+  .animate,
+  .animate.is-visible{
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-section{
+    transition: none !important;
+    opacity: 1;
+    transform: none;
+  }
+}

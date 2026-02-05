@@ -1,67 +1,137 @@
-# 👋 YachayDev — Portafolio & Proyecto Educativo
+# 🌱 Chilete DevPath  
+### Camino real y documentado en el desarrollo de software
 
-Bienvenido a **YachayDev**, mi portafolio personal y proyecto educativo donde documento mi crecimiento real en programación mientras aprendo desde cero, con constancia y propósito.
-
-Este espacio refleja quién soy, qué estoy aprendiendo y hacia dónde quiero llegar en el mundo tecnológico.
-
----
-
-## 👨‍💻 ¿Quién soy?
-
-Mi nombre es **Adrian Pisco**, peruano 🇵🇪 y estudiante de **Ingeniería de Sistemas**.
-
-Actualmente me encuentro en formación, construyendo bases sólidas en programación y tecnología, con el objetivo de desarrollarme profesionalmente y aportar valor real en el mundo del software.
-
-Mi mayor motivación para seguir creciendo en el mundo tecnológico es **mi madre**, quien me inspira a esforzarme cada día, aprender con disciplina y no rendirme ante las dificultades.
+![Chilete DevPath — Portada](assets/images/portadaLinkedIn.png)
 
 ---
 
-## 🌱 ¿Por qué el nombre YachayDev?
+## Bienvenido a Chilete DevPath
 
-**Yachay** es una palabra quechua que significa *aprender* o *conocimiento*.  
-**Dev** representa el mundo del desarrollo de software.
+**Chilete DevPath** es un **proyecto personal y educativo** donde documento, de forma honesta, estructurada y progresiva,  
+**mi camino real en el aprendizaje y construcción de software**.
 
-**YachayDev** nace como la unión entre el aprendizaje constante y la programación, con raíces en nuestra cultura y una mirada hacia el futuro tecnológico.
+No es un portafolio tradicional.  
+No es una vitrina de resultados finales.
 
-> Aprender a programar no es solo escribir código, es construir conocimiento desde la base.
-
----
-
-## 📚 ¿Qué encontrarás en este portafolio?
-
-- Mi proceso de aprendizaje en programación
-- Proyectos académicos y personales
-- Ejercicios y soluciones prácticas
-- Fundamentos de lógica de programación
-- Java y Programación Orientada a Objetos
-- Bases de datos
-- Recursos que recomiendo para aprender desde cero
-
-Este portafolio está pensado tanto para **reclutadores** como para **personas que están empezando**, mostrando un camino real, sin atajos ni exageraciones.
+Es un **proceso vivo**, construido desde los fundamentos, guiado por criterio técnico  
+y mejorado de forma continua.
 
 ---
 
-## 🚀 Objetivo
+## 👨‍💻 Sobre mí
 
-Construir una base sólida como desarrollador, crecer profesionalmente y formar parte de una empresa donde pueda seguir aprendiendo, aportar con responsabilidad y cubrir mis estudios universitarios a través de mi trabajo en tecnología.
+Mi nombre es **Adrian Pisco**, orgullosamente peruano 🇵🇪, de **Chilete – Cajamarca**,  
+y estudiante de **Ingeniería de Sistemas e Informática**.
+
+Mi enfoque no está en acumular herramientas ni tecnologías por tendencia,  
+sino en **comprender los fundamentos que permiten diseñar sistemas**:
+
+- coherentes  
+- mantenibles  
+- bien estructurados  
+- técnicamente razonados  
+
+Avanzo con constancia, disciplina y pensamiento crítico,  
+entendiendo el error como parte esencial del aprendizaje.
+
+Mi mayor motivación personal es **mi madre**,  
+quien me enseñó el valor del esfuerzo, la constancia y la disciplina  
+como base de cualquier camino real.
 
 ---
 
-## 🌐 Proyecto YachayDev
+## 🧭 ¿Qué es Chilete DevPath?
 
-YachayDev también es una **comunidad en crecimiento**, donde comparto contenido educativo y mi aprendizaje real para ayudar a más personas —especialmente jóvenes— a iniciarse en programación sin miedo y sin humo.
+**Chilete DevPath es un camino documentado.**
+
+Representa mi proceso real de crecimiento como desarrollador de software,  
+expresado a través de dos ejes principales:
+
+- 🌐 **Un sitio web personal**, donde presento mi identidad,  
+  mis proyectos, decisiones técnicas y evolución.
+- 📚 **Un registro de aprendizaje**, donde documento cómo pienso,  
+  cómo diseño, cómo fallo, cómo corrijo y cómo mejoro.
+
+Este proyecto **no persigue velocidad ni apariencias**.  
+Persigue **comprensión**, **criterio** y **progreso real**.
+
+> Primero los cimientos. Luego la construcción.
+
+---
+
+## 🧱 Principios del proyecto
+
+Chilete DevPath se construye sobre principios claros:
+
+- Fundamentos antes que frameworks  
+- Pensamiento lógico antes que copiar soluciones  
+- Arquitectura antes que código desordenado  
+- Proceso antes que resultados finales  
+- Mejora continua como hábito  
+
+El camino **no es lineal**:  
+se aprende, se falla, se corrige con criterio y se avanza con conciencia.
+
+---
+
+## 📚 ¿Qué encontrarás en este repositorio?
+
+- Documentación de mi proceso real de aprendizaje  
+- Proyectos académicos y personales  
+- Aplicación práctica de:
+  - Programación Orientada a Objetos (Java)
+  - Arquitectura por capas (DAO / Servicios)
+  - Gestión de sesiones, roles y permisos
+  - Persistencia y bases de datos relacionales
+  - Control de versiones con Git y GitHub
+- Decisiones técnicas explicadas, no ocultas
+- Evolución documentada por **fases**, no por demos
+
+Este espacio está pensado tanto para:
+- **reclutadores**, que buscan criterio y proceso  
+- como para **estudiantes y desarrolladores**, que están construyendo sus bases
+
+---
+
+## 🌐 El sitio web
+
+Chilete DevPath también es un **sitio web personal completamente desarrollado**, que incluye:
+
+- HTML semántico y accesible  
+- CSS moderno y responsive  
+- JavaScript para interacción y animación  
+- Internacionalización (ES / EN)  
+- Metadatos orientados a SEO  
+- Diseño editorial narrativo  
+- Mejora progresiva y versionada  
+
+🔗 Sitio en línea:  
+https://adrianpisco.github.io
+
+---
+
+## 🌱 Comunidad y aprendizaje compartido
+
+Chilete DevPath busca ser también un **espacio compartido**.
+
+Un lugar para mostrar procesos reales:
+- sin competir  
+- sin aparentar  
+- sin vender atajos  
+
+Si estás recorriendo tu propio camino en programación,  
+eres bienvenido(a).
 
 ---
 
 ## 🔗 Enlaces
 
-- 🌍 Sitio web: https://yachaydev.github.io  
-- 📸 Instagram: https://www.instagram.com/yachaydev  
-- 📘 Facebook: https://www.facebook.com/yachaydev  
-- 💼 LinkedIn: https://www.linkedin.com/in/adrian-ivan-pisco-soto-857235194
+- 💻 GitHub: https://github.com/chiletedevpath  
+- 💼 LinkedIn: https://www.linkedin.com/in/adrian-ivan-pisco-soto-857235194  
+- 🌐 Web: https://adrianpisco.github.io  
 
 ---
 
-> *Si yo puedo aprender a programar, tú también.*  
-> **Codifica con raíces.**
-
+> *Este camino no está cerrado.*  
+> Se construye paso a paso, con criterio, constancia  
+> y respeto por el aprendizaje.

@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+
+  <!-- ========  METADATOS BASE  ======== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+
+  <title data-i18n="meta.title">Chilete DevPath | Adrian Pisco</title>
+
+  <meta name="description"
+        content="Chilete DevPath es el portafolio y proyecto personal de Adrian Pisco, donde documento mi camino real en el desarrollo de software desde Chilete, Cajamarca, Perú."
+        data-i18n-attr="content:meta.description">
+
+  <meta name="author" content="Adrian Pisco">
+
+  <!-- ========  SEO + SOCIAL  ======== -->
+  <link rel="canonical" href="https://adrianpisco.github.io/">
+
+  <meta property="og:title" content="Chilete DevPath · Adrian Pisco" data-i18n-attr="content:meta.og.title">
+  <meta property="og:description"
+        content="Mi camino real en el desarrollo de software desde Chilete, Cajamarca · Perú."
+        data-i18n-attr="content:meta.og.description">
+  <meta property="og:image" content="https://adrianpisco.github.io/assets/images/og-image.png">
+  <meta property="og:url" content="https://adrianpisco.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chilete DevPath | Adrian Pisco" data-i18n-attr="content:meta.twitter.title">
+  <meta name="twitter:description"
+        content="Portafolio de desarrollo de software · Backend · Arquitectura · DevPath."
+        data-i18n-attr="content:meta.twitter.description">
+  <meta name="twitter:image" content="https://adrianpisco.github.io/assets/images/og-image.png">
+
+  <!-- ========  PWA + ICONOS  ======== -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Chilete DevPath">
+  <meta name="theme-color" content="#1f2d3a">
+
+  <!-- ========  FONTS (OPTIMIZADAS)  ======== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ========  ESTILOS  ======== -->
+  <link rel="stylesheet" href="css/variable.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/preloader.css">
+  <link rel="stylesheet" href="css/components/hero.css">
+  <link rel="stylesheet" href="css/components/about.css">
+  <link rel="stylesheet" href="css/components/about-me.css">
+  <link rel="stylesheet" href="css/components/skills.css">
+  <link rel="stylesheet" href="css/components/projects.css">
+  <link rel="stylesheet" href="css/components/connect.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- ICONOS -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/simple-icons-font@v9/font/simple-icons.min.css">
+
+</head>
+
+<body>
+
+<!-- ========  PRELOADER: Bloque visual inicial  ======== -->
+<div id="preloader"
+     class="preloader"
+     aria-live="polite"
+     aria-busy="true"
+     data-i18n-aria="preloader.aria">
+
+  <div class="preloader-card">
+
+    <!-- ========  IDENTIDAD VISUAL  ======== -->
+    <div class="preloader-logos">
+
+      <img
+        class="preloader-avatar"
+        src="assets/images/adrianBienvenida.png"
+        alt="Adrian Pisco, autor de Chilete DevPath"
+        loading="eager">
+
+      <img
+        class="preloader-brand"
+        src="assets/images/header.png"
+        alt="Logo de Chilete DevPath"
+        loading="eager">
+
+    </div>
+
+    <!-- ========  TEXTO NARRATIVO  ======== -->
+    <div class="preloader-text">
+
+      <p class="preloader-eyebrow"
+         data-i18n="preloader.welcome"></p>
+
+      <!-- Título SOLO visual -->
+      <h1 class="preloader-title" aria-hidden="true">Chilete DevPath</h1>
+      <p class="preloader-subtitle"
+         data-i18n="preloader.loading"></p>
+
+    </div>
+
+    <!-- ========  PROGRESO VISUAL  ======== -->
+    <div class="preloader-progress" aria-hidden="true">
+      <div class="preloader-bar"></div>
+    </div>
+
+    <!-- ========  ESTADO ACCESIBLE  ======== -->
+    <p class="preloader-status"
+       id="preloaderStatus"
+       data-i18n="preloader.status"></p>
+
+  </div>
+</div>
+
+<!-- Fondo decorativo -->
+<div id="global-particles" aria-hidden="true"></div>
+
+<!-- ========  HEADER + NAV  ======== -->
+<header class="site-header">
+
+  <nav class="nav container"
+       data-i18n-aria="nav.aria"
+       data-state="closed">
+
+    <!-- ========  BRAND / HOME  ======== -->
+    <a href="#hero"
+       class="nav-logo"
+       data-i18n-aria="nav.logo.aria">
+      <img
+        src="assets/images/header.png"
+        alt="Logo de Chilete DevPath"
+        loading="eager"
+        decoding="async">
+    </a>
+
+    <!-- ========  TOGGLE MOBILE  ======== -->
+    <button class="nav-toggle"
+            id="navToggle"
+            data-i18n-aria="nav.toggle.aria"
+            aria-expanded="false"
+            aria-controls="primary-navigation"
+            type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- ========  MENÚ PRINCIPAL  ======== -->
+    <ul class="nav-menu"
+        id="primary-navigation"
+        hidden>
+
+      <li><a href="#devpath" data-i18n="nav.devpath">DevPath</a></li>
+      <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
+      <li><a href="#habilidades" data-i18n="nav.skills">Habilidades</a></li>
+      <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+      <li>
+        <a href="#conversemos"
+           class="nav-contact"
+           data-i18n="nav.connect">Conversemos</a>
+      </li>
+
+    </ul>
+
+    <!-- ========  LANGUAGE TOGGLE  ======== -->
+    <button id="langToggle"
+            class="nav-lang"
+            data-i18n-aria="nav.lang.aria"
+            aria-pressed="false"
+            type="button">
+      <span aria-hidden="true">EN</span>
+      <span class="sr-only" data-i18n="nav.lang.sr">Cambiar idioma</span>
+    </button>
+
+  </nav>
+
+</header>
+
+<!-- ========  CONTENIDO PRINCIPAL  ======== -->
+<main id="main-content">
+
+  <!-- H1 SEO INVISIBLE -->
+  <h1 class="sr-only" data-i18n="seo.h1">
+    Adrian Pisco · Ingeniería de Sistemas e Informática · Chilete DevPath · Portafolio de desarrollo de software
+  </h1>
+
+  <!-- ========  HERO: PRESENTACIÓN DEL PROYECTO Y MI IDENTIDAD  ======== -->
+  <section id="hero"
+          class="hero-section"
+          data-i18n-aria="hero.aria">
+
+    <!-- Fondo visual (decorativo) -->
+    <div class="hero-bg" aria-hidden="true">
+      <img
+        src="assets/images/chilete.jpeg"
+        alt=""
+        loading="eager"
+        decoding="async">
+    </div>
+
+    <div class="container">
+      <div class="hero-grid">
+
+        <!-- ================= BLOQUE TEXTO ================= -->
+        <div class="hero-intro">
+
+          <h2 class="sr-only" data-i18n="hero.sr.title">
+            Presentación principal
+          </h2>
+
+          <!-- H1 visual (narrativo) -->
+          <h1 class="hero-title" aria-hidden="true">
+            <span class="hero-line hero-line--main"
+                  data-i18n="hero.title.main"></span>
+            <span class="hero-line hero-line--connector"
+                  data-i18n="hero.title.connector"></span>
+            <span class="hero-line hero-line--role"
+                  data-i18n="hero.title.role"></span>
+            <span class="hero-line hero-line--origin"
+                  data-i18n="hero.title.origin"></span>
+          </h1>
+
+          <p class="hero-subtitle animate">
+            <strong data-i18n="hero.subtitle"></strong>
+          </p>
+
+          <!-- Badges -->
+          <div class="hero-badges animate">
+
+            <span class="hero-badge">
+              <i class="fa-solid fa-server" aria-hidden="true"></i>
+              <span data-i18n="hero.badges.backend">Backend</span>
+            </span>
+
+            <span class="hero-badge">
+              <i class="fa-solid fa-diagram-project" aria-hidden="true"></i>
+              <span data-i18n="hero.badges.architecture">Arquitectura</span>
+            </span>
+
+            <span class="hero-badge">
+              <i class="fa-solid fa-database" aria-hidden="true"></i>
+              <span data-i18n="hero.badges.systems">Sistemas</span>
+            </span>
+
+          </div>
+
+          <!-- Redes sociales · Presencia -->
+          <nav class="hero-socials animate"
+              aria-label="Presencia social de Chilete DevPath">
+
+            <a href="https://github.com/chiletedevpath"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hero-social"
+              aria-label="GitHub de Chilete DevPath">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+
+            <a href="https://www.linkedin.com/in/adrian-ivan-pisco-soto-857235194/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hero-social"
+              aria-label="LinkedIn de Adrian Pisco">
+              <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            </a>
+
+            <a href="https://discord.gg/RtyDQ7NhUH"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hero-social"
+              aria-label="Comunidad Discord Chilete DevPath">
+              <i class="fa-brands fa-discord" aria-hidden="true"></i>
+            </a>
+
+            <a href="https://www.instagram.com/chiletedevpath/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hero-social"
+              aria-label="Instagram de Chilete DevPath">
+              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+
+            <a href="https://web.facebook.com/chiletedevpath"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hero-social"
+              aria-label="Facebook de Chilete DevPath">
+              <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            </a>
+
+          </nav>
+
+          <!-- Acciones -->
+          <div class="hero-actions animate">
+
+            <a href="#proyectos"
+              class="hero-btn hero-btn--primary"
+              data-i18n-aria="hero.actions.projects.aria">
+              <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+              <span data-i18n="hero.actions.projects">Ver proyectos</span>
+            </a>
+
+            <a href="#conversemos"
+              class="hero-btn hero-btn--outline"
+              data-i18n-aria="hero.actions.connect.aria">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              <span data-i18n="hero.actions.connect">Conversemos</span>
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- ================= BLOQUE CONSOLA ================= -->
+        <div class="hero-mind animate right">
+
+          <div class="hero-console"
+              data-i18n-aria="hero.console.aria">
+
+            <div class="console-header">
+              <span class="dot red" aria-hidden="true"></span>
+              <span class="dot yellow" aria-hidden="true"></span>
+              <span class="dot green" aria-hidden="true"></span>
+
+              <span class="console-title"
+                    data-i18n="hero.console.title">
+                CONSOLA CHILETE DEVPATH
+              </span>
+            </div>
+
+            <pre id="console-output" aria-live="polite"></pre>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+    <!-- ========  SOBRE DEVPATH: ¿QUÉ ES CHILETE DEVPATH?  ======== -->
+  <section id="devpath"
+           class="section animate-devpath"
+           aria-labelledby="devpath-title">
+
+    <div class="container">
+
+      <header class="section-header section-header--editorial">
+        <h2 id="devpath-title" class="section-title" data-i18n="about.title">
+          SOBRE CHILETE DEVPATH
+        </h2>
+
+        <p class="section-intro" data-i18n="about.intro">
+          No es un portafolio tradicional. Es un camino documentado.
+        </p>
+      </header>
+
+      <div class="about-devpath">
+
+        <!-- ===== COLUMNA IZQUIERDA · TEXTO EDITORIAL ===== -->
+        <div class="about-intro">
+
+          <p class="about-lead" data-step="01" data-i18n="about.lead"></p>
+
+          <span class="about-divider" aria-hidden="true"></span>
+
+          <p class="about-block" data-i18n="about.logic"></p>
+
+          <p class="about-block is-reflection" data-i18n="about.build"></p>
+
+          <!-- Cover editorial (visual, no semántico) -->
+          <figure class="devpath-cover" aria-hidden="true">
+            <img src="assets/images/portadaLinkedIn.png" alt="" loading="lazy">
+          </figure>
+
+        </div>
+
+        <!-- ===== COLUMNA DERECHA · ESQUEMA CONCEPTUAL ===== -->
+        <div class="about-right">
+
+          <div class="devpath-scheme"
+               role="list"
+               data-i18n-aria="scheme.aria">
+
+            <div class="node node-foundation" role="listitem"
+                 data-step="foundations" data-tip-i18n="scheme.tip.foundations">
+              <span data-i18n="scheme.foundations">🧱 Fundamentos</span>
+            </div>
+
+            <div class="node node-logic" role="listitem"
+                 data-step="logic" data-tip-i18n="scheme.tip.logic">
+              <span data-i18n="scheme.logic">🧠 Lógica</span>
+            </div>
+
+            <div class="node node-build" role="listitem"
+                 data-step="build" data-tip-i18n="scheme.tip.build">
+              <span data-i18n="scheme.build">🛠 Construcción</span>
+            </div>
+
+            <div class="node node-criteria" role="listitem"
+                 data-step="criteria" data-tip-i18n="scheme.tip.criteria">
+              <span data-i18n="scheme.criteria">🧭 Criterio</span>
+            </div>
+
+            <div class="node node-improve" role="listitem"
+                 data-step="improve" data-tip-i18n="scheme.tip.improve">
+              <span data-i18n="scheme.improve">🔁 Mejora continua</span>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== CITA EDITORIAL ===== -->
+      <div class="section-quote" data-i18n-aria="about.quote.aria">
+        <div class="quote-track">
+          <span>
+            <i class="fa-solid fa-compass" aria-hidden="true"></i>
+            <span data-i18n="about.quote"></span>
+          </span>
+          <span aria-hidden="true">
+            <i class="fa-solid fa-compass" aria-hidden="true"></i>
+            <span data-i18n="about.quote"></span>
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========  SOBRE MÍ: IDENTIDAD, VALORES Y ETAPAS  ======== -->
+  <section id="sobre-mi"
+           class="section about-me"
+           aria-labelledby="aboutme-title">
+
+    <div class="container">
+
+      <header class="section-header--editorial is-soft">
+        <h2 id="aboutme-title" class="section-title" data-i18n="aboutme.title">
+          SOBRE MÍ
+        </h2>
+
+        <p class="section-intro" data-i18n="aboutme.intro">
+          Persona antes que programador.
+        </p>
+      </header>
+
+      <div class="about-me-layout">
+
+        <!-- ===== TEXTO BIOGRÁFICO ===== -->
+        <div class="about-me-text">
+          <p class="about-me-lead" data-i18n="aboutme.pillar.origin"></p>
+          <p class="about-me-paragraph" data-i18n="aboutme.pillar.principle"></p>
+          <p class="about-me-paragraph is-key" data-i18n="aboutme.pillar.core"></p>
+          <p class="about-me-paragraph" data-i18n="aboutme.pillar.aspiration"></p>
+          <p class="about-me-paragraph" data-i18n="aboutme.pillar.motor"></p>
+        </div>
+
+        <!-- ===== GALERÍA DE ETAPAS ===== -->
+        <div class="about-me-gallery" data-i18n-aria="aboutme.gallery.aria">
+
+          <div class="about-me-stack" role="list">
+
+            <button type="button"
+                    class="about-me-photo is-active"
+                    role="listitem"
+                    data-key="military"
+                    aria-pressed="true"
+                    aria-controls="aboutme-caption"
+                    data-i18n-aria="aboutme.stage.military.aria">
+              <img
+                src="assets/images/about-me/militar.jpg"
+                alt=""
+                data-i18n-attr="alt:aboutme.stage.military.alt"
+                loading="lazy"
+                style="--focus-y:10%;">
+            </button>
+
+            <button type="button"
+                    class="about-me-photo"
+                    role="listitem"
+                    data-key="brigade"
+                    aria-pressed="false"
+                    aria-controls="aboutme-caption"
+                    data-i18n-aria="aboutme.stage.brigade.aria">
+              <img
+                src="assets/images/about-me/brigadista.jpg"
+                alt=""
+                data-i18n-attr="alt:aboutme.stage.brigade.alt"
+                loading="lazy"
+                style="--focus-y:40%;">
+            </button>
+
+            <button type="button"
+                    class="about-me-photo"
+                    role="listitem"
+                    data-key="student"
+                    aria-pressed="false"
+                    aria-controls="aboutme-caption"
+                    data-i18n-aria="aboutme.stage.student.aria">
+              <img
+                src="assets/images/about-me/estudiante.jpg"
+                alt=""
+                data-i18n-attr="alt:aboutme.stage.student.alt"
+                loading="lazy"
+                style="--focus-y:42%;">
+            </button>
+
+          </div>
+
+          <!-- ===== CAPTIONS ===== -->
+          <div id="aboutme-caption"
+               class="about-me-caption"
+               aria-live="polite"
+               aria-atomic="true">
+
+            <article class="about-me-caption-item is-active"
+                     data-key="military"
+                     role="group"
+                     aria-labelledby="caption-military-title">
+
+              <h3 id="caption-military-title" data-i18n="aboutme.stage.military.title">Formación Militar</h3>
+              <p data-i18n="aboutme.stage.military.desc"></p>
+
+              <ul>
+                <li data-i18n="aboutme.stage.military.li1"></li>
+                <li data-i18n="aboutme.stage.military.li2"></li>
+                <li data-i18n="aboutme.stage.military.li3"></li>
+                <li data-i18n="aboutme.stage.military.li4"></li>
+              </ul>
+            </article>
+
+            <article class="about-me-caption-item"
+                     data-key="brigade"
+                     role="group"
+                     aria-labelledby="caption-brigade-title">
+
+              <h3 id="caption-brigade-title" data-i18n="aboutme.stage.brigade.title">Brigadista de Emergencia</h3>
+              <p data-i18n="aboutme.stage.brigade.desc"></p>
+
+              <ul>
+                <li data-i18n="aboutme.stage.brigade.li1"></li>
+                <li data-i18n="aboutme.stage.brigade.li2"></li>
+                <li data-i18n="aboutme.stage.brigade.li3"></li>
+                <li data-i18n="aboutme.stage.brigade.li4"></li>
+              </ul>
+            </article>
+
+            <article class="about-me-caption-item"
+                     data-key="student"
+                     role="group"
+                     aria-labelledby="caption-student-title">
+
+              <h3 id="caption-student-title" data-i18n="aboutme.stage.student.title">Estudiante Universitario</h3>
+              <p data-i18n="aboutme.stage.student.desc"></p>
+
+              <ul>
+                <li data-i18n="aboutme.stage.student.li1"></li>
+                <li data-i18n="aboutme.stage.student.li2"></li>
+                <li data-i18n="aboutme.stage.student.li3"></li>
+                <li data-i18n="aboutme.stage.student.li4"></li>
+              </ul>
+            </article>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========  HABILIDADES: RUTA TÉCNICA  ======== -->
+  <section id="habilidades"
+           class="section section--dense animate"
+           aria-labelledby="skills-title">
+
+    <div class="container">
+
+      <header class="section-header section-header--center section-header--editorial">
+        <h2 id="skills-title" class="section-title" data-i18n="skills.title">HABILIDADES</h2>
+        <p class="section-intro" data-i18n="skills.intro"></p>
+      </header>
+
+      <div class="skills-track">
+        <div class="skills-layout">
+
+          <div class="skills-timeline">
+
+            <article class="skill-step">
+              <span class="step-dot step-foundation" aria-hidden="true"></span>
+              <div class="step-content">
+                <h3 data-i18n="skills.foundation.title"></h3>
+                <ul class="skills-list">
+                  <li>
+                    <img src="assets/images/icons/pseint-logo.png" alt="" aria-hidden="true" class="skill-icon">
+                    <span data-i18n="skills.foundation.li1"></span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="skill-step">
+              <span class="step-dot step-java" aria-hidden="true"></span>
+              <div class="step-content">
+                <h3 data-i18n="skills.java.title"></h3>
+                <ul class="skills-list">
+                  <li>
+                    <i class="fa-brands fa-java" aria-hidden="true"></i>
+                    <span data-i18n="skills.java.li1"></span>
+                  </li>
+                  <li data-i18n="skills.java.li2"></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="skill-step">
+              <span class="step-dot step-db" aria-hidden="true"></span>
+              <div class="step-content">
+                <h3 data-i18n="skills.db.title"></h3>
+                <ul class="skills-list">
+                  <li>
+                    <i class="si si-microsoftsqlserver" aria-hidden="true"></i>
+                    <span data-i18n="skills.db.li1"></span>
+                  </li>
+                  <li data-i18n="skills.db.li2"></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="skill-step">
+              <span class="step-dot step-git" aria-hidden="true"></span>
+              <div class="step-content">
+                <h3 data-i18n="skills.git.title"></h3>
+                <ul class="skills-list">
+                  <li>
+                    <i class="fa-brands fa-git-alt" aria-hidden="true"></i>
+                    <span data-i18n="skills.git.li1"></span>
+                  </li>
+                  <li data-i18n="skills.git.li2"></li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="skill-step current">
+              <span class="step-dot step-learning" aria-hidden="true"></span>
+              <div class="step-content">
+                <h3 data-i18n="skills.stack.title"></h3>
+                <ul class="skills-list">
+                  <li><i class="fa-brands fa-html5" aria-hidden="true"></i> <span data-i18n="skills.stack.li1"></span></li>
+                  <li><i class="fa-brands fa-css3-alt" aria-hidden="true"></i> <span data-i18n="skills.stack.li2"></span></li>
+                  <li><i class="fa-brands fa-js" aria-hidden="true"></i> <span data-i18n="skills.stack.li3"></span></li>
+                  <li><i class="si si-spring" aria-hidden="true"></i> <span data-i18n="skills.stack.li4"></span></li>
+                  <li><i class="fa-solid fa-brain" aria-hidden="true"></i> <span data-i18n="skills.stack.li5"></span></li>
+                </ul>
+              </div>
+            </article>
+
+          </div>
+
+          <div class="skills-visual-vertical" aria-hidden="true">
+            <div class="skills-marquee">
+              <div class="skills-marquee-track">
+                <img src="assets/images/skills/adrian-programando.png" alt="">
+                <img src="assets/images/skills/codigo-cuaderno.png" alt="">
+                <img src="assets/images/skills/cafe-descanso.png" alt="">
+                <img src="assets/images/skills/pseint-diagrama.jpg" alt="">
+                <img src="assets/images/skills/adrian-programando.png" alt="">
+                <img src="assets/images/skills/codigo-cuaderno.png" alt="">
+                <img src="assets/images/skills/cafe-descanso.png" alt="">
+                <img src="assets/images/skills/pseint-diagrama.jpg" alt="">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <p class="skills-end-note">
+        <strong data-i18n="skills.end.strong"></strong>
+        <span data-i18n="skills.end.text"></span>
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ========  PROYECTOS  ======== -->
+  <section id="proyectos"
+           class="section section--dense animate"
+           aria-labelledby="projects-title">
+
+    <div class="container">
+
+      <header class="section-header section-header--center section-header--editorial">
+        <h2 id="projects-title" class="section-title" data-i18n="projects.title">PROYECTOS</h2>
+        <p class="section-intro" data-i18n="projects.intro"></p>
+      </header>
+
+      <div class="projects-grid">
+
+        <article class="project-card project-featured">
+
+          <header class="project-header">
+            <h3 class="project-title">FerreSys</h3>
+            <span class="project-badge" data-i18n="projects.main.badge"></span>
+          </header>
+
+          <div class="project-visual">
+            <img
+              src="assets/images/projects/ferresys.jpg"
+              alt=""
+              data-i18n-attr="alt:projects.main.imageAlt"
+              loading="lazy"
+              decoding="async">
+          </div>
+
+          <p class="project-description" data-i18n="projects.main.description"></p>
+
+          <ul class="project-tech">
+            <li><i class="fa-brands fa-java" aria-hidden="true"></i> <span>Java</span></li>
+            <li><i class="fa-solid fa-layer-group" aria-hidden="true"></i> <span data-i18n="projects.tech.arch"></span></li>
+            <li><i class="fa-solid fa-database" aria-hidden="true"></i> <span>SQL Server</span></li>
+            <li><i class="fa-brands fa-git-alt" aria-hidden="true"></i> <span>Git &amp; GitHub</span></li>
+          </ul>
+
+          <div class="project-highlights">
+            <p data-i18n="projects.main.h1"></p>
+            <p data-i18n="projects.main.h2"></p>
+            <p data-i18n="projects.main.h3"></p>
+            <p data-i18n="projects.main.h4"></p>
+          </div>
+
+          <p class="project-evolution">
+            <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+            <span data-i18n="projects.evolution"></span>
+          </p>
+
+          <div class="project-actions">
+            <a href="https://github.com/chiletedevpath/Ferresys.git"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="project-link project-link--primary"
+               data-i18n-aria="projects.main.action.aria">
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+              <span data-i18n="projects.main.action"></span>
+            </a>
+          </div>
+
+        </article>
+
+        <article class="project-card project-soon">
+          <h3 class="project-title" data-i18n="projects.future.title"></h3>
+          <p class="project-description" data-i18n="projects.future.description"></p>
+          <span class="project-status">
+            <i class="fa-solid fa-person-digging" aria-hidden="true"></i>
+            <span data-i18n="projects.status"></span>
+          </span>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+   <!-- =========================================================
+     CONVERSEMOS
+     ========================================================= -->
+<section id="conversemos"
+         class="section connect-devpath animate"
+         aria-labelledby="connect-title">
+
+  <div class="container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="section-header section-header--center section-header--editorial">
+      <h2 id="connect-title"
+          class="section-title"
+          data-i18n="connect.title">
+        CONVERSEMOS
+      </h2>
+
+      <p class="section-intro"
+         data-i18n="connect.intro">
+      </p>
+    </header>
+
+    <!-- ===== LAYOUT ===== -->
+    <div class="connect-layout">
+
+      <!-- ===== MANIFIESTO ===== -->
+      <aside class="connect-manifesto"
+             data-i18n-aria="connect.form.aria">
+
+        <p class="connect-statement">
+          <span class="statement-primary"
+                data-i18n="connect.statement.primary">
+          </span>
+
+          <span class="statement-secondary"
+                data-i18n="connect.statement.secondary">
+          </span>
+        </p>
+
+      </aside>
+
+      <!-- ===== FORMULARIO ===== -->
+      <form id="connectForm"
+            class="connect-form"
+            aria-labelledby="connect-form-title"
+            aria-describedby="connect-feedback"
+            novalidate>
+
+        <h3 id="connect-form-title" class="sr-only">
+          Formulario de contacto
+        </h3>
+
+        <fieldset class="connect-fieldset">
+          <legend class="sr-only">
+            Datos de contacto
+          </legend>
+
+          <!-- Nombre -->
+          <div class="form-field">
+            <label for="contact-name"
+                   data-i18n="connect.form.name.label">
+              Nombre
+            </label>
+
+            <input id="contact-name"
+                   name="name"
+                   type="text"
+                   required
+                   autocomplete="name"
+                   aria-invalid="false"
+                   data-i18n-attr="placeholder:connect.form.name.placeholder">
+          </div>
+
+          <!-- Correo -->
+          <div class="form-field">
+            <label for="contact-email"
+                   data-i18n="connect.form.email.label">
+              Correo
+            </label>
+
+            <input id="contact-email"
+                   name="email"
+                   type="email"
+                   required
+                   autocomplete="email"
+                   aria-invalid="false"
+                   data-i18n-attr="placeholder:connect.form.email.placeholder">
+          </div>
+
+          <!-- Mensaje -->
+          <div class="form-field">
+            <label for="contact-message"
+                   data-i18n="connect.form.message.label">
+              Mensaje
+            </label>
+
+            <textarea id="contact-message"
+                      name="message"
+                      rows="4"
+                      required
+                      aria-invalid="false"
+                      data-i18n-attr="placeholder:connect.form.message.placeholder">
+            </textarea>
+          </div>
+
+        </fieldset>
+
+        <!-- Acción -->
+        <button type="submit"
+                class="form-submit"
+                aria-busy="false"
+                aria-live="polite"
+                data-i18n="connect.form.submit">
+          Enviar
+        </button>
+
+        <!-- Feedback accesible -->
+        <div id="connect-feedback"
+             class="form-feedback"
+             role="status"
+             aria-live="polite">
+        </div>
+
+      </form>
+
+    </div>
+
+    <!-- ===== CIERRE ===== -->
+    <p class="connect-invite"
+       data-i18n="connect.invite">
+    </p>
+
+  </div>
+</section>
+
+
+</main>
+
+<!-- ========  FOOTER  ======== -->
+<footer class="site-footer" role="contentinfo">
+
+  <div class="footer-main">
+
+    <div class="footer-brand">
+      <a href="#hero"
+         class="footer-logo-link"
+         data-i18n-aria="footer.logo.aria">
+        <img
+          src="assets/images/header.png"
+          alt="Chilete DevPath"
+          class="footer-logo"
+          loading="lazy"
+          decoding="async">
+      </a>
+    </div>
+
+    <nav class="footer-nav" data-i18n-aria="footer.nav.aria">
+      <a href="#devpath" data-i18n="footer.nav.devpath">DevPath</a>
+      <a href="#sobre-mi" data-i18n="footer.nav.about">Sobre mí</a>
+      <a href="#habilidades" data-i18n="footer.nav.skills">Habilidades</a>
+      <a href="#proyectos" data-i18n="footer.nav.projects">Proyectos</a>
+      <a href="#conversemos" data-i18n="footer.nav.connect">Conversemos</a>
+    </nav>
+
+    <div class="footer-socials" data-i18n-aria="footer.socials.aria">
+      <a href="https://github.com/chiletedevpath"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-i18n-aria="social.github.aria">
+        <i class="fa-brands fa-github" aria-hidden="true"></i>
+      </a>
+
+      <a href="mailto:chiletedevpath@gmail.com"
+         data-i18n-aria="social.email.aria">
+        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://discord.gg/RtyDQ7NhUH"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-i18n-aria="social.discord.aria">
+        <i class="fa-brands fa-discord" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://www.linkedin.com/in/adrian-ivan-pisco-soto-857235194/"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-i18n-aria="social.linkedin.aria">
+        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://www.instagram.com/chiletedevpath/"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-i18n-aria="social.instagram.aria">
+        <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+      </a>
+
+      <a href="https://web.facebook.com/chiletedevpath"
+         target="_blank"
+         rel="noopener noreferrer"
+         data-i18n-aria="social.facebook.aria">
+        <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+      </a>
+    </div>
+
+  </div>
+
+  <div class="footer-meta">
+    <span class="footer-version">v2026.1</span>
+    <span data-i18n="footer.updated"></span>
+  </div>
+
+  <div class="footer-bottom">
+    <p data-i18n="footer.closing"></p>
+  </div>
+
+</footer> 
+
+<!-- ========  SCRIPTS  ======== -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>

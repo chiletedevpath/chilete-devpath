@@ -1,0 +1,319 @@
+/* ============================================================================
+   BASE.CSS
+   ============================================================================ */
+
+
+/* ============================================================================
+   RESET BASE
+   ============================================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+/* ============================================================================
+   DOCUMENTO BASE
+   ============================================================================ */
+html {
+  scroll-behavior: smooth;
+  font-size: var(--font-size-root);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* ============================================================================
+   BODY – CONTEXTO GLOBAL
+   ============================================================================ */
+body {
+  min-height: 100vh;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-x: hidden;
+
+  position: relative;
+  padding-top: var(--header-height);
+
+  background-color: var(--color-bg-main);
+
+  font-family: var(--font-base);
+  font-size: var(--text-md);
+  line-height: var(--line-base);
+  color: var(--color-text-muted);
+}
+
+main {
+  flex: 1;
+}
+
+
+section[id]:not(#hero) {
+  scroll-margin-top: calc(var(--header-height) - var(--space-sm));
+}
+
+
+/* ============================================================================
+   CONTEXTO DE CAPAS
+   ============================================================================ */
+header,
+main,
+footer {
+  position: relative;
+  z-index: var(--z-base);
+}
+
+
+/* ============================================================================
+   TIPOGRAFÍA – JERARQUÍA SEMÁNTICA
+   ============================================================================ */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 var(--space-xs);
+
+  font-family: var(--font-heading);
+  font-weight: var(--font-semibold);
+  line-height: var(--line-tight);
+
+  color: var(--color-text-main);
+}
+
+h1 {
+  font-size: var(--text-3xl);
+}
+
+h2 {
+  font-size: var(--text-2xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+h4 {
+  font-size: var(--text-lg);
+}
+
+
+/* ============================================================================
+   TEXTO GENERAL
+   ============================================================================ */
+p {
+  margin: var(--space-sm) 0;
+  color: var(--color-text-muted);
+}
+
+p:not([class]) {
+  max-width: 65ch;
+}
+
+strong {
+  font-weight: var(--font-semibold);
+  color: var(--color-text-main);
+}
+
+em {
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+small {
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+}
+
+
+/* ============================================================================
+   LISTAS
+   ============================================================================ */
+ul {
+  margin: var(--space-sm) 0 var(--space-md);
+  padding-left: var(--space-md);
+}
+
+li {
+  margin-bottom: var(--space-2xs);
+  line-height: var(--line-base);
+  color: var(--color-text-muted);
+}
+
+
+/* ============================================================================
+   ENLACES
+   ============================================================================ */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-accent-strong);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+
+/* ============================================================================
+   ELEMENTOS INTERACTIVOS – BASE
+   ============================================================================ */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+
+/* ============================================================================
+   IMÁGENES
+   ============================================================================ */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.media-elevated {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+
+
+/* ============================================================================
+   SELECCIÓN DE TEXTO
+   ============================================================================ */
+::selection {
+  background-color: var(--color-accent-soft);
+  color: var(--color-text-main);
+}
+
+
+/* ============================================================================
+   FONDO ANIMADO GLOBAL
+   ============================================================================ */
+#global-particles {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+/* ============================================================================
+   BOTÓN DE IDIOMA
+   ============================================================================ */
+.lang-toggle {
+  padding: var(--space-2xs) var(--space-xs);
+  border-radius: var(--radius-sm);
+
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  letter-spacing: 0.08em;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-main);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.lang-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.lang-toggle[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: #0b1220;
+}
+
+
+/* ============================================================================
+   SECTION HEADER – EDITORIAL GLOBAL
+   ============================================================================ */
+.section-header--editorial {
+  text-align: center;
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  margin-bottom: var(--space-xl);
+}
+
+.section-header--editorial .section-title {
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-xs);
+}
+
+.section-header--editorial .section-title::after {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 3px;
+  margin: var(--space-xs) auto 0;
+
+  background: var(--color-accent);
+  border-radius: 3px;
+}
+
+.section-header--editorial .section-intro {
+  max-width: 68ch;
+  margin-inline: auto;
+
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--color-text-main);
+  opacity: 0.9;
+}
+
+
+/* ============================================================================
+   VARIANTES EDITORIALES
+   ============================================================================ */
+.section-header--editorial.is-soft .section-intro {
+  opacity: 0.75;
+  font-size: var(--text-sm);
+}
+
+.section-header--editorial.is-strong .section-title {
+  letter-spacing: -0.025em;
+}
+
+
+/* ============================================================================
+   BLOQUEO DE SCROLL — MENU MOBILE
+   ============================================================================ */
+body.nav-locked {
+  overflow: hidden;
+}

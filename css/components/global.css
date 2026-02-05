@@ -1,0 +1,29 @@
+/* =========================================================
+   GLOBAL – BASE LAYOUT
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+
+  min-height: 100vh;     
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Contenedor principal del sitio */
+main {
+  display: block;
+  width: 100%;
+}
+
+/* Base para pseudo-elementos editoriales */
+section {
+  position: relative;
+}

@@ -1,0 +1,86 @@
+/* ============================================================
+   LAYOUT.CSS
+   ============================================================ */
+
+
+/* ============================================================
+   CONTENEDORES – SISTEMA ÚNICO
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-lg);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.container--narrow {
+  width: 100%;
+  max-width: var(--container-md);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.container--wide {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+
+/* ============================================================
+   NAVEGACIÓN – ESTRUCTURA
+   ============================================================ */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 100%;
+  padding-inline: var(--space-xs);
+}
+
+.nav-logo img {
+  width: clamp(72px, 10vw, 90px);
+  height: auto;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+/* ============================================================
+   SECCIONES BASE – RITMO VERTICAL
+   ============================================================ */
+
+.section {
+  padding-block: var(--space-lg);
+}
+
+.section--dense {
+  padding-block: clamp(2.5rem, 6vh, 4rem);
+}
+
+.section--airy {
+  padding-block: clamp(4.5rem, 10vh, 7rem);
+}
+
+
+/* ============================================================
+   UTILIDADES DE FLUJO (OPCIONAL)
+   ============================================================ */
+
+.section--min-screen {
+  min-height: calc(100svh - var(--header-height));
+}
