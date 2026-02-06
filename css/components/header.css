@@ -1,13 +1,5 @@
 /* =========================================================
-   HEADER.CSS | CHILETE DEVPATH
-   Desktop + Mobile Overlay (dual menu)
-   Alineado al HTML FINAL:
-   - .nav-menu--desktop dentro del <nav>
-   - #mobile-nav-root overlay
-   - #mobile-navigation .nav-menu--mobile
-   Controlado por JS:
-   - nav[data-state="open" | "closed"]
-   - #mobile-nav-root[aria-hidden="false" | "true"]
+   HEADER.CSS 
    ========================================================= */
 
 /* =========================================================
@@ -346,8 +338,6 @@ body.nav-locked{
 
 /* =========================================================
    MOBILE OVERLAY ROOT
-   HTML: <div id="mobile-nav-root" aria-hidden="true">
-   JS: aria-hidden false/true
    ========================================================= */
 
 #mobile-nav-root{
@@ -384,7 +374,6 @@ body.nav-locked{
 
 /* =========================================================
    MOBILE MENU (UL)
-   HTML: <ul id="mobile-navigation" class="nav-menu nav-menu--mobile">
    ========================================================= */
 
 .nav-menu--mobile{
@@ -429,6 +418,7 @@ body.nav-locked{
 .nav-menu--mobile li:nth-child(4){ transition-delay: 320ms; }
 .nav-menu--mobile li:nth-child(5){ transition-delay: 420ms; }
 
+/* Número de paso */
 .nav-menu--mobile li::before{
   content: attr(data-step);
   position: absolute;
@@ -441,6 +431,25 @@ body.nav-locked{
 
   color: rgba(143,211,244,0.45);
 }
+
+/* Punto activo alineado a la línea */
+.nav-menu--mobile li.is-active::after{
+  content: "";
+  position: absolute;
+
+  left: 1.9rem;   /* alineado con la línea */
+  top: 0.55em;
+
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  background: var(--color-accent);
+  box-shadow:
+    0 0 0 4px rgba(143,211,244,0.18),
+    0 0 18px rgba(143,211,244,0.45);
+}
+
 
 #mobile-nav-root[aria-hidden="false"] .nav-menu--mobile{
   opacity: 1;
@@ -490,24 +499,6 @@ body.nav-locked{
 
 .nav-menu--mobile li a{
   position: relative;
-}
-
-
-.nav-menu--mobile li a.is-active::after{
-  content: "";
-  position: absolute;
-
-  left: 1.9rem;   /* alineado con la línea vertical */
-  top: 0.75em;    /* centrado respecto al texto */
-
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-
-  background: var(--color-accent);
-  box-shadow:
-    0 0 0 4px rgba(143,211,244,0.18),
-    0 0 18px rgba(143,211,244,0.45);
 }
 
 
@@ -586,7 +577,7 @@ body.nav-locked{
 }
 
 /* =========================================================
-   SR ONLY (accesibilidad)
+   SR ONLY
    ========================================================= */
 
 .sr-only{

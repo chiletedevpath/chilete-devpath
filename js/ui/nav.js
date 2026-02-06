@@ -1,11 +1,5 @@
 /* =========================================================
-   NAV.JS | CHILETE DEVPATH
-   Desktop + Mobile Overlay (dual menu)
-   Alineado a HTML/CSS FINAL:
-   - Button: #navToggle
-   - Nav container: .nav (con data-state)
-   - Overlay root: #mobile-nav-root (aria-hidden true/false)
-   - Mobile menu: #mobile-navigation (ul.nav-menu--mobile)
+   NAV.JS 
    ========================================================= */
 
 /* =========================================================
@@ -17,10 +11,10 @@ export function initNavMenu() {
   const root   = document.getElementById("mobile-nav-root");
   const menu   = document.getElementById("mobile-navigation");
 
-  // Guardrails: si falta algo, no hacemos nada.
+  // Si falta algo, no hace nada.
   if (!toggle || !nav || !root || !menu) return;
 
-  // Evitar doble inicialización (hot reload / reimports / etc.)
+  // Evitar doble inicialización
   if (toggle.dataset.bound === "true") return;
   toggle.dataset.bound = "true";
 
@@ -35,7 +29,7 @@ export function initNavMenu() {
     // Overlay (lo usa CSS para mostrar/ocultar)
     root.setAttribute("aria-hidden", open ? "false" : "true");
 
-    // Menú (buen patrón ARIA)
+    // Menú
     menu.setAttribute("aria-hidden", open ? "false" : "true");
 
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
@@ -48,7 +42,6 @@ export function initNavMenu() {
      Focus helpers
      ------------------------------------------------------- */
   function focusFirstLink() {
-    // Primer link disponible en el menú móvil
     const first = menu.querySelector("a[href]");
     first?.focus();
   }
@@ -66,8 +59,6 @@ export function initNavMenu() {
 
     setOpenState(true);
 
-    // Enfoca el primer link (accesibilidad)
-    // Pequeño defer para asegurar que el overlay ya está "visible"
     requestAnimationFrame(() => focusFirstLink());
 
     document.addEventListener("keydown", onKeydown);
@@ -114,9 +105,9 @@ export function initNavMenu() {
   }
 
   /* -------------------------------------------------------
-     Click fuera (robusto)
-     - Si haces click en el overlay fuera del UL → cierra
-     - Si haces click en toggle → no hace nada (ya está controlado)
+     Click fuera
+     - Si haces click en el overlay fuera del UL, se cierra
+     - Si haces click en toggle, no hace nada (ya está controlado)
      ------------------------------------------------------- */
   function onPointerDownOutside(e) {
     if (!isOpen) return;
@@ -138,9 +129,6 @@ export function initNavMenu() {
     if (window.innerWidth > 768) closeMenu();
   });
 
-  /* -------------------------------------------------------
-     Estado inicial coherente (por si el HTML viene raro)
-     ------------------------------------------------------- */
   setOpenState(false);
 }
 
@@ -150,7 +138,7 @@ export function initNavMenu() {
 export function initActiveSectionNav() {
   const sections = document.querySelectorAll("section[id]");
 
-  // Incluimos explícitamente desktop + mobile (claridad semántica)
+  // Explícitamente desktop + mobile
   const navLinks = document.querySelectorAll(
     ".nav-menu--desktop a[href^='#'], .nav-menu--mobile a[href^='#']"
   );
