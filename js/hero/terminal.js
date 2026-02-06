@@ -13,6 +13,12 @@ import {
 } from "../ui/i18n.js";
 
 /* =========================
+   DEVICE FLAGS
+   ========================= */
+
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+/* =========================
    UTIL
    ========================= */
 
@@ -46,6 +52,9 @@ function renderHeroTerminal() {
   const output = document.getElementById("console-output");
   if (!output) return null;
 
+  if (output.dataset.running === "true") return null;
+  output.dataset.running = "true";
+
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const cursor = document.createElement("span");
@@ -60,9 +69,9 @@ function renderHeroTerminal() {
   output.innerHTML = "";
   output.appendChild(cursor);
 
-  const LINE_DELAY  = reduceMotion ? 0 : 220;
-  const BLOCK_DELAY = reduceMotion ? 0 : 420;
-  const START_DELAY = reduceMotion ? 0 : 250;
+  const LINE_DELAY  = reduceMotion ? 0 : (isMobile ? 140 : 220);
+  const BLOCK_DELAY = reduceMotion ? 0 : (isMobile ? 260 : 420);
+  const START_DELAY = reduceMotion ? 0 : (isMobile ? 120 : 250);
 
   function write() {
     if (!active) return;
@@ -87,6 +96,7 @@ function renderHeroTerminal() {
     active = false;
     clearTimeout(timer);
     output.innerHTML = "";
+    delete output.dataset.running;
   };
 }
 
@@ -114,13 +124,15 @@ export function initHeroTerminal() {
           cleanup = renderHeroTerminal();
         }
 
-        if (!entry.isIntersecting && cleanup) {
+        if (!entry.isIntersecting && cleanup && !isMobile) {
           cleanup();
           cleanup = null;
         }
 
       },
-      { threshold: 0.6 }
+
+      { threshold: isMobile ? 0.25 : 0.6}
+
     );
 
     observer.observe(hero);
@@ -141,9 +153,8 @@ export function initHeroTerminal() {
   }
 
   onLanguageChange(() => {
-    if (cleanup) {
-      cleanup();
-      cleanup = renderHeroTerminal();
-    }
+    if (cleanup) cleanup();
+    cleanup = renderHeroTerminal();
   });
+
 }
