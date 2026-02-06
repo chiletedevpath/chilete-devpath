@@ -1,137 +1,153 @@
 # 🌱 Chilete DevPath  
-### Camino real y documentado en el desarrollo de software
+### A real, documented path in software development
 
-![Chilete DevPath — Portada](assets/images/portadaLinkedIn.png)
+📘 Read this README in other languages:  
+- 🇪🇸 [Español](README.es.md)
 
----
-
-## Bienvenido a Chilete DevPath
-
-**Chilete DevPath** es un **proyecto personal y educativo** donde documento, de forma honesta, estructurada y progresiva,  
-**mi camino real en el aprendizaje y construcción de software**.
-
-No es un portafolio tradicional.  
-No es una vitrina de resultados finales.
-
-Es un **proceso vivo**, construido desde los fundamentos, guiado por criterio técnico  
-y mejorado de forma continua.
+![Chilete DevPath — Cover](assets/images/portadaLinkedIn.png)
 
 ---
 
-## 👨‍💻 Sobre mí
+## Overview
 
-Mi nombre es **Adrian Pisco**, orgullosamente peruano 🇵🇪, de **Chilete – Cajamarca**,  
-y estudiante de **Ingeniería de Sistemas e Informática**.
+**Chilete DevPath** is a **personal and educational project** where I document—clearly, honestly, and progressively—  
+**my real journey in learning and building software systems**.
 
-Mi enfoque no está en acumular herramientas ni tecnologías por tendencia,  
-sino en **comprender los fundamentos que permiten diseñar sistemas**:
+This is **not** a traditional portfolio.  
+It is **not** a collection of polished or isolated demos.
 
-- coherentes  
-- mantenibles  
-- bien estructurados  
-- técnicamente razonados  
+It is a **living, documented process**, built from solid fundamentals,  
+guided by technical judgment, and refined through continuous improvement.
 
-Avanzo con constancia, disciplina y pensamiento crítico,  
-entendiendo el error como parte esencial del aprendizaje.
-
-Mi mayor motivación personal es **mi madre**,  
-quien me enseñó el valor del esfuerzo, la constancia y la disciplina  
-como base de cualquier camino real.
+> Foundations first. Construction follows.
 
 ---
 
-## 🧭 ¿Qué es Chilete DevPath?
+## 👨‍💻 About the author
 
-**Chilete DevPath es un camino documentado.**
+My name is **Adrian Pisco**, proudly Peruvian 🇵🇪, from **Chilete – Cajamarca**,  
+and a **Systems and Computer Engineering** student.
 
-Representa mi proceso real de crecimiento como desarrollador de software,  
-expresado a través de dos ejes principales:
+My approach to software development prioritizes **understanding over accumulation**.  
+Rather than chasing tools, frameworks, or trends, I focus on the principles that allow systems to be:
 
-- 🌐 **Un sitio web personal**, donde presento mi identidad,  
-  mis proyectos, decisiones técnicas y evolución.
-- 📚 **Un registro de aprendizaje**, donde documento cómo pienso,  
-  cómo diseño, cómo fallo, cómo corrijo y cómo mejoro.
+- coherent  
+- maintainable  
+- well-structured  
+- technically reasoned  
 
-Este proyecto **no persigue velocidad ni apariencias**.  
-Persigue **comprensión**, **criterio** y **progreso real**.
+I advance through consistency, discipline, and critical thinking,  
+treating mistakes as an essential part of real engineering growth.
 
-> Primero los cimientos. Luego la construcción.
-
----
-
-## 🧱 Principios del proyecto
-
-Chilete DevPath se construye sobre principios claros:
-
-- Fundamentos antes que frameworks  
-- Pensamiento lógico antes que copiar soluciones  
-- Arquitectura antes que código desordenado  
-- Proceso antes que resultados finales  
-- Mejora continua como hábito  
-
-El camino **no es lineal**:  
-se aprende, se falla, se corrige con criterio y se avanza con conciencia.
+My greatest personal motivation is **my mother**,  
+who taught me the value of effort, perseverance, and discipline  
+as the foundation of any meaningful path.
 
 ---
 
-## 📚 ¿Qué encontrarás en este repositorio?
+## 🧭 What is Chilete DevPath?
 
-- Documentación de mi proceso real de aprendizaje  
-- Proyectos académicos y personales  
-- Aplicación práctica de:
-  - Programación Orientada a Objetos (Java)
-  - Arquitectura por capas (DAO / Servicios)
-  - Gestión de sesiones, roles y permisos
-  - Persistencia y bases de datos relacionales
-  - Control de versiones con Git y GitHub
-- Decisiones técnicas explicadas, no ocultas
-- Evolución documentada por **fases**, no por demos
+**Chilete DevPath is a documented journey.**
 
-Este espacio está pensado tanto para:
-- **reclutadores**, que buscan criterio y proceso  
-- como para **estudiantes y desarrolladores**, que están construyendo sus bases
+It represents my real growth process as a software developer,  
+expressed through two complementary pillars:
+
+- 🌐 **A personal website**, where I present my identity,  
+  projects, technical decisions, and professional evolution.
+- 📚 **A learning record**, where I document how I think,  
+  how I design systems, how I fail, how I correct, and how I improve.
+
+This project does **not** prioritize speed or appearances.  
+It prioritizes **understanding**, **judgment**, and **long-term progress**.
 
 ---
 
-## 🌐 El sitio web
+## 🧱 Guiding principles
 
-Chilete DevPath también es un **sitio web personal completamente desarrollado**, que incluye:
+Chilete DevPath is built on clear engineering principles:
 
-- HTML semántico y accesible  
-- CSS moderno y responsive  
-- JavaScript para interacción y animación  
-- Internacionalización (ES / EN)  
-- Metadatos orientados a SEO  
-- Diseño editorial narrativo  
-- Mejora progresiva y versionada  
+- Fundamentals before frameworks  
+- Logical reasoning before copying solutions  
+- Architecture before disorganized code  
+- Process before final results  
+- Continuous improvement as a discipline  
 
-🔗 Sitio en línea:  
-https://adrianpisco.github.io
+The path is **not linear**.  
+Learning, failure, correction, and improvement are iterative and intentional.
 
 ---
 
-## 🌱 Comunidad y aprendizaje compartido
+## 📚 Repository contents
 
-Chilete DevPath busca ser también un **espacio compartido**.
+This repository contains:
 
-Un lugar para mostrar procesos reales:
-- sin competir  
-- sin aparentar  
-- sin vender atajos  
+- Documentation of my real learning process  
+- Academic and personal software projects  
+- Practical application of:
+  - Object-Oriented Programming (Java)
+  - Layered architectures (DAO / Services)
+  - Session, role, and permission management
+  - Relational databases and persistence
+  - Version control with Git and GitHub
+- Technical decisions explicitly documented  
+- Project evolution tracked by **phases**, not demos
 
-Si estás recorriendo tu propio camino en programación,  
-eres bienvenido(a).
+This repository is intended for:
+
+- **Recruiters** evaluating reasoning, discipline, and process  
+- **Engineers and students** building strong technical foundations  
 
 ---
 
-## 🔗 Enlaces
+## 🌐 The website
+
+Chilete DevPath also exists as a **fully developed personal website**,  
+conceived as both an editorial and technical narrative.
+
+Key characteristics:
+
+- Semantic and accessible HTML  
+- Modern, responsive CSS architecture  
+- JavaScript-driven interaction and animation  
+- Full internationalization (ES / EN)  
+- SEO-oriented metadata and structure  
+- Editorial, narrative-driven design language  
+- Progressive and versioned evolution  
+
+🔗 Live website:  
+**https://chiletedevpath.github.io/chilete-devpath/**
+
+---
+
+## 🌱 Community and shared learning
+
+Chilete DevPath aims to be a **shared learning space**.
+
+A place to show real development processes:
+- without competition  
+- without pretense  
+- without shortcuts  
+
+If you are building your own path in software development,  
+you are welcome here.
+
+---
+
+## 🔗 Links
 
 - 💻 GitHub: https://github.com/chiletedevpath  
 - 💼 LinkedIn: https://www.linkedin.com/in/adrian-ivan-pisco-soto-857235194  
-- 🌐 Web: https://adrianpisco.github.io  
+- 🌐 Website: https://chiletedevpath.github.io/chilete-devpath/  
 
 ---
 
-> *Este camino no está cerrado.*  
-> Se construye paso a paso, con criterio, constancia  
-> y respeto por el aprendizaje.
+> *This path is not finished.*  
+> It is built step by step, with judgment, consistency,  
+> and respect for the learning process.
+
+---
+
+## 📌 Versioning
+
+- **v2026.1** — Editorial DevPath structure, full internationalization (ES/EN),  
+  documented philosophy, and progressive technical evolution.
