@@ -6,42 +6,32 @@
    HEADER BASE
    ========================================================= */
 
-.site-header {
-  position: fixed;
-  top: 0;
-  inset-inline: 0;
-  height: var(--header-height);
-  z-index: 1000;
 
-  display: flex;
-  align-items: center;
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(14,22,34,.85), rgba(10,16,26,.8)),
+                radial-gradient(120% 100% at 50% 0%, rgba(143,211,244,.06), transparent 60%);
+    backdrop-filter: blur(14px) saturate(120%);
+    -webkit-backdrop-filter: blur(14px) saturate(120%);
+    border-bottom: 1px solid var(--color-border-soft);
+    box-shadow:
+      0 10px 32px rgba(0,0,0,0.45),
+      inset 0 -1px 0 rgba(255,255,255,0.04);
 
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(14,22,34,.85),
-      rgba(10,16,26,.8)
-    ),
-    radial-gradient(
-      120% 100% at 50% 0%,
-      rgba(143,211,244,.06),
-      transparent 60%
-    );
-
-  backdrop-filter: blur(14px) saturate(120%);
-  -webkit-backdrop-filter: blur(14px) saturate(120%);
-
-  border-bottom: 1px solid var(--color-border-soft);
-
-  box-shadow:
-    0 10px 32px rgba(0,0,0,0.45),
-    inset 0 -1px 0 rgba(255,255,255,0.04);
-
-  transition:
-    background 280ms ease,
-    box-shadow 280ms ease,
-    backdrop-filter 280ms ease;
-}
+    transition:
+      background 280ms ease,
+      box-shadow 280ms ease,
+      backdrop-filter 280ms ease;
+  } 
 
 /* =========================================================
    HEADER SCROLLED
@@ -377,36 +367,17 @@
 
   .nav-menu {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 
-    gap: 2.2rem;
-
-    padding: 0;
-    margin: 0;
-
-    background: linear-gradient(
-      to bottom,
-      rgba(10, 18, 30, 0.96),
-      rgba(6, 12, 20, 0.98)
-    );
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    z-index: 1050;
-
-    opacity: 0;
-    transform: translateY(-8px);
-
-    transition:
-      opacity 280ms ease,
-      transform 280ms ease;
+    box-sizing: border-box;
   }
-
   .nav-menu:not([hidden]) {
     opacity: 1;
     transform: translateY(0);
@@ -466,4 +437,10 @@ body.nav-locked {
   overflow: hidden;
   clip: rect(0,0,0,0);
   white-space: nowrap;
+}
+
+@media (max-width: 768px){
+  .site-header{
+    overflow-x: hidden;
+  }
 }

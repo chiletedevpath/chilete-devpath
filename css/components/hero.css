@@ -616,3 +616,47 @@
 .hero-social:focus-visible{
   text-decoration: none;
 }
+
+/* ============================================================
+   HERO — FIX OVERFLOW MOBILE
+   ============================================================ */
+@media (max-width: 768px){
+
+  .hero-section{
+    overflow-x: hidden;
+  }
+
+  .hero-grid{
+    max-width: 100%;
+    margin-left: 0;
+    padding-inline: 1.25rem;
+    transform: none;
+  }
+
+  .hero-intro{
+    margin-left: 0;
+    padding: 2.2rem 1.4rem;
+  }
+
+  .hero-console{
+    width: 100%;
+    max-width: 100%;
+    transform: none;
+  }
+
+  .hero-line--origin{
+    white-space: normal;
+  }
+}
+
+@media (max-width: 768px){
+  .hero-section::before{
+    display: none;
+  }
+}
+
+@media (max-width: 768px){
+  .hero-section::after{
+    display: none;
+  }
+}

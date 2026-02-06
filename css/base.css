@@ -19,6 +19,9 @@
 html {
   scroll-behavior: smooth;
   font-size: var(--font-size-root);
+
+  width: 100%;
+  max-width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
