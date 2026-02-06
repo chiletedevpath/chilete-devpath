@@ -144,16 +144,22 @@
 <!-- Fondo decorativo -->
 <div id="global-particles" aria-hidden="true"></div>
 
-<!-- ========  HEADER + NAV  ======== -->
-<header class="site-header">
+<!-- =========================================================
+     HEADER + NAV
+     ========================================================= -->
+<header class="site-header" role="banner">
 
   <nav class="nav container"
-       data-i18n-aria="nav.aria"
-       data-state="closed">
+       aria-label="Navegación principal"
+       data-state="closed"
+       data-i18n-aria="nav.aria">
 
-    <!-- ========  BRAND / HOME  ======== -->
+    <!-- =====================================================
+         LOGO / HOME
+         ===================================================== -->
     <a href="#hero"
        class="nav-logo"
+       aria-label="Ir al inicio"
        data-i18n-aria="nav.logo.aria">
       <img
         src="assets/images/logoOriginal.png"
@@ -162,48 +168,123 @@
         decoding="async">
     </a>
 
-    <!-- ========  TOGGLE MOBILE  ======== -->
-    <button class="nav-toggle"
-            id="navToggle"
-            data-i18n-aria="nav.toggle.aria"
-            aria-expanded="false"
-            aria-controls="primary-navigation"
-            type="button">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <!-- =====================================================
+         MENÚ DESKTOP
+         ===================================================== -->
+    <ul class="nav-menu nav-menu--desktop"
+        role="menubar">
 
-    <!-- ========  MENÚ PRINCIPAL  ======== -->
-    <ul class="nav-menu"
-        id="primary-navigation"
-        hidden>
+      <li role="none">
+        <a href="#devpath"
+           role="menuitem"
+           data-i18n="nav.devpath">
+          DevPath
+        </a>
+      </li>
 
-      <li><a href="#devpath" data-i18n="nav.devpath">DevPath</a></li>
-      <li><a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a></li>
-      <li><a href="#habilidades" data-i18n="nav.skills">Habilidades</a></li>
-      <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
-      <li>
+      <li role="none">
+        <a href="#sobre-mi"
+           role="menuitem"
+           data-i18n="nav.about">
+          Sobre mí
+        </a>
+      </li>
+
+      <li role="none">
+        <a href="#habilidades"
+           role="menuitem"
+           data-i18n="nav.skills">
+          Habilidades
+        </a>
+      </li>
+
+      <li role="none">
+        <a href="#proyectos"
+           role="menuitem"
+           data-i18n="nav.projects">
+          Proyectos
+        </a>
+      </li>
+
+      <li role="none">
         <a href="#conversemos"
            class="nav-contact"
-           data-i18n="nav.connect">Conversemos</a>
+           role="menuitem"
+           data-i18n="nav.connect">
+          Conversemos
+        </a>
       </li>
 
     </ul>
 
-    <!-- ========  LANGUAGE TOGGLE  ======== -->
+    <!-- =====================================================
+         TOGGLE MOBILE
+         ===================================================== -->
+    <button class="nav-toggle"
+            id="navToggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-navigation"
+            aria-label="Abrir menú">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <!-- =====================================================
+         LANGUAGE TOGGLE
+         ===================================================== -->
     <button id="langToggle"
             class="nav-lang"
-            data-i18n-aria="nav.lang.aria"
+            type="button"
             aria-pressed="false"
-            type="button">
+            aria-label="Cambiar idioma">
       <span aria-hidden="true">EN</span>
-      <span class="sr-only" data-i18n="nav.lang.sr">Cambiar idioma</span>
+      <span class="sr-only" data-i18n="nav.lang.sr">
+        Cambiar idioma
+      </span>
     </button>
 
   </nav>
-
 </header>
+
+<!-- =========================================================
+     MOBILE NAV OVERLAY
+     ========================================================= -->
+<div id="mobile-nav-root"
+     aria-hidden="true">
+
+  <ul id="mobile-navigation"
+      class="nav-menu nav-menu--mobile"
+      role="menu">
+
+    <li data-step="01">
+      <a href="#devpath" role="menuitem">DevPath</a>
+    </li>
+
+    <li data-step="02">
+      <a href="#sobre-mi" role="menuitem">Sobre mí</a>
+    </li>
+
+    <li data-step="03">
+      <a href="#habilidades" role="menuitem">Habilidades</a>
+    </li>
+
+    <li data-step="04">
+      <a href="#proyectos" role="menuitem">Proyectos</a>
+    </li>
+
+    <li data-step="→">
+      <a href="#conversemos"
+        class="nav-contact"
+        role="menuitem">
+        Conversemos
+      </a>
+    </li>
+
+  </ul>
+
+</div>
 
 <!-- ========  CONTENIDO PRINCIPAL  ======== -->
 <main id="main-content">
@@ -1018,7 +1099,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
 <script type="module" src="js/main.js"></script>
 
 </body>

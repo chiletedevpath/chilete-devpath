@@ -4,7 +4,7 @@
    ========================================================= */
 
 /* =========================================================
-   IMPORTS ESTÁTICOS (CORE UI)
+   IMPORTS CORE
    ========================================================= */
 
 import { initNavMenu, initActiveSectionNav } from "./ui/nav.js";
@@ -15,7 +15,6 @@ import { initHero } from "./hero/hero.js";
 import { initHeroTerminal } from "./hero/terminal.js";
 
 import { initAboutMe } from "./ui/about-me.js";
-
 import { initConnect } from "./ui/connect.js";
 import { initConnectMail } from "./ui/connect-mail.js";
 
@@ -40,12 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollAnimations();
 
   /* -------------------------------------------------------
-     1) PRELOADER (BLOQUEANTE)
+     1) HEADER / NAV (CRÍTICO · INDEPENDIENTE)
+     ------------------------------------------------------- */
+  initHeader();
+
+  /* -------------------------------------------------------
+     2) PRELOADER (BLOQUE VISUAL CONTROLADO)
      ------------------------------------------------------- */
   initPreloader(async () => {
 
     /* -----------------------------------------------------
-       2) SIDE-EFFECTS POST-PRELOADER (ESTADO GLOBAL)
+       3) SIDE EFFECTS POST-PRELOADER (LAZY)
        ----------------------------------------------------- */
     try {
       const [
@@ -59,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (typeof initI18n === "function") {
         initI18n();
       } else {
-        console.warn("i18n no exporta una función default válida");
+        console.warn("i18n: export default inválido");
       }
 
       if (typeof initParticles === "function") {
@@ -69,11 +73,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (err) {
       console.warn("Side-effects fallaron:", err);
     }
-
-    /* -----------------------------------------------------
-       3) HEADER / NAV
-       ----------------------------------------------------- */
-    initHeader();
 
     /* -----------------------------------------------------
        4) HERO
@@ -108,7 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
    INICIALIZADORES DE ALTO NIVEL
    ========================================================= */
 
+/* Protección contra doble init (futuro-proof) */
+let headerInitialized = false;
+
 function initHeader() {
+  if (headerInitialized) return;
+  headerInitialized = true;
+
   initNavMenu();
   initActiveSectionNav();
   initHeaderScrollState();
@@ -141,7 +146,10 @@ function initHeaderScrollState() {
     ticking = true;
 
     requestAnimationFrame(() => {
-      header.classList.toggle("scrolled", window.scrollY > headerHeight);
+      header.classList.toggle(
+        "scrolled",
+        window.scrollY > headerHeight
+      );
       ticking = false;
     });
   };
@@ -171,7 +179,10 @@ function initHeroParallax() {
         Math.max(-rect.top / rect.height, 0),
         1
       );
-      heroBg.style.transform = `translateY(${progress * 40}px)`;
+
+      heroBg.style.transform =
+        `translateY(${progress * 40}px)`;
+
       ticking = false;
     });
   };
@@ -207,7 +218,10 @@ function initDevPathAnimation() {
     section.classList.add("is-visible");
     nodes.forEach((node, i) => {
       timers.push(
-        setTimeout(() => node.classList.add("is-active"), i * 420)
+        setTimeout(
+          () => node.classList.add("is-active"),
+          i * 420
+        )
       );
     });
   };

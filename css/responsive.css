@@ -64,6 +64,10 @@
    ============================================================ */
 @media (max-width: 768px) {
 
+   :root{
+    --header-height: 72px;
+  }
+
   /* ===== HEADER / NAV ===== */
   .site-header {
     padding: 0.75rem 0;
@@ -79,50 +83,19 @@
     padding: 0.4rem 0;
   }
 
-  .nav-toggle {
-    display: flex;
-    width: 40px;
-    height: 32px;
-    flex-direction: column;
-    justify-content: space-between;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .nav-toggle span {
-    height: 2px;
-    background: var(--color-text-main);
-    border-radius: 2px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-  }
-
-  .nav-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-
-    display: none;
-    flex-direction: column;
-    gap: 1.2rem;
-
-    padding: 1.5rem 0;
-
-    background: rgba(15, 25, 40, 0.95);
-    backdrop-filter: blur(10px);
-  }
-
-  .nav-menu.is-open {
-    display: flex;
-  }
+  /* IMPORTANTE:
+     - El menú NO se controla aquí
+     - NO display:none
+     - NO position:absolute
+     - El overlay fullscreen vive en header.css
+  */
 
   .nav-menu li::after {
     display: none;
   }
 
   .nav-menu a {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   /* ========= HERO ========= */
