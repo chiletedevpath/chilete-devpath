@@ -320,3 +320,19 @@ img {
 body.nav-locked {
   overflow: hidden;
 }
+
+
+/* =====================================================================
+   GLOBAL — HARD STOP HORIZONTAL OVERFLOW (MOBILE SAFE)
+   ===================================================================== */
+
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Evita que hijos absolutos/transformados empujen el viewport */
+body > * {
+  max-width: 100%;
+}

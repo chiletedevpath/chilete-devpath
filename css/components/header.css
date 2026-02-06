@@ -442,5 +442,6 @@ body.nav-locked {
 @media (max-width: 768px){
   .site-header{
     overflow-x: hidden;
+    contain: layout paint;
   }
 }

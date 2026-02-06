@@ -8,11 +8,14 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 
-  min-height: 100vh;     
+  min-height: 100vh;
+  min-height: 100svh;
+
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -26,4 +29,9 @@ main {
 /* Base para pseudo-elementos editoriales */
 section {
   position: relative;
+}
+
+/* Blindaje contra overflow horizontal */
+body > * {
+  max-width: 100%;
 }
