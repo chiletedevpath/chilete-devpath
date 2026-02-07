@@ -2,15 +2,9 @@
    TERMINAL.JS
    ========================= */
 
-import {
-  CONSOLE_LINES_ES,
-  CONSOLE_LINES_EN
-} from "../i18n/console-lines.js";
+import { CONSOLE_LINES_ES, CONSOLE_LINES_EN } from "../i18n/console-lines.js";
 
-import {
-  getCurrentLang,
-  onLanguageChange
-} from "../ui/i18n.js";
+import { getCurrentLang, onLanguageChange } from "../ui/i18n.js";
 
 /* =========================
    DEVICE FLAGS
@@ -23,18 +17,18 @@ const isMobile = window.matchMedia("(max-width: 768px)").matches;
    ========================= */
 
 function getConsoleLines(lang) {
-  return lang === "en"
-    ? CONSOLE_LINES_EN
-    : CONSOLE_LINES_ES;
+  return lang === "en" ? CONSOLE_LINES_EN : CONSOLE_LINES_ES;
 }
 
 function isSystemReady() {
   const hero = document.querySelector(".hero-section");
-  const pre  = document.getElementById("preloader");
+  const pre = document.getElementById("preloader");
 
   if (!hero) return false;
 
-  return !pre || hero.classList.contains("is-ready") || document.body.classList.contains("hero-ready");
+  return (
+    !pre || hero.classList.contains("is-ready") || document.body.classList.contains("hero-ready")
+  );
 }
 
 function isHeroVisible(hero) {
@@ -48,7 +42,6 @@ function isHeroVisible(hero) {
    ========================= */
 
 function renderHeroTerminal() {
-
   const output = document.getElementById("console-output");
   if (!output) return null;
 
@@ -69,9 +62,9 @@ function renderHeroTerminal() {
   output.innerHTML = "";
   output.appendChild(cursor);
 
-  const LINE_DELAY  = reduceMotion ? 0 : (isMobile ? 140 : 220);
-  const BLOCK_DELAY = reduceMotion ? 0 : (isMobile ? 260 : 420);
-  const START_DELAY = reduceMotion ? 0 : (isMobile ? 120 : 250);
+  const LINE_DELAY = reduceMotion ? 0 : isMobile ? 140 : 220;
+  const BLOCK_DELAY = reduceMotion ? 0 : isMobile ? 260 : 420;
+  const START_DELAY = reduceMotion ? 0 : isMobile ? 120 : 250;
 
   function write() {
     if (!active) return;
@@ -82,10 +75,7 @@ function renderHeroTerminal() {
     const line = lines[index++];
     cursor.insertAdjacentHTML("beforebegin", line + "<br>");
 
-    const delay =
-      line.includes("System.out") || line.includes("String")
-        ? BLOCK_DELAY
-        : LINE_DELAY;
+    const delay = line.includes("System.out") || line.includes("String") ? BLOCK_DELAY : LINE_DELAY;
 
     timer = setTimeout(write, delay);
   }
@@ -105,8 +95,7 @@ function renderHeroTerminal() {
    ========================= */
 
 export function initHeroTerminal() {
-
-  const hero   = document.querySelector(".hero-section");
+  const hero = document.querySelector(".hero-section");
   const output = document.getElementById("console-output");
 
   if (!hero || !output) return;
@@ -119,7 +108,6 @@ export function initHeroTerminal() {
 
     observer = new IntersectionObserver(
       ([entry]) => {
-
         if (entry.isIntersecting && !cleanup) {
           cleanup = renderHeroTerminal();
         }
@@ -128,11 +116,9 @@ export function initHeroTerminal() {
           cleanup();
           cleanup = null;
         }
-
       },
 
-      { threshold: isMobile ? 0.25 : 0.6}
-
+      { threshold: isMobile ? 0.25 : 0.6 }
     );
 
     observer.observe(hero);
@@ -156,5 +142,4 @@ export function initHeroTerminal() {
     if (cleanup) cleanup();
     cleanup = renderHeroTerminal();
   });
-
 }

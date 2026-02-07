@@ -4,10 +4,9 @@
 
 import { t, onLanguageChange } from "./ui/i18n.js";
 
-const MIN_NARRATIVE_TIME = 2200; 
+const MIN_NARRATIVE_TIME = 2200;
 
 export function initPreloader(onComplete) {
-
   const startTime = performance.now();
 
   /* =========================================================
@@ -15,8 +14,8 @@ export function initPreloader(onComplete) {
      ========================================================= */
 
   const preloader = document.getElementById("preloader");
-  const statusEl  = document.getElementById("preloaderStatus");
-  const bar       = preloader?.querySelector(".preloader-bar");
+  const statusEl = document.getElementById("preloaderStatus");
+  const bar = preloader?.querySelector(".preloader-bar");
 
   /* =========================================================
      FALLBACK ABSOLUTO
@@ -116,11 +115,14 @@ export function initPreloader(onComplete) {
   if (document.readyState === "complete" || document.readyState === "interactive") {
     setTimeout(finalizePreloader, MIN_NARRATIVE_TIME);
   } else {
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(finalizePreloader, 800);
-    }, { once: true });
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+        setTimeout(finalizePreloader, 800);
+      },
+      { once: true }
+    );
   }
-
 
   /* =========================================================
      FALLBACK DE SEGURIDAD

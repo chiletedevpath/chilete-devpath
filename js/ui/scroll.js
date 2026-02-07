@@ -7,7 +7,6 @@ import { ANIMATION } from "../core/animation-config.js";
 let observer = null;
 
 export function initScrollAnimations() {
-
   const elements = document.querySelectorAll(".animate");
   if (!elements.length) return;
 
@@ -23,7 +22,7 @@ export function initScrollAnimations() {
      FALLBACK
      ===================================================== */
   if (!("IntersectionObserver" in window)) {
-    elements.forEach(el => el.classList.add("is-visible"));
+    elements.forEach((el) => el.classList.add("is-visible"));
     return;
   }
 
@@ -32,7 +31,7 @@ export function initScrollAnimations() {
     rootMargin: ANIMATION.ROOT_MARGIN
   });
 
-  elements.forEach(el => {
+  elements.forEach((el) => {
     el.classList.remove("is-visible"); // reset seguro
     observer.observe(el);
   });
@@ -43,7 +42,7 @@ export function initScrollAnimations() {
    ========================================================= */
 
 function onIntersect(entries, obs) {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     if (!entry.isIntersecting) return;
 
     const el = entry.target;

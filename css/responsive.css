@@ -2,12 +2,10 @@
    RESPONSIVE.CSS
    ============================================================ */
 
-
 /* ============================================================
    TABLET (≤ 1024px)
    ============================================================ */
 @media (max-width: 1024px) {
-
   /* ========= HERO ========= */
   .hero-grid {
     grid-template-columns: 1fr;
@@ -25,12 +23,10 @@
   }
 }
 
-
 /* ============================================================
    MOBILE LARGE (≤ 900px)
    ============================================================ */
 @media (max-width: 900px) {
-
   /* ===== ABOUT DEVPATH ===== */
   .about-devpath {
     grid-template-columns: 1fr;
@@ -58,13 +54,11 @@
   }
 }
 
-
 /* ============================================================
    MOBILE (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
-
-   :root{
+  :root {
     --header-height: 72px;
   }
 
@@ -82,13 +76,6 @@
     max-width: 220px;
     padding: 0.4rem 0;
   }
-
-  /* IMPORTANTE:
-     - El menú NO se controla aquí
-     - NO display:none
-     - NO position:absolute
-     - El overlay fullscreen vive en header.css
-  */
 
   .nav-menu li::after {
     display: none;
@@ -156,12 +143,10 @@
   }
 }
 
-
 /* ============================================================
    SMALL MOBILE (≤ 480px)
    ============================================================ */
 @media (max-width: 480px) {
-
   /* ========= HERO ========= */
   .hero-eyebrow {
     font-size: 0.7rem;

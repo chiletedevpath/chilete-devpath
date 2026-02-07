@@ -5,7 +5,6 @@
 import { ANIMATION } from "../core/animation-config.js";
 
 export function initHero() {
-
   /* =========================================================
      PRELOADER YA TERMINÓ, SE EJECUTA:
      ========================================================= */
@@ -19,11 +18,7 @@ export function initHero() {
      ESPERA SEÑAL DEL PRELOADER
      ========================================================= */
 
-  document.addEventListener(
-    "preloader:done",
-    initHeroBadgesAnimation,
-    { once: true }
-  );
+  document.addEventListener("preloader:done", initHeroBadgesAnimation, { once: true });
 }
 
 /* ============================================================
@@ -31,7 +26,6 @@ export function initHero() {
    ============================================================ */
 
 function initHeroBadgesAnimation() {
-
   const heroSection = document.querySelector(".hero-section");
   const badges = document.querySelectorAll(".hero-badge");
 
@@ -51,7 +45,6 @@ function initHeroBadgesAnimation() {
 
   const observer = new IntersectionObserver(
     ([entry]) => {
-
       if (entry.isIntersecting && !isAnimated) {
         isAnimated = true;
 
@@ -65,7 +58,6 @@ function initHeroBadgesAnimation() {
           delay: ANIMATION.HERO_BADGE_DELAY / 1000
         });
       }
-
     },
     {
       threshold: ANIMATION.THRESHOLD_HERO

@@ -6,106 +6,83 @@
    TOKENS LOCALES
    ============================================================================ */
 
-.connect-devpath{
+.connect-devpath {
   /* Colores */
-  --c-accent:       var(--color-accent);
-  --c-accent-soft:  var(--color-accent-soft);
-  --c-text:         var(--color-text-main);
-  --c-muted:        var(--color-text-soft);
+  --c-accent: var(--color-accent);
+  --c-accent-soft: var(--color-accent-soft);
+  --c-text: var(--color-text-main);
+  --c-muted: var(--color-text-soft);
 
   /* Superficies */
-  --panel-bg-1:     var(--color-bg-card);
-  --panel-bg-2:     var(--color-bg-soft);
-  --panel-border:   var(--color-border-soft);
+  --panel-bg-1: var(--color-bg-card);
+  --panel-bg-2: var(--color-bg-soft);
+  --panel-border: var(--color-border-soft);
 
   /* Sombras */
-  --shadow-1:       var(--shadow-strong);
-  --shadow-2:       inset 0 1px 0 rgba(255,255,255,.08);
+  --shadow-1: var(--shadow-strong);
+  --shadow-2: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
   /* Radios */
-  --radius:         var(--radius-xl);
-  --field-radius:   var(--radius-md);
+  --radius: var(--radius-xl);
+  --field-radius: var(--radius-md);
 
   /* Camino */
-  --path-x:         50%;
+  --path-x: 50%;
 }
 
 /* ============================================================================
-   SECCIÓN BASE — CAMINO
+   SECCIÓN BASE 
    ============================================================================ */
 
-.connect-devpath{
+.connect-devpath {
   position: relative;
   isolation: isolate;
   padding-block: clamp(4.3rem, 10vw, 7.4rem);
 
   background:
-    radial-gradient(
-      1100px 520px at 50% -20%,
-      var(--c-accent-soft),
-      transparent 65%
-    ),
-    radial-gradient(
-      900px 520px at 10% 35%,
-      rgba(255,255,255,.04),
-      transparent 60%
-    ),
-    linear-gradient(
-      to bottom,
-      transparent,
-      var(--color-bg-dark) 30%,
-      #0f172a
-    );
+    radial-gradient(1100px 520px at 50% -20%, var(--c-accent-soft), transparent 65%),
+    radial-gradient(900px 520px at 10% 35%, rgba(255, 255, 255, 0.04), transparent 60%),
+    linear-gradient(to bottom, transparent, var(--color-bg-dark) 30%, #0f172a);
 }
 
 /* Velo unificador */
-.connect-devpath::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(0,0,0,.25) 35%,
-    rgba(0,0,0,.45)
-  );
-  pointer-events:none;
-  z-index:0;
+.connect-devpath::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.25) 35%, rgba(0, 0, 0, 0.45));
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Línea vertical del camino */
-.connect-devpath::before{
-  content:"";
-  position:absolute;
-  top:0;
-  bottom:0;
+.connect-devpath::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
   left: var(--path-x);
 
-  width:1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--c-accent),
-    transparent
-  );
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--c-accent), transparent);
 
-  opacity:.35;
-  pointer-events:none;
-  z-index:1;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ============================================================================
    SCANNER DEL CAMINO
    ============================================================================ */
 
-.connect-devpath .container{
+.connect-devpath .container {
   position: relative;
   z-index: 2;
 }
 
-.connect-devpath .container::before{
-  content:"";
-  position:absolute;
+.connect-devpath .container::before {
+  content: "";
+  position: absolute;
   left: var(--path-x);
   top: 12%;
 
@@ -113,35 +90,42 @@
   height: 120px;
   transform: translateX(-50%);
 
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--c-accent),
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent, var(--c-accent), transparent);
 
-  opacity:.6;
+  opacity: 0.6;
   animation: connect_pathScan 4.2s linear infinite;
-  pointer-events:none;
+  pointer-events: none;
 }
 
-@keyframes connect_pathScan{
-  0%   { transform: translateX(-50%) translateY(-70%); opacity:0; }
-  8%   { opacity:.85; }
-  50%  { opacity:.55; }
-  92%  { opacity:.85; }
-  100% { transform: translateX(-50%) translateY(420%); opacity:0; }
+@keyframes connect_pathScan {
+  0% {
+    transform: translateX(-50%) translateY(-70%);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  92% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(-50%) translateY(420%);
+    opacity: 0;
+  }
 }
 
 /* ============================================================================
    HEADER
    ============================================================================ */
 
-.connect-devpath .section-header{
+.connect-devpath .section-header {
   margin-bottom: clamp(2.2rem, 6vw, 3.2rem);
 }
 
-.connect-devpath .section-intro{
+.connect-devpath .section-intro {
   max-width: 48ch;
   margin-inline: auto;
 
@@ -154,7 +138,7 @@
    LAYOUT
    ============================================================================ */
 
-.connect-layout{
+.connect-layout {
   display: grid;
   gap: clamp(2.2rem, 6vw, 3.2rem);
   max-width: 720px;
@@ -165,38 +149,38 @@
    MANIFIESTO
    ============================================================================ */
 
-.connect-manifesto{
+.connect-manifesto {
   display: grid;
   gap: var(--space-xs);
   text-align: center;
 }
 
-.connect-statement{
+.connect-statement {
   display: grid;
-  gap: .45rem;
+  gap: 0.45rem;
   font-weight: var(--font-medium);
   color: var(--c-text);
 }
 
-.statement-primary{
+.statement-primary {
   font-size: var(--text-md);
 }
 
-.statement-secondary{
+.statement-secondary {
   font-size: var(--text-sm);
   color: var(--c-muted);
 }
 
 .connect-paragraph,
-.connect-trust{
-  display:none;
+.connect-trust {
+  display: none;
 }
 
 /* ============================================================================
    FORMULARIO
    ============================================================================ */
 
-.connect-form{
+.connect-form {
   position: relative;
   display: grid;
   gap: var(--space-sm);
@@ -205,36 +189,22 @@
   border-radius: var(--radius);
 
   background:
-    radial-gradient(
-      900px 420px at 20% 0%,
-      var(--c-accent-soft),
-      transparent 55%
-    ),
-    linear-gradient(
-      to bottom,
-      var(--panel-bg-1),
-      var(--panel-bg-2)
-    );
+    radial-gradient(900px 420px at 20% 0%, var(--c-accent-soft), transparent 55%),
+    linear-gradient(to bottom, var(--panel-bg-1), var(--panel-bg-2));
 
   border: 1px solid var(--panel-border);
   box-shadow: var(--shadow-1), var(--shadow-2);
 }
 
 /* Borde animado */
-.connect-form::before{
-  content:"";
-  position:absolute;
-  inset:-1px;
+.connect-form::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
   border-radius: calc(var(--radius) + 1px);
-  padding:1px;
+  padding: 1px;
 
-  background:
-    conic-gradient(
-      from 180deg,
-      transparent,
-      var(--c-accent),
-      transparent
-    );
+  background: conic-gradient(from 180deg, transparent, var(--c-accent), transparent);
 
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -242,42 +212,43 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 
-  opacity:.45;
+  opacity: 0.45;
   animation: connect_borderSpin 7.5s linear infinite;
-  pointer-events:none;
+  pointer-events: none;
 }
 
-@keyframes connect_borderSpin{
-  to{ transform: rotate(1turn); }
+@keyframes connect_borderSpin {
+  to {
+    transform: rotate(1turn);
+  }
 }
-
 
 /* ============================================================================
    CAMPOS
    ============================================================================ */
 
-.form-field{
+.form-field {
   position: relative;
   display: grid;
-  gap: .45rem;
+  gap: 0.45rem;
 }
 
-.form-field label{
+.form-field label {
   font-size: var(--text-xs);
-  letter-spacing: .16em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: var(--font-semibold);
   color: var(--c-text);
 }
 
 .form-field input,
-.form-field textarea{
-  background: rgba(0,0,0,.35);
-  border:1px solid var(--panel-border);
+.form-field textarea {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--panel-border);
   border-radius: var(--field-radius);
 
-  padding:.82rem .92rem;
-  font-family:inherit;
+  padding: 0.82rem 0.92rem;
+  font-family: inherit;
   font-size: var(--text-md);
   font-weight: var(--font-medium);
   color: var(--c-text);
@@ -285,15 +256,15 @@
   transition: var(--transition-base);
 }
 
-.form-field textarea{
-  min-height:140px;
+.form-field textarea {
+  min-height: 140px;
   resize: vertical;
 }
 
 /* Focus */
 .form-field input:focus-visible,
-.form-field textarea:focus-visible{
-  outline:none;
+.form-field textarea:focus-visible {
+  outline: none;
   border-color: var(--color-border-focus);
   box-shadow: 0 0 0 3px var(--c-accent-soft);
 }
@@ -302,14 +273,14 @@
    BOTÓN
    ============================================================================ */
 
-.form-submit{
+.form-submit {
   margin-top: var(--space-sm);
   justify-self: center;
 
   padding: 1rem 3.2rem;
   font-size: var(--text-xs);
   font-weight: var(--font-bold);
-  letter-spacing: .22em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 
   color: var(--color-text-dark);
@@ -322,101 +293,109 @@
   overflow: hidden;
 
   box-shadow:
-    0 18px 40px rgba(0,0,0,.35),
-    inset 0 1px 0 rgba(255,255,255,.45);
+    0 18px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
 
   transition:
-    transform .18s ease,
-    box-shadow .22s ease,
-    filter .22s ease;
+    transform 0.18s ease,
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
 }
 
-.form-submit::after{
-  content:"";
-  position:absolute;
-  inset:0;
+.form-submit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
     120deg,
     transparent 0%,
-    rgba(255,255,255,.55) 18%,
+    rgba(255, 255, 255, 0.55) 18%,
     transparent 36%
   );
   transform: translateX(-120%);
-  opacity:.7;
-  pointer-events:none;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
-.form-submit:hover{
+.form-submit:hover {
   transform: translateY(-2px);
   filter: saturate(1.05);
   box-shadow:
-    0 26px 60px rgba(143,211,244,.45),
-    inset 0 1px 0 rgba(255,255,255,.5);
+    0 26px 60px rgba(143, 211, 244, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
-.form-submit:hover::after{
-  animation: connect_btnSweep .9s ease forwards;
+.form-submit:hover::after {
+  animation: connect_btnSweep 0.9s ease forwards;
 }
 
-@keyframes connect_btnSweep{
-  to{ transform: translateX(120%); }
+@keyframes connect_btnSweep {
+  to {
+    transform: translateX(120%);
+  }
 }
 
-.form-submit:active{
+.form-submit:active {
   transform: translateY(0);
   box-shadow:
-    0 14px 32px rgba(0,0,0,.45),
-    inset 0 2px 4px rgba(0,0,0,.25);
+    0 14px 32px rgba(0, 0, 0, 0.45),
+    inset 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
-.form-submit:focus-visible{
+.form-submit:focus-visible {
   outline: none;
   box-shadow:
     0 0 0 4px var(--c-accent-soft),
-    0 26px 60px rgba(143,211,244,.45);
+    0 26px 60px rgba(143, 211, 244, 0.45);
 }
 
 /* ============================================================================
    FEEDBACK
    ============================================================================ */
 
-.form-feedback{
-  font-size: .85rem;
+.form-feedback {
+  font-size: 0.85rem;
   font-weight: var(--font-medium);
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
   text-align: center;
 
   min-height: 1.2em;
-  margin-top: .75rem;
+  margin-top: 0.75rem;
 
   opacity: 0;
   transform: translateY(-4px);
-  transition: opacity .25s ease, transform .25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
-.form-feedback.is-visible{
+.form-feedback.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.form-feedback.success{ color:#4ade80; }
-.form-feedback.error{   color:#f87171; }
+.form-feedback.success {
+  color: #4ade80;
+}
+.form-feedback.error {
+  color: #f87171;
+}
 
 /* ============================================================================
    ESTADOS DE ERROR (ARIA)
    ============================================================================ */
 
 .form-field input[aria-invalid="true"],
-.form-field textarea[aria-invalid="true"]{
+.form-field textarea[aria-invalid="true"] {
   border-color: #f87171;
-  box-shadow: 0 0 0 3px rgba(248,113,113,.25);
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.25);
 }
 
 /* ============================================================================
    FIELDSET RESET
    ============================================================================ */
 
-.connect-fieldset{
+.connect-fieldset {
   border: 0;
   padding: 0;
   margin: 0;
@@ -429,15 +408,17 @@
    BOTÓN — ESTADO CARGANDO
    ============================================================================ */
 
-.form-submit[aria-busy="true"]{
+.form-submit[aria-busy="true"] {
   cursor: progress;
-  filter: saturate(.85);
+  filter: saturate(0.85);
 }
 
-.form-submit[aria-busy="true"]::after{ display:none; }
+.form-submit[aria-busy="true"]::after {
+  display: none;
+}
 
-.form-submit:disabled{
-  opacity: .9;
+.form-submit:disabled {
+  opacity: 0.9;
   pointer-events: none;
 }
 
@@ -445,9 +426,9 @@
    FRASE FINAL
    ============================================================================ */
 
-.connect-invite{
+.connect-invite {
   margin-top: var(--space-sm);
-  text-align:center;
+  text-align: center;
   font-size: var(--text-sm);
   color: var(--c-muted);
 }
@@ -456,19 +437,19 @@
    MOBILE
    ============================================================================ */
 
-@media (max-width:640px){
+@media (max-width: 640px) {
   .connect-devpath::before,
-  .connect-devpath .container::before{
-    display:none;
+  .connect-devpath .container::before {
+    display: none;
   }
 
-  .form-submit{
-    width:100%;
+  .form-submit {
+    width: 100%;
     padding: 1.1rem 1.2rem;
     font-size: var(--text-sm);
   }
 
-  .connect-form{
+  .connect-form {
     padding: 1.75rem 1.25rem;
   }
 }
@@ -477,10 +458,10 @@
    REDUCED MOTION
    ============================================================================ */
 
-@media (prefers-reduced-motion: reduce){
+@media (prefers-reduced-motion: reduce) {
   .connect-devpath *,
   .connect-devpath *::before,
-  .connect-devpath *::after{
+  .connect-devpath *::after {
     animation: none !important;
     transition: none !important;
   }

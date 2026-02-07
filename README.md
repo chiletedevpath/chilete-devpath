@@ -1,7 +1,9 @@
-# 🌱 Chilete DevPath  
+# 🌱 Chilete DevPath
+
 ### A real, documented path in software development
 
-📘 Read this README in other languages:  
+📘 Read this README in other languages:
+
 - 🇪🇸 [Español](README.es.md)
 
 ![Chilete DevPath — Cover](assets/images/portadaLinkedIn.png)
@@ -31,10 +33,10 @@ and a **Systems and Computer Engineering** student.
 My approach to software development prioritizes **understanding over accumulation**.  
 Rather than chasing tools, frameworks, or trends, I focus on the principles that allow systems to be:
 
-- coherent  
-- maintainable  
-- well-structured  
-- technically reasoned  
+- coherent
+- maintainable
+- well-structured
+- technically reasoned
 
 I advance through consistency, discipline, and critical thinking,  
 treating mistakes as an essential part of real engineering growth.
@@ -66,11 +68,11 @@ It prioritizes **understanding**, **judgment**, and **long-term progress**.
 
 Chilete DevPath is built on clear engineering principles:
 
-- Fundamentals before frameworks  
-- Logical reasoning before copying solutions  
-- Architecture before disorganized code  
-- Process before final results  
-- Continuous improvement as a discipline  
+- Fundamentals before frameworks
+- Logical reasoning before copying solutions
+- Architecture before disorganized code
+- Process before final results
+- Continuous improvement as a discipline
 
 The path is **not linear**.  
 Learning, failure, correction, and improvement are iterative and intentional.
@@ -81,21 +83,21 @@ Learning, failure, correction, and improvement are iterative and intentional.
 
 This repository contains:
 
-- Documentation of my real learning process  
-- Academic and personal software projects  
+- Documentation of my real learning process
+- Academic and personal software projects
 - Practical application of:
   - Object-Oriented Programming (Java)
   - Layered architectures (DAO / Services)
   - Session, role, and permission management
   - Relational databases and persistence
   - Version control with Git and GitHub
-- Technical decisions explicitly documented  
+- Technical decisions explicitly documented
 - Project evolution tracked by **phases**, not demos
 
 This repository is intended for:
 
-- **Recruiters** evaluating reasoning, discipline, and process  
-- **Engineers and students** building strong technical foundations  
+- **Recruiters** evaluating reasoning, discipline, and process
+- **Engineers and students** building strong technical foundations
 
 ---
 
@@ -106,13 +108,13 @@ conceived as both an editorial and technical narrative.
 
 Key characteristics:
 
-- Semantic and accessible HTML  
-- Modern, responsive CSS architecture  
-- JavaScript-driven interaction and animation  
-- Full internationalization (ES / EN)  
-- SEO-oriented metadata and structure  
-- Editorial, narrative-driven design language  
-- Progressive and versioned evolution  
+- Semantic and accessible HTML
+- Modern, responsive CSS architecture
+- JavaScript-driven interaction and animation
+- Full internationalization (ES / EN)
+- SEO-oriented metadata and structure
+- Editorial, narrative-driven design language
+- Progressive and versioned evolution
 
 🔗 Live website:  
 **https://chiletedevpath.github.io/chilete-devpath/**
@@ -124,9 +126,10 @@ Key characteristics:
 Chilete DevPath aims to be a **shared learning space**.
 
 A place to show real development processes:
-- without competition  
-- without pretense  
-- without shortcuts  
+
+- without competition
+- without pretense
+- without shortcuts
 
 If you are building your own path in software development,  
 you are welcome here.
@@ -135,13 +138,13 @@ you are welcome here.
 
 ## 🔗 Links
 
-- 💻 GitHub: https://github.com/chiletedevpath  
-- 💼 LinkedIn: https://www.linkedin.com/in/adrian-ivan-pisco-soto-857235194  
-- 🌐 Website: https://chiletedevpath.github.io/chilete-devpath/  
+- 💻 GitHub: https://github.com/chiletedevpath
+- 💼 LinkedIn: https://www.linkedin.com/in/adrian-ivan-pisco-soto-857235194
+- 🌐 Website: https://chiletedevpath.github.io/chilete-devpath/
 
 ---
 
-> *This path is not finished.*  
+> _This path is not finished._  
 > It is built step by step, with judgment, consistency,  
 > and respect for the learning process.
 

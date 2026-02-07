@@ -5,20 +5,19 @@
 import { t, onLanguageChange } from "../ui/i18n.js";
 
 export function initConnectMail() {
-
   const form = document.querySelector(".connect-form");
   if (!form || !window.emailjs) return;
 
-  const feedback  = form.querySelector(".form-feedback");
+  const feedback = form.querySelector(".form-feedback");
   const submitBtn = form.querySelector(".form-submit");
 
   const fields = {
-    name:    form.querySelector('[name="name"]'),
-    email:   form.querySelector('[name="email"]'),
-    message: form.querySelector('[name="message"]'),
+    name: form.querySelector('[name="name"]'),
+    email: form.querySelector('[name="email"]'),
+    message: form.querySelector('[name="message"]')
   };
 
-  if (!feedback || !submitBtn || Object.values(fields).some(f => !f)) return;
+  if (!feedback || !submitBtn || Object.values(fields).some((f) => !f)) return;
 
   emailjs.init("lVqMAbSHdWZlz4mUl");
 
@@ -50,18 +49,14 @@ export function initConnectMail() {
   }
 
   function resetFieldValidity() {
-    Object.values(fields).forEach(field =>
-      setFieldValidity(field, true)
-    );
+    Object.values(fields).forEach((field) => setFieldValidity(field, true));
   }
 
   function setLoadingState(loading) {
     isSubmitting = loading;
     submitBtn.disabled = loading;
     submitBtn.setAttribute("aria-busy", String(loading));
-    submitBtn.textContent = loading
-      ? t("connect.form.submit.loading")
-      : t("connect.form.submit");
+    submitBtn.textContent = loading ? t("connect.form.submit.loading") : t("connect.form.submit");
   }
 
   /* =========================================================
@@ -118,9 +113,9 @@ export function initConnectMail() {
     resetFieldValidity();
 
     const params = {
-      name:    fields.name.value.trim(),
-      email:   fields.email.value.trim(),
-      message: fields.message.value.trim(),
+      name: fields.name.value.trim(),
+      email: fields.email.value.trim(),
+      message: fields.message.value.trim()
     };
 
     if (!validate(params)) {
@@ -161,5 +156,4 @@ export function initConnectMail() {
       feedback.textContent = t(lastFeedbackKey);
     }
   });
-
 }

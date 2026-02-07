@@ -2,23 +2,14 @@
    STATES.CSS
    ============================================================ */
 
-
 /* ============================================================
-   ACCESSIBILITY – FOCUS VISIBLE (KEYBOARD ONLY)
+   ACCESSIBILITY – FOCUS VISIBLE 
    ============================================================ */
 
-:where(
-  a,
-  button,
-  [role="button"],
-  input,
-  textarea,
-  select
-):focus-visible {
+:where(a, button, [role="button"], input, textarea, select):focus-visible {
   outline: 2px solid var(--color-border-focus);
   outline-offset: 3px;
 }
-
 
 /* ============================================================
    CURSOR
@@ -28,7 +19,6 @@ button:hover,
 [role="button"]:hover {
   cursor: pointer;
 }
-
 
 /* ============================================================
    STATE: ACTIVE
@@ -46,7 +36,6 @@ button:hover,
   color: var(--color-accent);
 }
 
-
 /* ============================================================
    STATE: CURRENT (ARIA FRIENDLY)
    ============================================================ */
@@ -57,10 +46,8 @@ button:hover,
   font-weight: 600;
 }
 
-
 /* ============================================================
    STATE: OPEN / CLOSED
-   Usado para menús, overlays, dropdowns
    ============================================================ */
 
 .is-open {
@@ -74,7 +61,6 @@ button:hover,
   visibility: hidden;
   pointer-events: none;
 }
-
 
 /* ============================================================
    STATE: HOVER (GLOBAL, SUTIL)
@@ -91,7 +77,6 @@ button:hover,
   transform: translateY(-2px);
 }
 
-
 /* ============================================================
    STATE: ACTIVE (CLICK / PRESS)
    ============================================================ */
@@ -100,7 +85,6 @@ button:hover,
   transform: translateY(0);
   box-shadow: none;
 }
-
 
 /* ============================================================
    STATE: DISABLED
@@ -114,7 +98,6 @@ button:hover,
   cursor: not-allowed;
 }
 
-
 /* ============================================================
    STATE: LOADING / BUSY
    ============================================================ */
@@ -124,9 +107,8 @@ button:hover,
   opacity: 0.6;
 }
 
-
 /* ============================================================
-   STATE: VISIBILITY (JS / OBSERVER FRIENDLY)
+   STATE: VISIBILITY
    ============================================================ */
 
 .is-hidden {
@@ -137,13 +119,11 @@ button:hover,
   display: block;
 }
 
-
 /* ============================================================
    MOTION REDUCTION – USER PREFERENCE
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {

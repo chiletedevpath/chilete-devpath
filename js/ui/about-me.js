@@ -3,7 +3,6 @@
    ========================================================= */
 
 export function initAboutMe() {
-
   const section = document.querySelector(".about-me");
   if (!section) return;
 
@@ -12,25 +11,25 @@ export function initAboutMe() {
   section.style.pointerEvents = "auto";
 
   // Entrada por scroll
- const observer = new IntersectionObserver(
-  ([entry]) => {
-    if (entry.isIntersecting) {
-      requestAnimationFrame(() => {
-        section.classList.add("is-visible");
-      });
-      observer.disconnect();
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        requestAnimationFrame(() => {
+          section.classList.add("is-visible");
+        });
+        observer.disconnect();
+      }
+    },
+    {
+      threshold: 0.25,
+      rootMargin: "0px 0px -10% 0px"
     }
-  },
-  {
-    threshold: 0.25,
-    rootMargin: "0px 0px -10% 0px"
-  }
-);
+  );
 
   observer.observe(section);
 
   // Galería
-  const photos   = Array.from(section.querySelectorAll(".about-me-photo"));
+  const photos = Array.from(section.querySelectorAll(".about-me-photo"));
   const captions = Array.from(section.querySelectorAll(".about-me-caption-item"));
 
   if (!photos.length || !captions.length) return;
@@ -43,8 +42,8 @@ export function initAboutMe() {
 
       const isActive = i === activeIndex;
 
-      // Orden correlativo circular: active; next; nextNext
-      const nextIndex     = (activeIndex + 1) % n;
+      // Orden correlativo circular
+      const nextIndex = (activeIndex + 1) % n;
       const nextNextIndex = (activeIndex + 2) % n;
 
       if (isActive) photo.classList.add("is-active");
@@ -56,25 +55,24 @@ export function initAboutMe() {
   }
 
   function activateStage(key) {
-
-    const activeIndex = photos.findIndex(p => p.dataset.key === key);
+    const activeIndex = photos.findIndex((p) => p.dataset.key === key);
     if (activeIndex < 0) return;
 
     // 1) Stack visual correlativo
     setStackByActiveIndex(activeIndex);
 
     // 2) Caption correlativa
-    captions.forEach(caption => {
+    captions.forEach((caption) => {
       caption.classList.toggle("is-active", caption.dataset.key === key);
     });
   }
 
-  // Estado inicial seguro (usa el que ya viene marcado o el primero)
-  const initial = photos.find(p => p.classList.contains("is-active")) || photos[0];
+  // Estado inicial
+  const initial = photos.find((p) => p.classList.contains("is-active")) || photos[0];
   activateStage(initial.dataset.key);
 
   // Click para activar
-  photos.forEach(photo => {
+  photos.forEach((photo) => {
     photo.addEventListener("click", () => {
       activateStage(photo.dataset.key);
     });

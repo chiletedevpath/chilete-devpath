@@ -3,10 +3,10 @@
    ========================================================= */
 
 /* =========================================================
-   HEADER BASE
+   BASE
    ========================================================= */
 
-.site-header{
+.site-header {
   position: fixed;
   top: 0;
   inset-inline: 0;
@@ -17,8 +17,8 @@
   align-items: center;
 
   background:
-    linear-gradient(to bottom, rgba(14,22,34,.85), rgba(10,16,26,.8)),
-    radial-gradient(120% 100% at 50% 0%, rgba(143,211,244,.06), transparent 60%);
+    linear-gradient(to bottom, rgba(14, 22, 34, 0.85), rgba(10, 16, 26, 0.8)),
+    radial-gradient(120% 100% at 50% 0%, rgba(143, 211, 244, 0.06), transparent 60%);
 
   backdrop-filter: blur(14px) saturate(120%);
   -webkit-backdrop-filter: blur(14px) saturate(120%);
@@ -26,8 +26,8 @@
   border-bottom: 1px solid var(--color-border-soft);
 
   box-shadow:
-    0 10px 32px rgba(0,0,0,0.45),
-    inset 0 -1px 0 rgba(255,255,255,0.04);
+    0 10px 32px rgba(0, 0, 0, 0.45),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04);
 
   transition:
     background 280ms ease,
@@ -39,24 +39,19 @@
    HEADER SCROLLED (main.js)
    ========================================================= */
 
-.site-header.scrolled{
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(12,18,30,.96),
-      rgba(8,14,24,.92)
-    );
+.site-header.scrolled {
+  background: linear-gradient(to bottom, rgba(12, 18, 30, 0.96), rgba(8, 14, 24, 0.92));
 
   backdrop-filter: blur(18px) saturate(130%);
   -webkit-backdrop-filter: blur(18px) saturate(130%);
 
   box-shadow:
-    0 16px 44px rgba(0,0,0,0.6),
-    inset 0 -1px 0 rgba(143,211,244,0.12);
+    0 16px 44px rgba(0, 0, 0, 0.6),
+    inset 0 -1px 0 rgba(143, 211, 244, 0.12);
 }
 
 /* Línea editorial inferior */
-.site-header::after{
+.site-header::after {
   content: "";
   position: absolute;
   inset-inline: 0;
@@ -66,8 +61,8 @@
   background: linear-gradient(
     to right,
     transparent,
-    rgba(143,211,244,0.45),
-    rgba(199,168,255,0.35),
+    rgba(143, 211, 244, 0.45),
+    rgba(199, 168, 255, 0.35),
     transparent
   );
 
@@ -75,7 +70,7 @@
   transition: opacity 300ms ease;
 }
 
-.site-header.scrolled::after{
+.site-header.scrolled::after {
   opacity: 1;
 }
 
@@ -83,7 +78,7 @@
    NAV CONTAINER
    ========================================================= */
 
-.site-header .nav{
+.site-header .nav {
   max-width: 1320px;
   width: 100%;
   height: 100%;
@@ -100,14 +95,14 @@
    LOGO
    ========================================================= */
 
-.nav-logo{
+.nav-logo {
   display: inline-flex;
   align-items: center;
   height: 100%;
   flex: 0 0 auto;
 }
 
-.nav-logo img{
+.nav-logo img {
   display: block;
   max-height: calc(var(--header-height) - 10px);
   max-width: min(260px, 44vw);
@@ -115,16 +110,16 @@
   object-fit: contain;
   object-position: left center;
 
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.55));
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.55));
   transition:
     transform 220ms ease,
     filter 220ms ease;
 }
 
-@media (hover: hover){
-  .site-header:hover .nav-logo img{
+@media (hover: hover) {
+  .site-header:hover .nav-logo img {
     transform: translateY(-1px) scale(1.02);
-    filter: drop-shadow(0 10px 22px rgba(0,0,0,0.7));
+    filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.7));
   }
 }
 
@@ -132,7 +127,7 @@
    MENU DESKTOP
    ========================================================= */
 
-.nav-menu--desktop{
+.nav-menu--desktop {
   display: flex;
   align-items: center;
   gap: 4.5rem;
@@ -145,7 +140,7 @@
 }
 
 /* Links desktop */
-.nav-menu--desktop a{
+.nav-menu--desktop a {
   position: relative;
   padding: 0.35rem 0;
 
@@ -161,14 +156,14 @@
     transform 180ms ease;
 }
 
-@media (hover: hover){
-  .nav-menu--desktop a:hover{
+@media (hover: hover) {
+  .nav-menu--desktop a:hover {
     color: var(--color-accent);
     transform: translateY(-1px);
   }
 }
 
-.nav-menu--desktop a::after{
+.nav-menu--desktop a::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -186,50 +181,50 @@
     opacity 180ms ease;
 }
 
-@media (hover: hover){
-  .nav-menu--desktop a:hover::after{
+@media (hover: hover) {
+  .nav-menu--desktop a:hover::after {
     left: 0;
     right: 0;
     opacity: 0.9;
   }
 }
 
-.nav-menu--desktop a.is-active{
+.nav-menu--desktop a.is-active {
   color: var(--color-text-main);
   font-weight: 600;
 }
 
-.nav-menu--desktop a.is-active::after{
+.nav-menu--desktop a.is-active::after {
   left: 0;
   right: 0;
   opacity: 1;
 }
 
 /* Separador editorial */
-.nav-menu--desktop li{
+.nav-menu--desktop li {
   position: relative;
 }
 
-.nav-menu--desktop li:not(:last-child)::after{
+.nav-menu--desktop li:not(:last-child)::after {
   content: "›";
   position: absolute;
   right: -1.5rem;
   top: 50%;
   transform: translateY(-50%);
-  color: rgba(143,211,244,0.55);
+  color: rgba(143, 211, 244, 0.55);
 }
 
 /* CTA desktop */
-.nav-menu--desktop .nav-contact{
+.nav-menu--desktop .nav-contact {
   padding: 0.45rem 1rem;
   border: 1px solid var(--color-accent);
   border-radius: 8px;
   color: var(--color-accent);
 }
 
-@media (hover: hover){
-  .nav-menu--desktop .nav-contact:hover{
-    background: rgba(143,211,244,0.12);
+@media (hover: hover) {
+  .nav-menu--desktop .nav-contact:hover {
+    background: rgba(143, 211, 244, 0.12);
   }
 }
 
@@ -237,7 +232,7 @@
    LANGUAGE TOGGLE
    ========================================================= */
 
-.nav-lang{
+.nav-lang {
   flex: 0 0 auto;
   margin-left: 1rem;
 
@@ -248,10 +243,10 @@
   font-weight: 600;
   letter-spacing: 0.08em;
 
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   color: var(--color-text-main);
 
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
 
   transition:
@@ -261,25 +256,25 @@
     box-shadow 200ms ease;
 }
 
-@media (hover: hover){
-  .nav-lang:hover{
-    background: rgba(255,255,255,0.15);
-    border-color: rgba(255,255,255,0.35);
+@media (hover: hover) {
+  .nav-lang:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
     transform: translateY(-1px);
   }
 }
 
-.nav-lang:focus-visible{
+.nav-lang:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(143,211,244,0.22);
-  border-color: rgba(143,211,244,0.55);
+  box-shadow: 0 0 0 3px rgba(143, 211, 244, 0.22);
+  border-color: rgba(143, 211, 244, 0.55);
 }
 
 /* =========================================================
    NAV TOGGLE (HAMBURGER)
    ========================================================= */
 
-.nav-toggle{
+.nav-toggle {
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -297,7 +292,7 @@
   z-index: 2100;
 }
 
-.nav-toggle span{
+.nav-toggle span {
   display: block;
   height: 2px;
   width: 100%;
@@ -310,20 +305,20 @@
     opacity 200ms ease;
 }
 
-.nav-toggle:focus-visible{
+.nav-toggle:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(143,211,244,0.22);
+  box-shadow: 0 0 0 3px rgba(143, 211, 244, 0.22);
   border-radius: 10px;
 }
 
 /* Estado abierto: controlado por nav[data-state] (JS) */
-.nav[data-state="open"] .nav-toggle span:nth-child(1){
+.nav[data-state="open"] .nav-toggle span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
-.nav[data-state="open"] .nav-toggle span:nth-child(2){
+.nav[data-state="open"] .nav-toggle span:nth-child(2) {
   opacity: 0;
 }
-.nav[data-state="open"] .nav-toggle span:nth-child(3){
+.nav[data-state="open"] .nav-toggle span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
 
@@ -331,7 +326,7 @@
    BODY LOCK (JS)
    ========================================================= */
 
-body.nav-locked{
+body.nav-locked {
   overflow: hidden;
   touch-action: none;
 }
@@ -340,15 +335,15 @@ body.nav-locked{
    MOBILE OVERLAY ROOT
    ========================================================= */
 
-#mobile-nav-root{
+#mobile-nav-root {
   position: fixed;
   inset: 0;
   z-index: 3000;
 
   background:
-    radial-gradient(900px 380px at 50% -10%, rgba(143,211,244,0.12), transparent 55%),
-    radial-gradient(700px 320px at 20% 85%, rgba(199,168,255,0.12), transparent 55%),
-    linear-gradient(to bottom, rgba(10,16,26,0.97), rgba(6,10,18,0.99));
+    radial-gradient(900px 380px at 50% -10%, rgba(143, 211, 244, 0.12), transparent 55%),
+    radial-gradient(700px 320px at 20% 85%, rgba(199, 168, 255, 0.12), transparent 55%),
+    linear-gradient(to bottom, rgba(10, 16, 26, 0.97), rgba(6, 10, 18, 0.99));
 
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -362,7 +357,7 @@ body.nav-locked{
     visibility 0ms linear 260ms;
 }
 
-#mobile-nav-root[aria-hidden="false"]{
+#mobile-nav-root[aria-hidden="false"] {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
@@ -376,7 +371,7 @@ body.nav-locked{
    MOBILE MENU (UL)
    ========================================================= */
 
-.nav-menu--mobile{
+.nav-menu--mobile {
   height: 100%;
   width: 100%;
 
@@ -396,7 +391,7 @@ body.nav-locked{
   transition: transform 260ms ease;
 }
 
-.nav-menu--mobile li{
+.nav-menu--mobile li {
   opacity: 0;
   transform: translateY(12px);
   position: relative;
@@ -406,20 +401,30 @@ body.nav-locked{
     transform 420ms ease;
 }
 
-#mobile-nav-root[aria-hidden="false"] .nav-menu--mobile li{
+#mobile-nav-root[aria-hidden="false"] .nav-menu--mobile li {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* Escalonado editorial */
-.nav-menu--mobile li:nth-child(1){ transition-delay: 80ms; }
-.nav-menu--mobile li:nth-child(2){ transition-delay: 160ms; }
-.nav-menu--mobile li:nth-child(3){ transition-delay: 240ms; }
-.nav-menu--mobile li:nth-child(4){ transition-delay: 320ms; }
-.nav-menu--mobile li:nth-child(5){ transition-delay: 420ms; }
+.nav-menu--mobile li:nth-child(1) {
+  transition-delay: 80ms;
+}
+.nav-menu--mobile li:nth-child(2) {
+  transition-delay: 160ms;
+}
+.nav-menu--mobile li:nth-child(3) {
+  transition-delay: 240ms;
+}
+.nav-menu--mobile li:nth-child(4) {
+  transition-delay: 320ms;
+}
+.nav-menu--mobile li:nth-child(5) {
+  transition-delay: 420ms;
+}
 
 /* Número de paso */
-.nav-menu--mobile li::before{
+.nav-menu--mobile li::before {
   content: attr(data-step);
   position: absolute;
   left: 0;
@@ -429,15 +434,15 @@ body.nav-locked{
   font-weight: 700;
   letter-spacing: 0.18em;
 
-  color: rgba(143,211,244,0.45);
+  color: rgba(143, 211, 244, 0.45);
 }
 
 /* Punto activo alineado a la línea */
-.nav-menu--mobile li.is-active::after{
+.nav-menu--mobile li.is-active::after {
   content: "";
   position: absolute;
 
-  left: 1.9rem;   /* alineado con la línea */
+  left: 1.9rem;
   top: 0.55em;
 
   width: 8px;
@@ -446,17 +451,16 @@ body.nav-locked{
 
   background: var(--color-accent);
   box-shadow:
-    0 0 0 4px rgba(143,211,244,0.18),
-    0 0 18px rgba(143,211,244,0.45);
+    0 0 0 4px rgba(143, 211, 244, 0.18),
+    0 0 18px rgba(143, 211, 244, 0.45);
 }
 
-
-#mobile-nav-root[aria-hidden="false"] .nav-menu--mobile{
+#mobile-nav-root[aria-hidden="false"] .nav-menu--mobile {
   opacity: 1;
   transform: translateY(0);
 }
 
-.nav-menu--mobile a{
+.nav-menu--mobile a {
   font-size: clamp(1.15rem, 3.6vw, 1.35rem);
   font-weight: 650;
   letter-spacing: 0.04em;
@@ -473,7 +477,7 @@ body.nav-locked{
     color 200ms ease;
 }
 
-.nav-menu--mobile::before{
+.nav-menu--mobile::before {
   content: "";
   position: absolute;
   left: 2rem;
@@ -481,50 +485,44 @@ body.nav-locked{
   bottom: 0;
 
   width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(143,211,244,0.35),
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent, rgba(143, 211, 244, 0.35), transparent);
 }
 
-.nav-menu--mobile{
+.nav-menu--mobile {
   overflow: hidden;
 }
 
-.nav-menu--mobile li a.is-active{
+.nav-menu--mobile li a.is-active {
   color: var(--color-accent);
 }
 
-.nav-menu--mobile li a{
+.nav-menu--mobile li a {
   position: relative;
 }
 
-
-@media (prefers-reduced-motion: reduce){
+@media (prefers-reduced-motion: reduce) {
   .nav-menu--mobile,
-  .nav-menu--mobile li{
+  .nav-menu--mobile li {
     transition: none !important;
     transform: none !important;
   }
 }
 
-@media (hover: hover){
-  .nav-menu--mobile a:hover{
-    background: rgba(255,255,255,0.08);
+@media (hover: hover) {
+  .nav-menu--mobile a:hover {
+    background: rgba(255, 255, 255, 0.08);
     transform: translateY(-1px);
   }
 }
 
-.nav-menu--mobile a:focus-visible{
+.nav-menu--mobile a:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(143,211,244,0.22);
-  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 3px rgba(143, 211, 244, 0.22);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* CTA en mobile */
-.nav-menu--mobile .nav-contact{
+.nav-menu--mobile .nav-contact {
   margin-top: 0.25rem;
   padding: 0.7rem 1.6rem;
   align-self: flex-start;
@@ -532,17 +530,16 @@ body.nav-locked{
   border-radius: 14px;
 
   color: var(--color-accent);
-  background: rgba(143,211,244,0.06);
+  background: rgba(143, 211, 244, 0.06);
 }
 
-@media (hover: hover){
-  .nav-menu--mobile .nav-contact:hover{
-    background: rgba(143,211,244,0.14);
+@media (hover: hover) {
+  .nav-menu--mobile .nav-contact:hover {
+    background: rgba(143, 211, 244, 0.14);
   }
 }
 
-/* Estado activo también en mobile */
-.nav-menu--mobile a.is-active{
+.nav-menu--mobile a.is-active {
   color: var(--color-accent);
 }
 
@@ -550,28 +547,33 @@ body.nav-locked{
    RESPONSIVE: ACTIVAR MOBILE
    ========================================================= */
 
-@media (max-width: 768px){
-  .nav-toggle{ display: flex; }
-  .nav-menu--desktop{ display: none; }
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-menu--desktop {
+    display: none;
+  }
 
-  /* Asegura que el botón de idioma no "mate" el layout */
-  .nav-lang{ margin-left: 0.75rem; }
+  .nav-lang {
+    margin-left: 0.75rem;
+  }
 }
 
 /* =========================================================
    RESPONSIVE: MUY PEQUEÑO
    ========================================================= */
 
-@media (max-width: 380px){
-  .site-header .nav{
+@media (max-width: 380px) {
+  .site-header .nav {
     padding-inline: 1rem;
   }
 
-  .nav-logo img{
+  .nav-logo img {
     max-width: 46vw;
   }
 
-  .nav-toggle{
+  .nav-toggle {
     width: 26px;
   }
 }
@@ -580,12 +582,12 @@ body.nav-locked{
    SR ONLY
    ========================================================= */
 
-.sr-only{
+.sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
   padding: 0;

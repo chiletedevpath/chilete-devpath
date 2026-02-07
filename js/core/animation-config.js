@@ -3,7 +3,6 @@
    ========================================================= */
 
 export const ANIMATION = {
-
   /* =====================================================
      INTERSECTION OBSERVER – BASE GLOBAL
      ===================================================== */
@@ -13,13 +12,13 @@ export const ANIMATION = {
   ROOT_MARGIN: "0px 0px -40px 0px",
 
   /* =====================================================
-     THRESHOLDS POR CONTEXTO (EXTENSIBLE)
+     THRESHOLDS POR CONTEXTO
      ===================================================== */
 
   /* Hero: entrada más consciente */
   THRESHOLD_HERO: 0.45,
 
-  /* Header / navegación activa */
+  /* Header: navegación activa */
   THRESHOLD_NAV: 0.6,
 
   /* =====================================================
@@ -36,7 +35,7 @@ export const ANIMATION = {
      SECUENCIAS NARRATIVAS
      ===================================================== */
 
-  /* DevPath – nodos principales */
+  /* DevPath: nodos principales */
   DEVPATH_NODE_DELAY: 260,
 
   /* Alternativo */

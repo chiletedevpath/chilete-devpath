@@ -22,89 +22,80 @@ import { initConnectMail } from "./ui/connect-mail.js";
    LOG GLOBAL
    ========================================================= */
 
-console.info(
-  "%cChilete DevPath iniciado correctamente",
-  "color:#8fd3f4;font-weight:600"
-);
+console.info("%cChilete DevPath iniciado correctamente", "color:#8fd3f4;font-weight:600");
 
 /* =========================================================
    DOM READY — ORQUESTACIÓN CENTRAL
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
   /* -------------------------------------------------------
      1) HEADER / NAV (CRÍTICO · INDEPENDIENTE)
      ------------------------------------------------------- */
-    initHeader();
+  initHeader();
 
   /* -------------------------------------------------------
      2) PRELOADER (BLOQUE VISUAL CONTROLADO)
      ------------------------------------------------------- */
   initPreloader(async () => {
-
-      /* -----------------------------------------------------
+    /* -----------------------------------------------------
         3) SIDE EFFECTS POST- (LAZY)
         ----------------------------------------------------- */
-      try {
-        const [
-          { initParticles },
-          { default: initI18n }
-        ] = await Promise.all([
-          import("./ui/particles.js"),
-          import("./ui/i18n.js")
-        ]);
+    try {
+      const [{ initParticles }, { default: initI18n }] = await Promise.all([
+        import("./ui/particles.js"),
+        import("./ui/i18n.js")
+      ]);
 
-        if (typeof initI18n === "function") {
-          initI18n();
-        } else {
-          console.warn("i18n: export default inválido");
-        }
-
-        if (typeof initParticles === "function") {
-          initParticles();
-        }
-
-      } catch (err) {
-        console.warn("Side-effects fallaron:", err);
+      if (typeof initI18n === "function") {
+        initI18n();
+      } else {
+        console.warn("i18n: export default inválido");
       }
 
-      /* -----------------------------------------------------
+      if (typeof initParticles === "function") {
+        initParticles();
+      }
+    } catch (err) {
+      console.warn("Side-effects fallaron:", err);
+    }
+
+    /* -----------------------------------------------------
         4) HERO
         ----------------------------------------------------- */
-        initHeroSection();
-        initScrollAnimations();
+    initHeroSection();
+    initScrollAnimations();
 
-      /* -----------------------------------------------------
+    /* -----------------------------------------------------
         5) MARCA GLOBAL
         ----------------------------------------------------- */
-        document.body.classList.add("hero-ready");
+    document.body.classList.add("hero-ready");
 
-      /* -----------------------------------------------------
+    /* -----------------------------------------------------
         6) DEVPATH
         ----------------------------------------------------- */
-        requestAnimationFrame(() => {
-          initDevPathAnimation();
-          initQuoteSlide();
-        });
-      /* -----------------------------------------------------
+    requestAnimationFrame(() => {
+      initDevPathAnimation();
+      initQuoteSlide();
+    });
+    /* -----------------------------------------------------
         7) ABOUT ME
         ----------------------------------------------------- */
-        initAboutMe();
+    initAboutMe();
 
-      /* -----------------------------------------------------
+    /* -----------------------------------------------------
         8) CONNECT
         ----------------------------------------------------- */
-        initConnect();
-        initConnectMail();
-    });
- });
+    initConnect();
+    initConnectMail();
+  });
+});
 
 /* =========================================================
    INICIALIZADORES DE ALTO NIVEL
    ========================================================= */
 
-/* Protección contra doble init (futuro-proof) */
+/* Protección contra doble init */
 let headerInitialized = false;
 
 function initHeader() {
@@ -137,10 +128,7 @@ function initHeaderScrollState() {
   if (!header) return;
 
   const headerHeight =
-    parseInt(
-      getComputedStyle(document.documentElement)
-        .getPropertyValue("--header-height")
-    ) || 60;
+    parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-height")) || 60;
 
   let ticking = false;
 
@@ -149,10 +137,7 @@ function initHeaderScrollState() {
     ticking = true;
 
     requestAnimationFrame(() => {
-      header.classList.toggle(
-        "scrolled",
-        window.scrollY > headerHeight
-      );
+      header.classList.toggle("scrolled", window.scrollY > headerHeight);
       ticking = false;
     });
   };
@@ -178,13 +163,9 @@ function initHeroParallax() {
 
     requestAnimationFrame(() => {
       const rect = hero.getBoundingClientRect();
-      const progress = Math.min(
-        Math.max(-rect.top / rect.height, 0),
-        1
-      );
+      const progress = Math.min(Math.max(-rect.top / rect.height, 0), 1);
 
-      heroBg.style.transform =
-        `translateY(${progress * 40}px)`;
+      heroBg.style.transform = `translateY(${progress * 40}px)`;
 
       ticking = false;
     });
@@ -214,18 +195,13 @@ function initDevPathAnimation() {
   const reset = () => {
     clearTimers();
     section.classList.remove("is-visible");
-    nodes.forEach(n => n.classList.remove("is-active"));
+    nodes.forEach((n) => n.classList.remove("is-active"));
   };
 
   const activate = () => {
     section.classList.add("is-visible");
     nodes.forEach((node, i) => {
-      timers.push(
-        setTimeout(
-          () => node.classList.add("is-active"),
-          i * 420
-        )
-      );
+      timers.push(setTimeout(() => node.classList.add("is-active"), i * 420));
     });
   };
 

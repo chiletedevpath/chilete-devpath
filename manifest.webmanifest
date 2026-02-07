@@ -19,12 +19,7 @@
   "lang": "es-PE",
   "dir": "ltr",
 
-  "categories": [
-    "education",
-    "productivity",
-    "portfolio",
-    "technology"
-  ],
+  "categories": ["education", "productivity", "portfolio", "technology"],
 
   "prefer_related_applications": false,
 
@@ -54,7 +49,7 @@
       "purpose": "maskable"
     }
   ],
-  
+
   "shortcuts": [
     {
       "name": "Ver proyectos",

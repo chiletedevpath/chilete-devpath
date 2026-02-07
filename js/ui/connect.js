@@ -3,7 +3,6 @@
    ========================================================= */
 
 export function initConnect() {
-
   if (!window.gsap || !window.ScrollTrigger) return;
 
   gsap.registerPlugin(ScrollTrigger);
@@ -14,11 +13,10 @@ export function initConnect() {
 
   const manifesto = document.querySelector(".connect-manifesto");
   if (manifesto) {
-
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: "#conversemos",
-        start: "top 75%",
+        start: "top 75%"
       }
     });
 
@@ -27,14 +25,17 @@ export function initConnect() {
       y: 18,
       duration: 0.7,
       ease: "power2.out"
-    })
-    .from(manifesto.children, {
-      opacity: 0,
-      y: 14,
-      duration: 0.55,
-      stagger: 0.14,
-      ease: "power2.out"
-    }, "-=0.45");
+    }).from(
+      manifesto.children,
+      {
+        opacity: 0,
+        y: 14,
+        duration: 0.55,
+        stagger: 0.14,
+        ease: "power2.out"
+      },
+      "-=0.45"
+    );
   }
 
   /* =======================================================
@@ -46,7 +47,7 @@ export function initConnect() {
     gsap.from(emailEntry, {
       scrollTrigger: {
         trigger: emailEntry,
-        start: "top 80%",
+        start: "top 80%"
       },
       opacity: 0,
       scale: 0.965,
@@ -60,9 +61,7 @@ export function initConnect() {
      ======================================================= */
 
   if (matchMedia("(hover: hover)").matches) {
-
-    document.querySelectorAll(".connect-entry").forEach(entry => {
-
+    document.querySelectorAll(".connect-entry").forEach((entry) => {
       entry.addEventListener("mouseenter", () => {
         gsap.to(entry, {
           y: -3,
@@ -78,7 +77,6 @@ export function initConnect() {
           ease: "power2.out"
         });
       });
-
     });
   }
 }

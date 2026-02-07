@@ -1,7 +1,9 @@
-# 🌱 Chilete DevPath  
+# 🌱 Chilete DevPath
+
 ### Un camino real y documentado en el desarrollo de software
 
-📘 Leer este README en otros idiomas:  
+📘 Leer este README en otros idiomas:
+
 - 🇺🇸 [English](README.md)
 
 ![Chilete DevPath — Portada](assets/images/portadaLinkedIn.png)
@@ -31,10 +33,10 @@ y estudiante de **Ingeniería de Sistemas e Informática**.
 Mi enfoque en el desarrollo de software prioriza **la comprensión por encima de la acumulación**.  
 En lugar de perseguir herramientas, frameworks o tendencias, me concentro en los principios que permiten diseñar sistemas:
 
-- coherentes  
-- mantenibles  
-- bien estructurados  
-- técnicamente razonados  
+- coherentes
+- mantenibles
+- bien estructurados
+- técnicamente razonados
 
 Avanzo con constancia, disciplina y pensamiento crítico,  
 entendiendo el error como una parte esencial del crecimiento real en ingeniería.
@@ -66,11 +68,11 @@ Prioriza la **comprensión**, el **criterio** y el **progreso a largo plazo**.
 
 Chilete DevPath se construye sobre principios claros de ingeniería:
 
-- Fundamentos antes que frameworks  
-- Razonamiento lógico antes que copiar soluciones  
-- Arquitectura antes que código desordenado  
-- Proceso antes que resultados finales  
-- Mejora continua como disciplina  
+- Fundamentos antes que frameworks
+- Razonamiento lógico antes que copiar soluciones
+- Arquitectura antes que código desordenado
+- Proceso antes que resultados finales
+- Mejora continua como disciplina
 
 El camino **no es lineal**.  
 Aprender, fallar, corregir y mejorar son procesos iterativos y conscientes.
@@ -81,21 +83,21 @@ Aprender, fallar, corregir y mejorar son procesos iterativos y conscientes.
 
 Este repositorio contiene:
 
-- Documentación de mi proceso real de aprendizaje  
-- Proyectos académicos y personales de software  
+- Documentación de mi proceso real de aprendizaje
+- Proyectos académicos y personales de software
 - Aplicación práctica de:
   - Programación Orientada a Objetos (Java)
   - Arquitecturas por capas (DAO / Servicios)
   - Gestión de sesiones, roles y permisos
   - Bases de datos relacionales y persistencia
   - Control de versiones con Git y GitHub
-- Decisiones técnicas documentadas explícitamente  
+- Decisiones técnicas documentadas explícitamente
 - Evolución de proyectos registrada por **fases**, no por demos
 
 Este repositorio está orientado a:
 
-- **Reclutadores** que evalúan criterio, disciplina y proceso  
-- **Ingenieros y estudiantes** que construyen bases técnicas sólidas  
+- **Reclutadores** que evalúan criterio, disciplina y proceso
+- **Ingenieros y estudiantes** que construyen bases técnicas sólidas
 
 ---
 
@@ -106,13 +108,13 @@ concebido como una narrativa tanto editorial como técnica.
 
 Características principales:
 
-- HTML semántico y accesible  
-- Arquitectura CSS moderna y responsive  
-- JavaScript para interacción y animación  
-- Internacionalización completa (ES / EN)  
-- Metadatos orientados a SEO  
-- Lenguaje de diseño editorial y narrativo  
-- Evolución progresiva y versionada  
+- HTML semántico y accesible
+- Arquitectura CSS moderna y responsive
+- JavaScript para interacción y animación
+- Internacionalización completa (ES / EN)
+- Metadatos orientados a SEO
+- Lenguaje de diseño editorial y narrativo
+- Evolución progresiva y versionada
 
 🔗 Sitio en línea:  
 **https://chiletedevpath.github.io/chilete-devpath/**
@@ -124,9 +126,10 @@ Características principales:
 Chilete DevPath busca ser también un **espacio de aprendizaje compartido**.
 
 Un lugar para mostrar procesos reales de desarrollo:
-- sin competir  
-- sin aparentar  
-- sin vender atajos  
+
+- sin competir
+- sin aparentar
+- sin vender atajos
 
 Si estás construyendo tu propio camino en el desarrollo de software,  
 este espacio también es para ti.
@@ -135,13 +138,13 @@ este espacio también es para ti.
 
 ## 🔗 Enlaces
 
-- 💻 GitHub: https://github.com/chiletedevpath  
-- 💼 LinkedIn: https://www.linkedin.com/in/adrian-ivan-pisco-soto-857235194  
-- 🌐 Web: https://chiletedevpath.github.io/chilete-devpath/  
+- 💻 GitHub: https://github.com/chiletedevpath
+- 💼 LinkedIn: https://www.linkedin.com/in/adrian-ivan-pisco-soto-857235194
+- 🌐 Web: https://chiletedevpath.github.io/chilete-devpath/
 
 ---
 
-> *Este camino no está terminado.*  
+> _Este camino no está terminado._  
 > Se construye paso a paso, con criterio, constancia  
 > y respeto por el proceso de aprendizaje.
 

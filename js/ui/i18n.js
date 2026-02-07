@@ -1,5 +1,5 @@
 /* =========================================================
-   I18N.JS | CHILETE DEVPATH
+   I18N.JS 
    ========================================================= */
 
 import { translations } from "../i18n/translations.js";
@@ -28,7 +28,7 @@ export function onLanguageChange(cb) {
 }
 
 function notifyLanguageChange() {
-  languageListeners.forEach(cb => {
+  languageListeners.forEach((cb) => {
     try {
       cb(currentLang);
     } catch (err) {
@@ -64,7 +64,7 @@ function applyLanguage(lang, root = document) {
   if (!dict) return;
 
   /* ---- TEXTO VISIBLE ---- */
-  root.querySelectorAll("[data-i18n]").forEach(el => {
+  root.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.dataset.i18n;
     const value = dict[key];
     if (typeof value === "string" && el.textContent !== value) {
@@ -73,7 +73,7 @@ function applyLanguage(lang, root = document) {
   });
 
   /* ---- ARIA ---- */
-  root.querySelectorAll("[data-i18n-aria]").forEach(el => {
+  root.querySelectorAll("[data-i18n-aria]").forEach((el) => {
     const key = el.dataset.i18nAria;
     const value = dict[key];
     if (typeof value === "string") {
@@ -86,11 +86,20 @@ function applyLanguage(lang, root = document) {
   document.documentElement.dataset.lang = lang;
   localStorage.setItem("lang", lang);
 
-  /* ---- TOGGLE ---- */
+  /* ---- LANGUAGE TOGGLE ---- */
   const toggle = document.getElementById("langToggle");
   if (toggle) {
     const isEN = lang === "en";
-    toggle.textContent = isEN ? "ES" : "EN";
+
+    // Texto visible = idioma destino
+    toggle.textContent = isEN ? "ESPAÑOL" : "ENGLISH";
+
+    toggle.setAttribute(
+      "aria-label",
+      isEN ? "Cambiar idioma a español" : "Cambiar idioma a inglés"
+    );
+
+    // Estado lógico
     toggle.setAttribute("aria-pressed", String(isEN));
   }
 

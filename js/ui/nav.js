@@ -7,9 +7,9 @@
    ========================================================= */
 export function initNavMenu() {
   const toggle = document.getElementById("navToggle");
-  const nav    = document.querySelector(".nav");
-  const root   = document.getElementById("mobile-nav-root");
-  const menu   = document.getElementById("mobile-navigation");
+  const nav = document.querySelector(".nav");
+  const root = document.getElementById("mobile-nav-root");
+  const menu = document.getElementById("mobile-navigation");
 
   // Si falta algo, no hace nada.
   if (!toggle || !nav || !root || !menu) return;
@@ -21,7 +21,7 @@ export function initNavMenu() {
   let isOpen = false;
 
   /* -------------------------------------------------------
-     Helpers: estado ARIA consistente
+     Helpers
      ------------------------------------------------------- */
   function setOpenState(open) {
     nav.dataset.state = open ? "open" : "closed";
@@ -106,8 +106,6 @@ export function initNavMenu() {
 
   /* -------------------------------------------------------
      Click fuera
-     - Si haces click en el overlay fuera del UL, se cierra
-     - Si haces click en toggle, no hace nada (ya está controlado)
      ------------------------------------------------------- */
   function onPointerDownOutside(e) {
     if (!isOpen) return;

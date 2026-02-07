@@ -3,14 +3,11 @@
    ========================================================= */
 
 export function initHeaderScroll() {
-
   const header = document.querySelector(".site-header");
   if (!header) return;
 
   // Respeta reduced motion
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Umbral semántico
   const SCROLL_THRESHOLD = header.offsetHeight * 0.15;
@@ -44,7 +41,7 @@ export function initHeaderScroll() {
         return;
       }
 
-      // Evita micro scrolls (ruido)
+      // Evita micro scrolls
       if (Math.abs(currentScrollY - lastScrollY) < 2) {
         ticking = false;
         return;
@@ -56,7 +53,7 @@ export function initHeaderScroll() {
     });
   }
 
-  // Estado inicial (reload en medio de la página)
+  // Estado inicial
   updateHeaderState(window.scrollY);
 
   window.addEventListener("scroll", onScroll, { passive: true });
