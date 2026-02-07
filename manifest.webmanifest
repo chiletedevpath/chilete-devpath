@@ -1,12 +1,12 @@
 {
-  "id": "/",
+  "id": "./",
   "name": "Chilete DevPath",
   "short_name": "Chilete DevPath",
 
   "description": "Camino real y documentado en el desarrollo de software. Desde Chilete, Cajamarca, Perú.",
 
-  "start_url": "/index.html",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
 
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui"],
@@ -55,7 +55,7 @@
       "name": "Ver proyectos",
       "short_name": "Proyectos",
       "description": "Explorar los proyectos desarrollados en Chilete DevPath",
-      "url": "/index.html#proyectos",
+      "url": "./#proyectos",
       "icons": [
         {
           "src": "assets/images/icons/icon-192.png",
@@ -67,7 +67,7 @@
       "name": "Conversemos",
       "short_name": "Contacto",
       "description": "Abrir la sección de contacto",
-      "url": "/index.html#conversemos",
+      "url": "./#conversemos",
       "icons": [
         {
           "src": "assets/images/icons/icon-192.png",
