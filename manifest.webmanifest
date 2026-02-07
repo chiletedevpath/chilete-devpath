@@ -1,12 +1,16 @@
 {
+  "id": "/",
   "name": "Chilete DevPath",
-  "short_name": "DevPath",
+  "short_name": "Chilete DevPath",
+
   "description": "Camino real y documentado en el desarrollo de software. Desde Chilete, Cajamarca, Perú.",
 
   "start_url": "/index.html",
   "scope": "/",
 
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+
   "orientation": "portrait-primary",
 
   "background_color": "#1f2d3a",
@@ -21,6 +25,8 @@
     "portfolio",
     "technology"
   ],
+
+  "prefer_related_applications": false,
 
   "icons": [
     {
@@ -46,6 +52,33 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Ver proyectos",
+      "short_name": "Proyectos",
+      "description": "Explorar los proyectos desarrollados en Chilete DevPath",
+      "url": "/index.html#proyectos",
+      "icons": [
+        {
+          "src": "assets/images/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Conversemos",
+      "short_name": "Contacto",
+      "description": "Abrir la sección de contacto",
+      "url": "/index.html#conversemos",
+      "icons": [
+        {
+          "src": "assets/images/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ]
 }
