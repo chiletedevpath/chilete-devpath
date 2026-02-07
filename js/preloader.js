@@ -4,7 +4,11 @@
 
 import { t, onLanguageChange } from "./ui/i18n.js";
 
+const MIN_NARRATIVE_TIME = 2200; 
+
 export function initPreloader(onComplete) {
+
+  const startTime = performance.now();
 
   /* =========================================================
      REFERENCIAS DOM
@@ -81,16 +85,22 @@ export function initPreloader(onComplete) {
     clearInterval(msgTimer);
     clearTimeout(safetyTimer);
 
-    preloader.setAttribute("aria-busy", "false");
-    preloader.classList.add("is-done");
-    document.body.classList.remove("is-loading");
+    const elapsed = performance.now() - startTime;
+    const remaining = Math.max(0, MIN_NARRATIVE_TIME - elapsed);
 
     setTimeout(() => {
-      preloader.remove();
-      document.querySelector(".hero-section")?.classList.add("is-ready");
-      document.dispatchEvent(new CustomEvent("preloader:done"));
-      onComplete?.();
-    }, 400);
+      preloader.setAttribute("aria-busy", "false");
+      preloader.classList.add("is-done");
+      document.body.classList.remove("is-loading");
+
+      setTimeout(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        preloader.remove();
+        document.querySelector(".hero-section")?.classList.add("is-ready");
+        document.dispatchEvent(new CustomEvent("preloader:done"));
+        onComplete?.();
+      }, 400);
+    }, remaining);
   }
 
   /* =========================================================
@@ -100,9 +110,22 @@ export function initPreloader(onComplete) {
   bar.addEventListener("animationend", finalizePreloader, { once: true });
 
   /* =========================================================
+   DOM READY
+   ========================================================= */
+
+  if (document.readyState === "complete" || document.readyState === "interactive") {
+    setTimeout(finalizePreloader, MIN_NARRATIVE_TIME);
+  } else {
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(finalizePreloader, 800);
+    }, { once: true });
+  }
+
+
+  /* =========================================================
      FALLBACK DE SEGURIDAD
      ========================================================= */
 
-  const SAFETY_TIMEOUT = 4200;
+  const SAFETY_TIMEOUT = 4000;
   const safetyTimer = setTimeout(finalizePreloader, SAFETY_TIMEOUT);
 }

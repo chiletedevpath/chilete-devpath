@@ -89,43 +89,49 @@
 
 <body>
 
-<!-- ========  PRELOADER: Bloque visual inicial  ======== -->
+<!-- ========  PRELOADER (NO BLOQUEA LCP)  ======== -->
 <div id="preloader"
      class="preloader"
+     role="status"
      aria-live="polite"
      aria-busy="true"
      data-i18n-aria="preloader.aria">
 
-  <div class="preloader-card">
+  <!-- Capa visual (overlay) -->
+  <div class="preloader-overlay" aria-hidden="true"></div>
+
+  <!-- Contenido -->
+  <div class="preloader-card" role="group" aria-label="Estado de carga">
 
     <!-- ========  IDENTIDAD VISUAL  ======== -->
     <div class="preloader-logos">
-
       <img
         class="preloader-avatar"
         src="assets/images/adrianBienvenida.png"
         alt="Adrian Pisco, autor de Chilete DevPath"
-        loading="eager">
+        loading="eager"
+        decoding="async"
+        width="220"
+        height="220">
 
       <img
         class="preloader-brand"
         src="assets/images/logoSinFondo.png"
         alt="Logo de Chilete DevPath"
-        loading="eager">
-
+        loading="eager"
+        decoding="async"
+        width="240"
+        height="240">
     </div>
 
     <!-- ========  TEXTO NARRATIVO  ======== -->
     <div class="preloader-text">
-
-      <p class="preloader-eyebrow"
-         data-i18n="preloader.welcome"></p>
+      <p class="preloader-eyebrow" data-i18n="preloader.welcome"></p>
 
       <!-- Título SOLO visual -->
-      <h1 class="preloader-title" aria-hidden="true">Chilete DevPath</h1>
-      <p class="preloader-subtitle"
-         data-i18n="preloader.loading"></p>
+      <h2 class="preloader-title" aria-hidden="true">Chilete DevPath</h2>
 
+      <p class="preloader-subtitle" data-i18n="preloader.loading"></p>
     </div>
 
     <!-- ========  PROGRESO VISUAL  ======== -->
@@ -136,8 +142,9 @@
     <!-- ========  ESTADO ACCESIBLE  ======== -->
     <p class="preloader-status"
        id="preloaderStatus"
-       data-i18n="preloader.status"></p>
-
+       aria-atomic="true"
+       data-i18n="preloader.status">
+    </p>
   </div>
 </div>
 

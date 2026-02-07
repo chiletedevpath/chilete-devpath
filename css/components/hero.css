@@ -22,7 +22,17 @@
   padding-top: clamp(5.8rem, 10.5vh, 7.2rem);
   padding-bottom: 4rem;
   color: var(--color-text-main);
+  contain: layout paint;
 }
+
+/* ============================================================
+   HERO · ESTADO BASE (LCP FRIENDLY)
+   ============================================================ */
+
+.hero-section .hero-bg img {
+  transform: none;
+}
+
 
 /* Disolución inferior */
 .hero-section::after{
@@ -101,21 +111,37 @@
     height: 100%;
     object-fit: cover;
     object-position: center 35%;
+    opacity: 0.38;
+    transition: transform 1.6s ease, opacity 1.2s ease;
+  }
+
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(14,22,34,0.28),
+      rgba(10,16,26,0.75)
+    );
+    pointer-events: none;
+    transition: opacity 1.2s ease;
+    opacity: 1;
+  }
+
+  .hero-section.is-ready .hero-bg::after {
+    opacity: 1;
+  }
+
+  /* ============================================================
+   HERO · EFECTOS POST-LCP
+   ============================================================ */
+
+  .hero-section.is-ready .hero-bg img {
     transform: scale(1.06);
     opacity: 0.32;
   }
 
-  .hero-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(14,22,34,0.35), 
-    rgba(10,16,26,0.80)  
-  );
-  pointer-events: none;
-}
 
 /* ============================================================
    ESCENA (PC 2 COLUMNAS)
@@ -152,6 +178,17 @@
     box-shadow: none;
     isolation: isolate;
   }
+
+  .hero-intro,
+  .hero-title,
+  .hero-subtitle,
+  .hero-badges,
+  .hero-actions,
+  .hero-socials {
+    opacity: 1;
+    transform: none;
+  }
+
 
 /* ============================================================
    TIPOGRAFÍA

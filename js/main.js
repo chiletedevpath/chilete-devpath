@@ -34,74 +34,71 @@ console.info(
 document.addEventListener("DOMContentLoaded", () => {
 
   /* -------------------------------------------------------
-     0) SCROLL ANIMATIONS (PRE-REGISTRO)
-     ------------------------------------------------------- */
-  initScrollAnimations();
-
-  /* -------------------------------------------------------
      1) HEADER / NAV (CRÍTICO · INDEPENDIENTE)
      ------------------------------------------------------- */
-  initHeader();
+    initHeader();
 
   /* -------------------------------------------------------
      2) PRELOADER (BLOQUE VISUAL CONTROLADO)
      ------------------------------------------------------- */
   initPreloader(async () => {
 
-    /* -----------------------------------------------------
-       3) SIDE EFFECTS POST-PRELOADER (LAZY)
-       ----------------------------------------------------- */
-    try {
-      const [
-        { initParticles },
-        { default: initI18n }
-      ] = await Promise.all([
-        import("./ui/particles.js"),
-        import("./ui/i18n.js")
-      ]);
+      /* -----------------------------------------------------
+        3) SIDE EFFECTS POST- (LAZY)
+        ----------------------------------------------------- */
+      try {
+        const [
+          { initParticles },
+          { default: initI18n }
+        ] = await Promise.all([
+          import("./ui/particles.js"),
+          import("./ui/i18n.js")
+        ]);
 
-      if (typeof initI18n === "function") {
-        initI18n();
-      } else {
-        console.warn("i18n: export default inválido");
+        if (typeof initI18n === "function") {
+          initI18n();
+        } else {
+          console.warn("i18n: export default inválido");
+        }
+
+        if (typeof initParticles === "function") {
+          initParticles();
+        }
+
+      } catch (err) {
+        console.warn("Side-effects fallaron:", err);
       }
 
-      if (typeof initParticles === "function") {
-        initParticles();
-      }
+      /* -----------------------------------------------------
+        4) HERO
+        ----------------------------------------------------- */
+        initHeroSection();
+        initScrollAnimations();
 
-    } catch (err) {
-      console.warn("Side-effects fallaron:", err);
-    }
+      /* -----------------------------------------------------
+        5) MARCA GLOBAL
+        ----------------------------------------------------- */
+        document.body.classList.add("hero-ready");
 
-    /* -----------------------------------------------------
-       4) HERO
-       ----------------------------------------------------- */
-    initHeroSection();
+      /* -----------------------------------------------------
+        6) DEVPATH
+        ----------------------------------------------------- */
+        requestAnimationFrame(() => {
+          initDevPathAnimation();
+          initQuoteSlide();
+        });
+      /* -----------------------------------------------------
+        7) ABOUT ME
+        ----------------------------------------------------- */
+        initAboutMe();
 
-    /* -----------------------------------------------------
-       5) MARCA GLOBAL
-       ----------------------------------------------------- */
-    document.body.classList.add("hero-ready");
-
-    /* -----------------------------------------------------
-       6) DEVPATH
-       ----------------------------------------------------- */
-    initDevPathAnimation();
-    initQuoteSlide();
-
-    /* -----------------------------------------------------
-       7) ABOUT ME
-       ----------------------------------------------------- */
-    initAboutMe();
-
-    /* -----------------------------------------------------
-       8) CONNECT
-       ----------------------------------------------------- */
-    initConnect();
-    initConnectMail();
-  });
-});
+      /* -----------------------------------------------------
+        8) CONNECT
+        ----------------------------------------------------- */
+        initConnect();
+        initConnectMail();
+    });
+ });
 
 /* =========================================================
    INICIALIZADORES DE ALTO NIVEL
@@ -122,7 +119,13 @@ function initHeader() {
 function initHeroSection() {
   initHero();
   initHeroTerminal();
-  initHeroParallax();
+
+  const enableParallax = () => {
+    initHeroParallax();
+    window.removeEventListener("scroll", enableParallax);
+  };
+
+  window.addEventListener("scroll", enableParallax, { once: true, passive: true });
 }
 
 /* =========================================================
