@@ -33,5 +33,5 @@ section {
 
 /* Blindaje contra overflow horizontal */
 body > * {
-  max-width: 100%;
+  max-width: inherit;
 }

@@ -3,28 +3,24 @@
    ============================================================ */
 
 /* ============================================================
-   CONTENEDORES
+   CONTENEDORES: CANVAS CONTROLADO Y RESPONSIVE
    ============================================================ */
 
-.container {
-  width: 100%;
-  max-width: var(--container-lg);
+.container,
+.container--narrow,
+.container--wide {
+  width: min(100%, var(--container-xl));
   margin-inline: auto;
   padding-inline: var(--space-md);
 }
 
+/* Variantes semánticas */
 .container--narrow {
-  width: 100%;
   max-width: var(--container-md);
-  margin-inline: auto;
-  padding-inline: var(--space-md);
 }
 
 .container--wide {
-  width: 100%;
   max-width: var(--container-xl);
-  margin-inline: auto;
-  padding-inline: var(--space-md);
 }
 
 /* ============================================================
@@ -79,4 +75,12 @@
 
 .section--min-screen {
   min-height: calc(100svh - var(--header-height));
+}
+
+/* ============================================================
+   CANVAS GLOBAL
+   ============================================================ */
+
+html {
+  overflow-x: hidden;
 }
