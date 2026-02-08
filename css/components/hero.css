@@ -406,6 +406,13 @@
   filter: brightness(0.95) contrast(0.95);
 }
 
+/* Desktop view solicitado desde dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .hero-console {
+    transform: none;
+  }
+}
+
 /* Marco interno glass */
 .hero-console::before {
   content: "";
@@ -768,13 +775,42 @@
 }
 
 @media (max-width: 768px) {
-  .hero-section::before {
+  .hero-section::before,
+  .hero-section::after {
     display: none;
   }
 }
 
-@media (max-width: 768px) {
-  .hero-section::after {
-    display: none;
+/* ============================================================
+   DESKTOP VIEW DESDE MÓVIL (centrado)
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-left: 0;
+    transform: none;
+    gap: 3rem;
+  }
+
+  .hero-intro {
+    margin-left: 0;
+    text-align: center;
+    max-width: 720px;
+  }
+
+  .hero-badges,
+  .hero-actions,
+  .hero-socials {
+    justify-content: center;
+  }
+
+  .hero-mind {
+    justify-content: center;
+  }
+
+  .hero-console {
+    transform: none;
+    width: min(720px, 100%);
   }
 }
