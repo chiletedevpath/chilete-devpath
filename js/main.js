@@ -1,13 +1,13 @@
 /* =========================================================
-   MAIN.JS | CHILETE DEVPATH
-   Orquestador principal del frontend
-   ========================================================= */
+    MAIN.JS | CHILETE DEVPATH
+    Orquestador principal del frontend
+    ========================================================= */
 
 /* =========================================================
-   IMPORTS CORE
-   ========================================================= */
+    IMPORTS CORE
+    ========================================================= */
 
-import { initNavMenu, initActiveSectionNav } from "./ui/nav.js";
+import { initNavMenu, initActiveSectionNav, initLogoScrollReset } from "./ui/nav.js";
 import { initScrollAnimations } from "./ui/scroll.js";
 
 import { initPreloader } from "./preloader.js";
@@ -19,28 +19,28 @@ import { initConnect } from "./ui/connect.js";
 import { initConnectMail } from "./ui/connect-mail.js";
 
 /* =========================================================
-   LOG GLOBAL
-   ========================================================= */
+    LOG GLOBAL
+    ========================================================= */
 
 console.info("%cChilete DevPath iniciado correctamente", "color:#8fd3f4;font-weight:600");
 
 /* =========================================================
-   DOM READY — ORQUESTACIÓN CENTRAL
-   ========================================================= */
+    DOM READY — ORQUESTACIÓN CENTRAL
+    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   /* -------------------------------------------------------
-     1) HEADER / NAV (CRÍTICO · INDEPENDIENTE)
-     ------------------------------------------------------- */
+      1) HEADER / NAV (CRÍTICO · INDEPENDIENTE)
+      ------------------------------------------------------- */
   initHeader();
 
   /* -------------------------------------------------------
-     2) PRELOADER (BLOQUE VISUAL CONTROLADO)
-     ------------------------------------------------------- */
+      2) PRELOADER (BLOQUE VISUAL CONTROLADO)
+      ------------------------------------------------------- */
   initPreloader(async () => {
     /* -----------------------------------------------------
-        3) SIDE EFFECTS POST- (LAZY)
-        ----------------------------------------------------- */
+          3) SIDE EFFECTS POST- (LAZY)
+          ----------------------------------------------------- */
     try {
       const [{ initParticles }, { default: initI18n }] = await Promise.all([
         import("./ui/particles.js"),
@@ -61,39 +61,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* -----------------------------------------------------
-        4) HERO
-        ----------------------------------------------------- */
+          4) HERO
+          ----------------------------------------------------- */
     initHeroSection();
     initScrollAnimations();
 
     /* -----------------------------------------------------
-        5) MARCA GLOBAL
-        ----------------------------------------------------- */
+          5) MARCA GLOBAL
+          ----------------------------------------------------- */
     document.body.classList.add("hero-ready");
 
     /* -----------------------------------------------------
-        6) DEVPATH
-        ----------------------------------------------------- */
+          6) DEVPATH
+          ----------------------------------------------------- */
     requestAnimationFrame(() => {
       initDevPathAnimation();
       initQuoteSlide();
     });
     /* -----------------------------------------------------
-        7) ABOUT ME
-        ----------------------------------------------------- */
+          7) ABOUT ME
+          ----------------------------------------------------- */
     initAboutMe();
 
     /* -----------------------------------------------------
-        8) CONNECT
-        ----------------------------------------------------- */
+          8) CONNECT
+          ----------------------------------------------------- */
     initConnect();
     initConnectMail();
   });
 });
 
 /* =========================================================
-   INICIALIZADORES DE ALTO NIVEL
-   ========================================================= */
+    INICIALIZADORES DE ALTO NIVEL
+    ========================================================= */
 
 /* Protección contra doble init */
 let headerInitialized = false;
@@ -104,9 +104,9 @@ function initHeader() {
 
   initNavMenu();
   initActiveSectionNav();
+  initLogoScrollReset();
   initHeaderScrollState();
 }
-
 function initHeroSection() {
   initHero();
   initHeroTerminal();
@@ -120,8 +120,8 @@ function initHeroSection() {
 }
 
 /* =========================================================
-   HEADER — SCROLL STATE
-   ========================================================= */
+    HEADER — SCROLL STATE
+    ========================================================= */
 
 function initHeaderScrollState() {
   const header = document.querySelector(".site-header");
@@ -147,8 +147,8 @@ function initHeaderScrollState() {
 }
 
 /* =========================================================
-   HERO — PARALLAX
-   ========================================================= */
+    HERO — PARALLAX
+    ========================================================= */
 
 function initHeroParallax() {
   const hero = document.querySelector("#hero");
@@ -176,8 +176,8 @@ function initHeroParallax() {
 }
 
 /* =========================================================
-   DEVPATH — ANIMACIÓN SEMÁNTICA
-   ========================================================= */
+    DEVPATH — ANIMACIÓN SEMÁNTICA
+    ========================================================= */
 
 function initDevPathAnimation() {
   const section = document.querySelector("#devpath");
@@ -222,8 +222,8 @@ function initDevPathAnimation() {
 }
 
 /* =========================================================
-   CITA EDITORIAL
-   ========================================================= */
+    CITA EDITORIAL
+    ========================================================= */
 
 function initQuoteSlide() {
   const quote = document.querySelector(".section-quote");

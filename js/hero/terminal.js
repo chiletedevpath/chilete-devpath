@@ -3,14 +3,14 @@
    ========================= */
 
 import { CONSOLE_LINES_ES, CONSOLE_LINES_EN } from "../i18n/console-lines.js";
-
 import { getCurrentLang, onLanguageChange } from "../ui/i18n.js";
 
 /* =========================
-   DEVICE FLAGS
+   FLAGS
    ========================= */
 
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* =========================
    UTIL
@@ -23,64 +23,120 @@ function getConsoleLines(lang) {
 function isSystemReady() {
   const hero = document.querySelector(".hero-section");
   const pre = document.getElementById("preloader");
-
-  if (!hero) return false;
-
-  return (
-    !pre || hero.classList.contains("is-ready") || document.body.classList.contains("hero-ready")
-  );
+  return hero && (!pre || document.body.classList.contains("hero-ready"));
 }
 
 function isHeroVisible(hero) {
-  const rect = hero.getBoundingClientRect();
+  const r = hero.getBoundingClientRect();
   const vh = window.innerHeight || document.documentElement.clientHeight;
-  return rect.top < vh * 0.75 && rect.bottom > vh * 0.25;
+  return r.top < vh * 0.75 && r.bottom > vh * 0.25;
+}
+
+function followCursor(output) {
+  output.scrollTop = output.scrollHeight;
 }
 
 /* =========================
-   RENDER
+   CORE
    ========================= */
+
+function typeHtmlLine({ container, html, cursor, onDone }) {
+  const temp = document.createElement("div");
+  temp.innerHTML = html;
+
+  const nodes = Array.from(temp.childNodes);
+  let nodeIndex = 0;
+  let charIndex = 0;
+
+  const CHAR_DELAY = prefersReducedMotion ? 0 : isMobile ? 18 : 26;
+
+  function step() {
+    if (nodeIndex >= nodes.length) {
+      onDone();
+      return;
+    }
+
+    const node = nodes[nodeIndex];
+
+    if (node.nodeType === Node.TEXT_NODE) {
+      if (!container._textNode) {
+        container._textNode = document.createTextNode("");
+        cursor.before(container._textNode);
+      }
+
+      if (charIndex < node.textContent.length) {
+        container._textNode.textContent += node.textContent.charAt(charIndex++);
+        followCursor(container.parentElement);
+        setTimeout(step, CHAR_DELAY);
+        return;
+      }
+
+      charIndex = 0;
+      container._textNode = null;
+      nodeIndex++;
+      step();
+      return;
+    }
+
+    const clone = node.cloneNode(true);
+    cursor.before(clone);
+    nodeIndex++;
+    followCursor(container.parentElement);
+    setTimeout(step, CHAR_DELAY);
+  }
+
+  step();
+}
 
 function renderHeroTerminal() {
   const output = document.getElementById("console-output");
-  if (!output) return null;
-
-  if (output.dataset.running === "true") return null;
+  if (!output || output.dataset.running === "true") return null;
   output.dataset.running = "true";
-
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const cursor = document.createElement("span");
   cursor.className = "terminal-cursor";
 
   const lines = getConsoleLines(getCurrentLang());
 
-  let index = 0;
+  let lineIndex = 0;
   let active = true;
   let timer = null;
 
   output.innerHTML = "";
   output.appendChild(cursor);
 
-  const LINE_DELAY = reduceMotion ? 0 : isMobile ? 140 : 220;
-  const BLOCK_DELAY = reduceMotion ? 0 : isMobile ? 260 : 420;
-  const START_DELAY = reduceMotion ? 0 : isMobile ? 120 : 250;
+  const LINE_PAUSE = prefersReducedMotion ? 0 : isMobile ? 260 : 420;
+  const BLOCK_PAUSE = prefersReducedMotion ? 0 : isMobile ? 420 : 650;
 
-  function write() {
-    if (!active) return;
-    if (!output.contains(cursor)) return;
+  function nextLine() {
+    if (!active || lineIndex >= lines.length) return;
 
-    if (index >= lines.length) return;
+    const lineWrapper = document.createElement("div");
+    lineWrapper.className = "terminal-line";
+    cursor.before(lineWrapper);
 
-    const line = lines[index++];
-    cursor.insertAdjacentHTML("beforebegin", line + "<br>");
+    typeHtmlLine({
+      container: lineWrapper,
+      html: lines[lineIndex],
+      cursor,
+      onDone: () => {
+        cursor.before(document.createElement("br"));
+        followCursor(output);
 
-    const delay = line.includes("System.out") || line.includes("String") ? BLOCK_DELAY : LINE_DELAY;
+        const pause =
+          lines[lineIndex].includes("System.out") ||
+          lines[lineIndex].includes("{") ||
+          lines[lineIndex].includes("}")
+            ? BLOCK_PAUSE
+            : LINE_PAUSE;
 
-    timer = setTimeout(write, delay);
+        lineIndex++;
+        timer = setTimeout(nextLine, pause);
+      }
+    });
   }
 
-  timer = setTimeout(write, START_DELAY);
+  nextLine();
 
   return () => {
     active = false;
@@ -97,46 +153,31 @@ function renderHeroTerminal() {
 export function initHeroTerminal() {
   const hero = document.querySelector(".hero-section");
   const output = document.getElementById("console-output");
-
   if (!hero || !output) return;
 
   let cleanup = null;
   let observer = null;
 
-  function startObserver() {
+  function start() {
     if (observer) return;
 
     observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !cleanup) {
-          cleanup = renderHeroTerminal();
-        }
-
-        if (!entry.isIntersecting && cleanup && !isMobile) {
+      ([e]) => {
+        if (e.isIntersecting && !cleanup) cleanup = renderHeroTerminal();
+        if (!e.isIntersecting && cleanup && !isMobile) {
           cleanup();
           cleanup = null;
         }
       },
-
       { threshold: isMobile ? 0.25 : 0.6 }
     );
 
     observer.observe(hero);
-
-    if (isHeroVisible(hero) && !cleanup) {
-      cleanup = renderHeroTerminal();
-    }
+    if (isHeroVisible(hero) && !cleanup) cleanup = renderHeroTerminal();
   }
 
-  function boot() {
-    startObserver();
-  }
-
-  if (isSystemReady()) {
-    boot();
-  } else {
-    document.addEventListener("preloader:done", boot, { once: true });
-  }
+  if (isSystemReady()) start();
+  else document.addEventListener("preloader:done", start, { once: true });
 
   onLanguageChange(() => {
     if (cleanup) cleanup();

@@ -2,10 +2,7 @@
    HERO.CSS | DEVPATH
    ============================================================ */
 
-/* ============================================================
-   ANCLA DE SCROLL
-   ============================================================ */
-
+/*  ANCLA DE SCROLL   */
 #hero {
   scroll-margin-top: var(--header-height, 0px);
 }
@@ -17,15 +14,21 @@
 .hero-section {
   position: relative;
   overflow: visible;
-  min-height: min(90svh, 780px);
-  padding-top: clamp(5.8rem, 10.5vh, 7.2rem);
-  padding-bottom: 4rem;
+
+  min-height: calc(100svh - var(--header-height));
+
+  display: flex;
+  align-items: center;
+
+  padding-top: 0;
+  padding-bottom: 0;
+
   color: var(--color-text-main);
   contain: layout paint;
 }
 
 /* ============================================================
-   HERO · ESTADO BASE (LCP FRIENDLY)
+   ESTADO BASE (LCP FRIENDLY)
    ============================================================ */
 
 .hero-section .hero-bg img {
@@ -38,21 +41,21 @@
   position: absolute;
   left: 0;
   right: 0;
+  bottom: -52px;
 
-  bottom: -120px;
-  height: 160px;
+  height: 72px;
 
   background: linear-gradient(
     to bottom,
-    rgba(14, 22, 34, 0.9) 0%,
-    rgba(14, 22, 34, 0.6) 35%,
-    rgba(14, 22, 34, 0.3) 65%,
-    rgba(14, 22, 34, 0.12) 82%,
-    rgba(14, 22, 34, 0) 100%
+    rgba(12, 18, 25, 0.85) 0%,
+    rgba(12, 18, 25, 0.65) 28%,
+    rgba(12, 18, 25, 0.38) 52%,
+    rgba(12, 18, 25, 0.18) 72%,
+    rgba(12, 18, 25, 0) 100%
   );
 
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 .hero-section::before {
@@ -74,23 +77,6 @@
 
   pointer-events: none;
   opacity: 0.35;
-}
-
-@media (max-width: 768px) {
-  .hero-section::after {
-    bottom: -100px;
-    height: 130px;
-  }
-
-  .hero-section::before {
-    bottom: -180px;
-    height: 160px;
-    opacity: 0.28;
-  }
-
-  .hero-badges {
-    justify-content: center;
-  }
 }
 
 /* ============================================================
@@ -130,7 +116,7 @@
 }
 
 /* ============================================================
-   HERO · EFECTOS POST-LCP
+   EFECTOS POST-LCP
    ============================================================ */
 
 .hero-section.is-ready .hero-bg img {
@@ -139,23 +125,22 @@
 }
 
 /* ============================================================
-   ESCENA (PC 2 COLUMNAS)
+   GRID BASE
    ============================================================ */
 
 .hero-grid {
   position: relative;
   z-index: 2;
+
   max-width: 1320px;
-  margin-right: auto;
-  margin-left: clamp(-4rem, -6vw, -8rem);
+  margin-inline: auto;
   padding-inline: 2rem;
 
   display: grid;
-  grid-template-columns: minmax(560px, 1.35fr) minmax(520px, 0.65fr);
-  gap: clamp(4rem, 6vw, 6.5rem);
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 5vw, 5.5rem);
 
-  transform: translateY(-1.6rem);
+  place-content: center;
 }
 
 /* ============================================================
@@ -234,12 +219,6 @@
 .hero-line--role {
   font-size: clamp(2.1rem, 4.1vw, 2.7rem);
   margin-top: 0.6rem;
-}
-
-.hero-line--origin {
-  font-size: clamp(3rem, 4.2vw, 3rem);
-  letter-spacing: 0.04em;
-  margin-top: 0.4rem;
 }
 
 .hero-line--origin {
@@ -388,9 +367,9 @@
 }
 
 .hero-console {
-  width: clamp(520px, 36vw, 620px);
+  width: clamp(420px, 36vw, 620px);
   height: 400px;
-  margin-top: 3rem;
+  margin-top: 0;
   background: linear-gradient(180deg, #020617, #01040f);
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -398,7 +377,7 @@
   font-size: 0.9rem;
   line-height: 1.45;
   transform: translateX(40px) rotateY(-9deg) rotateX(3deg);
-  box-shadow: -40px 60px 1000px rgba(0, 0, 0, 0.7);
+  transform: rotateY(-9deg) rotateX(3deg);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -500,22 +479,235 @@
   border-radius: 4px;
 }
 
-/* ============================================================
+/* ============================================================================
    RESPONSIVE
-   ============================================================ */
+   Convención usada:
+   - ≤ 768px   : Mobile
+   - 769–1024  : Tablet
+   - 1025–1179 : Small desktop
+   - ≥ 1180px  : Desktop
+   ============================================================================ */
 
-@media (max-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    margin-left: 0;
-    transform: translateY(-2.5rem);
+/* ============================================================================
+   MOBILE ≤ 768px
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  /* Sección hero */
+  .hero-section {
+    overflow-x: hidden;
+    padding-bottom: clamp(1.5rem, 4vh, 2.25rem);
   }
-  .hero-mind {
+
+  /* Grid principal */
+  .hero-grid {
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+
+    align-items: center;
+    place-items: center;
+  }
+
+  /* Intro / texto */
+  .hero-intro {
+    margin-left: 0;
+    padding: 2.2rem 1.4rem;
+    text-align: center;
+  }
+
+  .hero-line--origin {
+    white-space: normal;
+  }
+
+  /* Badges */
+  .hero-badges {
     justify-content: center;
   }
+
+  /* Consola */
+  .hero-mind {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.75rem;
+  }
+
   .hero-console {
-    width: min(720px, 100%);
+    width: min(100%, 300px);
+    margin-inline: auto;
+
+    height: auto;
+    min-height: 240px;
+    max-height: 320px;
+
     transform: none;
+    border-radius: 12px;
+  }
+
+  /* Consola – contenido */
+  #console-output {
+    font-size: 0.78rem;
+    line-height: 1.55;
+    padding: 0.75rem 0.7rem 0.9rem;
+  }
+
+  /* Header consola */
+  .console-header {
+    position: relative;
+    height: 34px;
+    padding: 0 0.65rem;
+  }
+
+  .console-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    max-width: 65%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: rgba(226, 232, 240, 0.78);
+  }
+
+  /* Socials */
+  .hero-socials {
+    justify-content: center;
+    margin-top: 1.8rem;
+  }
+
+  .hero-social {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* ============================================================================
+   TABLET 769–1025 
+   ============================================================================ */
+@media (min-width: 769px) and (max-width: 1025px) {
+  /* 1) Mata cualquier “pantalla completa” aplicada al hero o wrappers */
+  #hero.hero-section,
+  #hero.hero-section.section--min-screen,
+  #hero.hero-section .hero-grid {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  /* 2) El hero NO debe centrarse verticalmente en tablet */
+  #hero.hero-section {
+    display: block !important; /* evita flex + align-items:center */
+    padding-block: 4rem !important; /* ritmo vertical consistente */
+  }
+
+  /* 3) El grid debe ser 2 columnas sí o sí (evita que “se vaya abajo”) */
+  #hero.hero-section .hero-grid {
+    display: grid !important;
+    grid-template-columns: minmax(420px, 1.1fr) minmax(300px, 0.9fr) !important;
+    gap: clamp(2.2rem, 3.8vw, 3.2rem) !important;
+
+    place-content: start !important; /* elimina el “center” que crea vacío */
+    align-items: center !important;
+    margin-inline: auto !important;
+    padding-inline: 2rem !important;
+  }
+
+  /* 4) Asegura que el bloque de texto no empuje raro */
+  #hero.hero-section .hero-intro {
+    justify-self: start !important;
+    margin-left: 0 !important;
+    max-width: 600px !important;
+    padding: 3rem 2.6rem 3rem 3rem !important;
+  }
+
+  /* 5) Consola controlada en ancho y sin salirse por transform */
+  #hero.hero-section .hero-console {
+    width: clamp(320px, 34vw, 420px) !important;
+    height: 340px !important;
+
+    transform: translateX(6px) rotateY(-3deg) rotateX(1deg) !important;
+    transform-origin: center right !important;
+  }
+
+  /* 6) Si las decoraciones generan scroll visual, se recortan */
+  #hero.hero-section::after {
+    bottom: -60px !important;
+    height: 90px !important;
+  }
+  #hero.hero-section::before {
+    bottom: -90px !important;
+    height: 80px !important;
+    opacity: 0.25 !important;
+  }
+}
+/* ============================================================================
+   DESKTOP ≥ 1180px
+   ============================================================================ */
+@media (min-width: 1180px) {
+  .hero-grid {
+    grid-template-columns:
+      minmax(600px, 1.05fr)
+      minmax(520px, 0.95fr);
+    gap: clamp(3.2rem, 4.5vw, 4.8rem);
+
+    margin-inline: auto;
+    align-items: start;
+  }
+
+  .hero-intro {
+    max-width: 680px;
+    margin-left: 0;
+    padding-right: 1rem;
+  }
+
+  .hero-subtitle {
+    margin-top: 1.3rem;
+    max-width: 48ch;
+  }
+
+  .hero-badges {
+    gap: 0.6rem;
+    opacity: 0.95;
+  }
+
+  /* CONTENEDOR DE CONSOLA */
+  .hero-mind {
+    justify-content: flex-start;
+    padding-top: 4.2rem;
+  }
+
+  /* CONSOLA */
+  .hero-console {
+    width: 100%;
+    max-width: 680px;
+
+    height: 400px;
+
+    transform: rotateY(-4deg) rotateX(1.2deg);
+    transform-origin: left center;
+
+    box-shadow:
+      -20px 34px 130px rgba(0, 0, 0, 0.48),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY · REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-social {
+    animation: none;
   }
 }
 
@@ -581,24 +773,6 @@
   font-family: var(--font-mono);
   font-size: 0.9rem;
   line-height: 1.45;
-}
-
-@media (max-height: 500px) and (orientation: landscape) {
-  .hero-section {
-    min-height: auto;
-    padding-top: 5.5rem;
-    padding-bottom: 3rem;
-  }
-
-  .hero-grid {
-    transform: none;
-    gap: 2.5rem;
-  }
-
-  .hero-console {
-    height: 360px;
-    margin-top: 2rem;
-  }
 }
 
 /* ============================================================
@@ -682,135 +856,10 @@
     inset 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
-/* ============================================================
-   RESPONSIVE · HERO SOCIALS
-   ============================================================ */
-
-@media (max-width: 768px) {
-  .hero-socials {
-    justify-content: center;
-    margin-top: 1.8rem;
-  }
-
-  .hero-social {
-    width: 38px;
-    height: 38px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-social {
-    animation: none;
-  }
-}
-/* Elimina subrayado heredado en iconos del hero */
+/* Elimina subrayado heredado en iconos */
 .hero-social,
 .hero-social:hover,
 .hero-social:focus,
 .hero-social:focus-visible {
   text-decoration: none;
-}
-
-/* ============================================================
-   HERO MOBILE
-   ============================================================ */
-@media (max-width: 768px) {
-  .hero-section {
-    overflow-x: hidden;
-  }
-
-  .hero-grid {
-    max-width: 100%;
-    margin-left: 0;
-    padding-inline: 1.25rem;
-    transform: none;
-  }
-
-  .hero-intro {
-    margin-left: 0;
-    padding: 2.2rem 1.4rem;
-  }
-
-  .hero-console {
-    width: 100%;
-    max-width: 100%;
-    transform: none;
-    height: auto;
-    min-height: 260px;
-    max-height: 340px;
-    margin-top: 1.8rem;
-    border-radius: 12px;
-  }
-
-  #console-output {
-    font-size: 0.78rem;
-    line-height: 1.55;
-    padding: 0.75rem 0.7rem 0.9rem;
-  }
-
-  .hero-line--origin {
-    white-space: normal;
-  }
-
-  .console-header {
-    position: relative;
-    height: 34px;
-    padding: 0 0.65rem;
-  }
-
-  .console-title {
-    margin-left: auto;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    white-space: nowrap;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 65%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 700;
-    color: rgba(226, 232, 240, 0.78);
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-section::before,
-  .hero-section::after {
-    display: none;
-  }
-}
-
-/* ============================================================
-   DESKTOP VIEW DESDE MÓVIL (centrado)
-   ============================================================ */
-@media (hover: none) and (pointer: coarse) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    margin-left: 0;
-    transform: none;
-    gap: 3rem;
-  }
-
-  .hero-intro {
-    margin-left: 0;
-    text-align: center;
-    max-width: 720px;
-  }
-
-  .hero-badges,
-  .hero-actions,
-  .hero-socials {
-    justify-content: center;
-  }
-
-  .hero-mind {
-    justify-content: center;
-  }
-
-  .hero-console {
-    transform: none;
-    width: min(720px, 100%);
-  }
 }

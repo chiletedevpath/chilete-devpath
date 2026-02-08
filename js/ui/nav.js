@@ -163,3 +163,30 @@ export function initActiveSectionNav() {
 
   sections.forEach((section) => observer.observe(section));
 }
+
+/* =========================================================
+   LOGO → SCROLL RESET ABSOLUTO (SIEMPRE A 0)
+   ========================================================= */
+export function initLogoScrollReset() {
+  const logo = document.querySelector(".nav-logo");
+  if (!logo) return;
+
+  // Evita doble bind
+  if (logo.dataset.bound === "true") return;
+  logo.dataset.bound = "true";
+
+  logo.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Cierra menú mobile si está abierto
+    document.body.classList.remove("nav-locked");
+
+    // SCROLL A POSICION 0
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  });
+}
