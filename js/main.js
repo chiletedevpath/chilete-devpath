@@ -105,7 +105,6 @@ function initHeader() {
   initNavMenu();
   initActiveSectionNav();
   initLogoScrollReset();
-  initHeaderScrollState();
 }
 function initHeroSection() {
   initHero();
@@ -117,33 +116,6 @@ function initHeroSection() {
   };
 
   window.addEventListener("scroll", enableParallax, { once: true, passive: true });
-}
-
-/* =========================================================
-    HEADER — SCROLL STATE
-    ========================================================= */
-
-function initHeaderScrollState() {
-  const header = document.querySelector(".site-header");
-  if (!header) return;
-
-  const headerHeight =
-    parseInt(getComputedStyle(document.documentElement).getPropertyValue("--header-height")) || 60;
-
-  let ticking = false;
-
-  const update = () => {
-    if (ticking) return;
-    ticking = true;
-
-    requestAnimationFrame(() => {
-      header.classList.toggle("scrolled", window.scrollY > headerHeight);
-      ticking = false;
-    });
-  };
-
-  update();
-  window.addEventListener("scroll", update, { passive: true });
 }
 
 /* =========================================================

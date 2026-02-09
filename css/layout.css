@@ -3,84 +3,110 @@
    ============================================================ */
 
 /* ============================================================
-   CONTENEDORES: CANVAS CONTROLADO Y RESPONSIVE
+   CANVAS GLOBAL
    ============================================================ */
 
-.container,
-.container--narrow,
-.container--wide {
-  width: min(100%, var(--container-xl));
-  margin-inline: auto;
-  padding-inline: var(--space-md);
-}
-
-/* Variantes semánticas */
-.container--narrow {
-  max-width: var(--container-md);
-}
-
-.container--wide {
-  max-width: var(--container-xl);
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 /* ============================================================
-   NAVEGACIÓN 
+   CONTENEDORES 
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-xl);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.container--narrow {
+  max-width: var(--container-max-md);
+}
+
+.container--wide {
+  max-width: var(--container-max-tv);
+}
+
+/* ============================================================
+   NAVEGACIÓN – ESTRUCTURA BASE
    ============================================================ */
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  height: 100%;
-  padding-inline: var(--space-xs);
+  gap: var(--header-gap);
+  padding-inline: var(--header-padding-x);
 }
 
 .nav-logo img {
-  width: clamp(72px, 10vw, 90px);
-  height: auto;
+  display: block;
 }
 
 .nav-menu {
   display: flex;
-  flex-direction: row;
   align-items: center;
-
   gap: var(--space-md);
+
   margin: 0;
   padding: 0;
-
   list-style: none;
 }
 
 /* ============================================================
-   SECCIONES BASE – RITMO VERTICAL
+   SECCIONES – RITMO VERTICAL UNIFICADO
    ============================================================ */
 
 .section {
-  padding-block: var(--space-lg);
+  position: relative;
+  padding-block: var(--section-padding-y);
 }
 
 .section--dense {
-  padding-block: clamp(2.5rem, 6vh, 4rem);
+  padding-block: var(--section-padding-y-dense);
 }
 
 .section--airy {
-  padding-block: clamp(4.5rem, 10vh, 7rem);
+  padding-block: clamp(5rem, 10svh, 8rem);
 }
 
 /* ============================================================
-   UTILIDADES DE FLUJO
+   SECCIONES
    ============================================================ */
 
 .section--min-screen {
   min-height: calc(100svh - var(--header-height));
 }
 
+.section--hero {
+  min-height: var(--section-hero-min-height);
+  max-height: var(--section-hero-max-height);
+}
+
 /* ============================================================
-   CANVAS GLOBAL
+   FLUJO VERTICAL
    ============================================================ */
 
-html {
-  overflow-x: hidden;
+.section > .container {
+  display: block;
+}
+
+/* Evita colapsos de márgenes entre secciones */
+.section + .section {
+  margin-top: 0;
+}
+
+/* ============================================================
+   MEDIA ADAPTATIONS
+   ============================================================ */
+
+@media (min-width: var(--bp-tv)) {
+  .container {
+    max-width: var(--container-max-tv);
+  }
 }

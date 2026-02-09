@@ -38,14 +38,10 @@
    ============================================================ */
 @media (max-width: 768px) {
   :root {
-    --header-height: 72px;
+    --header-height: 64px;
   }
 
   /* ===== HEADER / NAV ===== */
-  .site-header {
-    padding: 0.75rem 0;
-  }
-
   .nav {
     justify-content: space-between;
   }
