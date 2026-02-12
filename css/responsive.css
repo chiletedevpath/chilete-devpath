@@ -37,49 +37,9 @@
    MOBILE (≤ 768px)
    ============================================================ */
 @media (max-width: 768px) {
-  :root {
-    --header-height: 64px;
-  }
-
-  /* ===== HEADER / NAV ===== */
-  .nav {
-    justify-content: space-between;
-  }
-
-  .nav-logo img {
-    height: 64px;
-    max-width: 220px;
-    padding: 0.4rem 0;
-  }
-
+  /* ===== NAV / LISTAS ===== */
   .nav-menu li::after {
     display: none;
-  }
-
-  .nav-menu a {
-    font-size: 1.1rem;
-  }
-
-  .hero-intro {
-    text-align: center;
-  }
-
-  .hero-title {
-    font-size: clamp(1.8rem, 7vw, 2.4rem);
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .hero-btn {
-    width: 100%;
-    justify-content: center;
   }
 
   /* ===== LIFE ===== */
@@ -102,29 +62,12 @@
   .life-highlights {
     padding-left: 1.1rem;
   }
-
-  .hero-grid {
-    transform: none;
-  }
 }
 
 /* ============================================================
    SMALL MOBILE (≤ 480px)
    ============================================================ */
 @media (max-width: 480px) {
-  /* ========= HERO ========= */
-  .hero-eyebrow {
-    font-size: 0.7rem;
-  }
-
-  .hero-title {
-    font-size: 1.9rem;
-  }
-
-  .console-title {
-    display: none;
-  }
-
   /* ===== ABOUT DEVPATH ===== */
   .section-quote {
     font-size: 0.95rem;
