@@ -1,9 +1,9 @@
 /* ============================================================================
-   ABOUT-ME.CSS – SOBRE MÍ
+   ABOUT-ME.CSS – SOBRE MÍ 
    ============================================================================ */
 
 /* ============================================================================
-   TOKENS GLOBALES DE LA SECCIÓN
+   TOKENS LOCALES DE LA SECCIÓN
    ============================================================================ */
 
 .about-me {
@@ -19,25 +19,60 @@
 
   /* Sombras */
   --shadow-image: 0 12px 28px rgba(8, 18, 28, 0.45), 0 4px 12px rgba(40, 90, 140, 0.15);
-
   --shadow-caption: 0 22px 46px rgba(6, 14, 22, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.06);
-
   --shadow-hover: 0 26px 60px rgba(6, 14, 22, 0.75), 0 10px 28px rgba(120, 200, 255, 0.25);
+
+  /* Densidad / ritmo */
+  --about-gap: clamp(2.2rem, 5vw, 4.2rem);
+  --about-text-max: 52ch;
+
+  /* Animaciones */
+  --about-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --about-ease-bounce: cubic-bezier(0.34, 1.2, 0.64, 1);
 }
 
-/* Fondo */
+/* Fondo de la sección */
 .about-me::before {
   content: "";
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     to bottom,
     rgba(255, 255, 255, 0.015),
     rgba(255, 255, 255, 0) 35%,
     rgba(255, 255, 255, 0.01)
   );
+
   pointer-events: none;
   z-index: -1;
+}
+
+/* ============================================================================
+   SANGRADO 
+   ============================================================================ */
+
+#sobre-mi {
+  position: relative;
+  overflow: visible;
+
+  padding-top: clamp(3.5rem, 6vw, 5rem);
+  padding-bottom: clamp(4.5rem, 7vw, 6.5rem);
+}
+
+#sobre-mi::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -40px;
+
+  height: 56px;
+
+  background: linear-gradient(to bottom, rgba(12, 18, 25, 0.55), rgba(12, 18, 25, 0));
+
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ============================================================================
@@ -48,33 +83,50 @@
   position: relative;
 }
 
+/* 1 columna */
 .about-me-layout {
   display: grid;
-  grid-template-columns: 1.1fr 0.85fr;
-  gap: clamp(2.4rem, 5vw, 4.2rem);
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: var(--about-gap);
+  align-items: start;
+
   margin-top: clamp(1.6rem, 3vw, 2.6rem);
 }
 
+@media (max-width: 900px) {
+  .about-me-layout {
+    justify-items: center;
+    min-height: calc(100svh - var(--header-height, 0px));
+    align-content: center;
+  }
+}
+
+.about-me-text,
+.about-me-gallery {
+  width: 100%;
+  margin-inline: auto;
+}
+
 /* ============================================================================
-   TEXTO EDITORIAL
+   BLOQUE DEL TEXTO
    ============================================================================ */
 
 .about-me-text {
   position: relative;
-  max-width: 52ch;
+
+  max-width: var(--about-text-max);
   display: flex;
   flex-direction: column;
-  gap: clamp(1.35rem, 2.4vw, 1.75rem);
+  gap: clamp(1.25rem, 2.2vw, 1.75rem);
 
-  padding: 0.6rem 0 0.6rem clamp(1.4rem, 2vw, 2rem);
+  padding: 0.6rem 0 0.6rem clamp(1.2rem, 2vw, 2rem);
 
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0));
 
   hyphens: auto;
+  text-wrap: pretty;
 }
 
-/* Línea editorial */
 .about-me-text::before {
   content: "";
   position: absolute;
@@ -85,9 +137,23 @@
   background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.22), transparent);
 }
 
+/* Fondo */
+.about-me-text::after {
+  content: "";
+  position: absolute;
+  inset: -1rem -1.2rem;
+
+  border-radius: 14px;
+  background: radial-gradient(circle at left top, rgba(255, 255, 255, 0.04), transparent 70%);
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Lead principal */
 .about-me-lead {
-  font-family: var(--font-serif);
-  font-size: clamp(1.12rem, 1.9vw, 1.22rem);
+  font-family: var(--font-heading);
+  font-size: clamp(1.08rem, 1.9vw, 1.22rem);
   line-height: 1.85;
   letter-spacing: 0.01em;
 
@@ -95,7 +161,7 @@
   color: var(--color-text-main);
 
   padding-bottom: 0.6rem;
-  margin-bottom: 0.4rem;
+  margin: 0;
 
   position: relative;
 }
@@ -111,164 +177,137 @@
   opacity: 0.6;
 }
 
+/* Párrafos base */
 .about-me-paragraph {
-  letter-spacing: 0;
-  font-family: var(--font-sans);
+  margin: 0;
+  font-family: var(--font-base);
   font-size: 0.94rem;
   line-height: 1.85;
   letter-spacing: 0.005em;
+
   color: rgba(255, 255, 255, 0.64);
 }
 
+/* Párrafo clave */
 .about-me-paragraph.is-key {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-weight: 500;
+
   font-size: 0.96rem;
   line-height: 1.8;
-  margin-block: 1.6rem;
-  padding: 1.1rem 1.4rem;
+
+  margin-block: 1.4rem;
+  padding: 1.05rem 1.35rem;
+
   border-radius: 12px;
+
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
-.about-me-paragraph:nth-of-type(4) {
-  margin-top: 0.6rem;
-}
-
-.about-me-paragraph:nth-of-type(5) {
-  margin-top: 0.8rem;
+.about-me-paragraph.is-motor {
   color: rgba(255, 255, 255, 0.78);
 }
 
-/* Fondo volumétrico */
-.about-me-text::after {
-  content: "";
-  position: absolute;
-  inset: -1rem -1.5rem;
-  border-radius: 14px;
-
-  background: radial-gradient(circle at left top, rgba(255, 255, 255, 0.04), transparent 70%);
-
-  z-index: -1;
-  pointer-events: none;
-}
-
 /* ============================================================================
-   PÁRRAFOS e ICONOS
+   ICONOS + INDICADORES SEMÁNTICOS
    ============================================================================ */
 
 .about-me-text > p {
   position: relative;
   padding-left: 2.8rem;
   text-align: left;
-  text-wrap: pretty;
 }
 
+/* Base de icono */
 .about-me-text > p::before {
   position: absolute;
-  left: 0.4rem;
+  left: 0.35rem;
   top: 0.35em;
+
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   font-size: 0.95rem;
+
   opacity: 0;
   transform: translateY(6px) scale(0.9);
   filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.35));
 }
 
-/* Iconos semánticos */
-.about-me-lead::before {
+/* Mapeo por clases */
+.about-me-lead.is-origin::before {
   content: "\f007";
   color: var(--icon-person);
 }
-.about-me-paragraph:nth-of-type(2)::before {
+
+.about-me-paragraph.is-principle::before {
   content: "\f0eb";
   color: var(--icon-idea);
 }
-.about-me-paragraph.is-key::before {
+
+.about-me-paragraph.is-core::before {
   content: "\f14e";
   color: var(--icon-core);
 }
-.about-me-paragraph:nth-of-type(4)::before {
+
+.about-me-paragraph.is-aspiration::before {
   content: "\f0b1";
   color: var(--icon-grow);
 }
-.about-me-paragraph:nth-of-type(5)::before {
+
+.about-me-paragraph.is-motor::before {
   content: "\f004";
   color: var(--icon-heart);
 }
 
-/* Activación */
-.about-me.is-visible .about-me-text > p::before {
-  opacity: 0.85;
-  transform: translateY(2px) scale(1);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* ============================================================
-   ESTADO INICIAL — TEXTO (ANTES DE SER VISIBLE)
-   ============================================================ */
+/* ============================================================================
+   ANIMACIÓN DE ENTRADA 
+   ============================================================================ */
 
 .about-me-text > * {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(18px);
   filter: blur(2px);
 }
 
-.about-me.is-visible .about-me-lead {
+.about-me.is-visible .about-me-text > * {
   opacity: 1;
   transform: translateY(0);
   filter: blur(0);
   transition:
     opacity 0.8s ease,
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s var(--about-ease),
     filter 0.8s ease;
 }
 
-.about-me.is-visible .about-me-paragraph {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1),
-    filter 0.7s ease;
+.about-me.is-visible .about-me-lead.is-origin {
+  transition-delay: 0s;
 }
-
-.about-me.is-visible .about-me-paragraph:nth-of-type(2) {
+.about-me.is-visible .about-me-paragraph.is-principle {
   transition-delay: 0.12s;
 }
-.about-me.is-visible .about-me-paragraph:nth-of-type(3) {
+.about-me.is-visible .about-me-paragraph.is-core {
   transition-delay: 0.22s;
 }
-.about-me.is-visible .about-me-paragraph:nth-of-type(4) {
+.about-me.is-visible .about-me-paragraph.is-aspiration {
   transition-delay: 0.32s;
 }
-.about-me.is-visible .about-me-paragraph:nth-of-type(5) {
+.about-me.is-visible .about-me-paragraph.is-motor {
   transition-delay: 0.42s;
 }
 
+/* Tarjeta */
 .about-me-paragraph.is-key {
-  transform: translateY(26px) scale(0.98);
+  transform: translateY(22px) scale(0.985);
 }
 
 .about-me.is-visible .about-me-paragraph.is-key {
-  opacity: 1;
   transform: translateY(0) scale(1);
-  filter: blur(0);
   transition:
     opacity 0.85s ease,
-    transform 0.85s cubic-bezier(0.18, 0.9, 0.28, 1),
+    transform 0.85s var(--about-ease),
     filter 0.85s ease;
-  transition-delay: 0.28s;
-}
-
-.about-me-text > p::before {
-  opacity: 0;
-  transform: translateY(6px) scale(0.85);
+  transition-delay: 0.26s;
 }
 
 .about-me.is-visible .about-me-text > p::before {
@@ -276,47 +315,27 @@
   transform: translateY(0) scale(1);
   transition:
     opacity 0.6s ease,
-    transform 0.6s cubic-bezier(0.34, 1.2, 0.64, 1);
-}
-
-@media (max-width: 768px) {
-  .about-me.is-visible .about-me-text > * {
-    transition:
-      opacity 0.45s ease,
-      transform 0.45s ease;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about-me-text > * {
-    transform: none !important;
-    filter: none !important;
-    opacity: 1 !important;
-    transition: none !important;
-  }
+    transform 0.6s var(--about-ease-bounce);
 }
 
 /* ============================================================================
-   GALERÍA 
+   GALERÍA
    ============================================================================ */
 
 .about-me-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.8rem, 0.9vw, 0.9rem);
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
-}
+  margin-top: clamp(1.8rem, 6vw, 2.4rem);
+  margin-bottom: 2.9rem;
 
-/* ============================================================================
-   STACK DE FOTOS – PILA 
-   ============================================================================ */
+  width: min(92%, 520px);
+  margin-inline: auto;
+}
 
 .about-me-stack {
   position: relative;
   height: clamp(200px, 26vw, 260px);
   aspect-ratio: 4 / 3;
   max-height: 280px;
-
+  margin-inline: auto;
   isolation: isolate;
   overflow: visible;
   padding-top: 12px;
@@ -325,7 +344,7 @@
 .about-me-stack::after {
   content: "";
   position: absolute;
-  inset: 12% 10% -10% 0%;
+  inset: 12% 10% -10% 10%;
   background: rgba(0, 0, 0, 0.32);
   filter: blur(20px);
   z-index: 0;
@@ -333,28 +352,26 @@
   opacity: 0.45;
 }
 
-/* CAPAS DE FOTOS */
 .about-me-photo {
-  filter: saturate(0.85) contrast(0.95);
-
   position: absolute;
   inset: 0;
 
   cursor: pointer;
   transform-origin: center;
-
   border-radius: 12px;
-
-  transition:
-    transform 0.55s cubic-bezier(0.2, 0.85, 0.2, 1),
-    opacity 0.35s ease,
-    filter 0.35s ease;
 
   z-index: 1;
 
   background: transparent;
   border: 0;
   padding: 0;
+
+  filter: saturate(0.85) contrast(0.95);
+
+  transition:
+    transform 0.55s cubic-bezier(0.2, 0.85, 0.2, 1),
+    opacity 0.35s ease,
+    filter 0.35s ease;
 }
 
 .about-me-photo img {
@@ -362,6 +379,7 @@
   height: 100%;
   object-fit: cover;
   object-position: var(--focus-x, 50%) var(--focus-y, 50%);
+
   border-radius: 12px;
   box-shadow: var(--shadow-image);
   display: block;
@@ -389,11 +407,10 @@
   pointer-events: none;
 
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0) 22%);
-
   opacity: 0.35;
 }
 
-/* Estado activo */
+/* Activo */
 .about-me-photo.is-active {
   z-index: 3;
   transform: translate(0, 0) scale(1);
@@ -408,27 +425,20 @@
     0 18px 60px rgba(0, 0, 0, 0.35);
 }
 
-/* Fondo 1 */
 .about-me-photo.is-back-1 {
   z-index: 2;
   transform: translate(-22px, -22px) rotate(-2deg) scale(0.98);
   filter: brightness(0.96);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-
   opacity: 0.6;
 }
 
-/* Fondo 2 */
 .about-me-photo.is-back-2 {
   z-index: 1;
   transform: translate(-40px, -36px) rotate(-3deg) scale(0.96);
   filter: brightness(0.92);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-
   opacity: 0.6;
 }
 
-/* Hover */
 @media (hover: hover) {
   .about-me-photo:hover {
     transform: translateY(-3px) scale(1.01);
@@ -442,14 +452,13 @@
   }
 }
 
-/* Accesibilidad */
 .about-me-photo:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
 }
 
 /* ============================================================================
-   TARJETA EDITORIAL VIVA
+   CAPTION / TARJETA
    ============================================================================ */
 
 .about-me-caption {
@@ -468,39 +477,37 @@
   box-shadow: var(--shadow-caption);
 }
 
-/* Items */
 .about-me-caption-item {
   display: none;
-  animation: captionFade 0.45s ease forwards;
+  animation: aboutme-caption-fade 0.45s ease forwards;
 }
 
 .about-me-caption-item.is-active {
   display: block;
 }
 
-/* Título */
 .about-me-caption h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-heading);
   font-size: 1.02rem;
-  margin-bottom: 0.4rem;
+  margin: 0 0 0.4rem;
   line-height: 1.4;
+
   color: var(--color-text-main);
   letter-spacing: 0.015em;
 }
 
-/* Texto */
 .about-me-caption p {
+  margin: 0 0 0.6rem;
   font-size: 0.88rem;
   line-height: 1.65;
   color: var(--color-text-soft);
-  margin-bottom: 0.6rem;
 }
 
-/* Lista editorial */
 .about-me-caption ul {
   list-style: none;
   padding: 0;
   margin: 0;
+
   display: grid;
   gap: 0.35rem;
 }
@@ -509,6 +516,7 @@
   font-size: 0.84rem;
   line-height: 1.5;
   color: var(--color-text-soft);
+
   padding-left: 1rem;
   position: relative;
   opacity: 0.92;
@@ -525,15 +533,10 @@
   border-radius: 50%;
 
   background: radial-gradient(circle, var(--color-accent), var(--color-accent-soft));
-
   box-shadow: 0 0 6px rgba(140, 210, 255, 0.45);
 }
 
-/* ============================================================================
-   KEYFRAMES
-   ============================================================================ */
-
-@keyframes captionFade {
+@keyframes aboutme-caption-fade {
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -545,71 +548,38 @@
 }
 
 /* ============================================================================
-   SANGRADO DE SECCIÓN
-   ============================================================================ */
-
-#sobre-mi {
-  position: relative;
-  overflow: visible;
-
-  padding-top: clamp(3.5rem, 6vw, 5rem);
-  padding-bottom: clamp(4.5rem, 7vw, 6.5rem);
-}
-
-#sobre-mi::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -40px;
-
-  height: 56px;
-
-  background: linear-gradient(to bottom, rgba(12, 18, 25, 0.55), rgba(12, 18, 25, 0));
-
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ============================================================================
    RESPONSIVE
    ============================================================================ */
 
-@media (max-width: 900px) {
+@media (min-width: 900px) {
+  .about-me-photo.is-back-1 {
+    transform: translate(-14px, -14px) rotate(-2deg) scale(0.985);
+  }
+
+  .about-me-photo.is-back-2 {
+    transform: translate(-24px, -22px) rotate(-3deg) scale(0.97);
+  }
+
   .about-me-layout {
-    grid-template-columns: 1fr;
-    align-items: start;
+    grid-template-columns: 1.1fr 0.85fr;
+    align-items: center;
   }
 
   .about-me-gallery {
-    max-width: 520px;
-    margin-inline: auto;
+    max-width: none;
   }
 }
 
 @media (max-width: 768px) {
-  /* ============================================================
-     HEADER DE SECCIÓN
-     ============================================================ */
-
-  #sobre-mi .section-header {
+  #sobre-mi .section-header--editorial {
     margin-bottom: clamp(2.2rem, 7vw, 3rem);
     text-align: center;
   }
 
-  /* ============================================================
-     LAYOUT GENERAL
-     ============================================================ */
-
   .about-me-layout {
-    grid-template-columns: 1fr;
     gap: clamp(2.6rem, 8vw, 3.6rem);
     align-items: start;
   }
-
-  /* ============================================================
-     TEXTO — CENTRADO EDITORIAL (CLAVE)
-     ============================================================ */
 
   .about-me-text {
     max-width: 92%;
@@ -629,10 +599,6 @@
     border-radius: 14px;
   }
 
-  /* ============================================================
-     TIPOGRAFÍA
-     ============================================================ */
-
   .about-me-lead {
     font-size: 1.05rem;
     line-height: 1.7;
@@ -643,10 +609,6 @@
     line-height: 1.75;
     text-align: center;
   }
-
-  /* ============================================================
-     ICONOS + PÁRRAFOS
-     ============================================================ */
 
   .about-me-text > p {
     padding-left: 0;
@@ -665,19 +627,13 @@
     filter: none;
   }
 
-  /* Tarjeta clave */
   .about-me-paragraph.is-key {
     padding: 1rem 1rem;
   }
 
-  /* ============================================================
-     GALERÍA
-     ============================================================ */
-
   .about-me-gallery {
     margin-top: clamp(1.8rem, 6vw, 2.4rem);
     margin-bottom: 2.9rem;
-    max-width: 520px;
     margin-inline: auto;
   }
 
@@ -689,7 +645,6 @@
     box-shadow: 0 8px 20px rgba(8, 18, 28, 0.35);
   }
 
-  /* Stack más contenido */
   .about-me-stack {
     height: clamp(180px, 24vw, 240px);
     max-height: none;
@@ -706,14 +661,11 @@
     opacity: 0.35;
   }
 
-  /* ============================================================
-     CAPTION
-     ============================================================ */
-
   .about-me-caption {
     border: 1px solid rgba(255, 255, 255, 0.14);
     margin-top: 0;
-    margin-inline: 0.4rem;
+    width: 100%;
+    margin-inline: 0;
     padding: 1.1rem;
   }
 
@@ -732,13 +684,25 @@
   }
 }
 
+@media (max-width: 480px) {
+  .about-me-gallery {
+    width: 88%;
+  }
+}
+
 /* ============================================================================
    REDUCED MOTION
    ============================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-  .about-me-text > *,
-  .about-me.is-visible .about-me-text > * {
+  .about-me-text > * {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+
+  .about-me-text > p::before {
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
