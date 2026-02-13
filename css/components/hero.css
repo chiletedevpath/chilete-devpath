@@ -704,6 +704,26 @@
 }
 
 /* ===========================
+   TABLET LANDSCAPE FIX (≈1024x768)
+   =========================== */
+
+@media (min-width: 900px) and (max-width: 1180px) and (max-height: 820px) {
+  .hero-section {
+    align-items: flex-start;
+    padding-top: clamp(5rem, 10vh, 7rem);
+    padding-bottom: 4rem;
+  }
+
+  .hero-grid {
+    align-items: start;
+  }
+
+  .hero-mind {
+    margin-top: 2rem;
+  }
+}
+
+/* ===========================
    TOKENS DE CONSOLA
    =========================== */
 
