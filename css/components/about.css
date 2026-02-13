@@ -1,65 +1,101 @@
 /* ============================================================================
-    ABOUT.CSS 
-
-    ============================================================================ */
+   ABOUT.CSS | CHILETE DEVPATH
+   ============================================================================ */
 
 /* ============================================================================
-    LAYOUT GENERAL
-    ============================================================================ */
+   CONTEXTO DE SECCIÓN
+   ============================================================================ */
+
+#devpath {
+  position: relative;
+  overflow: visible;
+
+  padding-top: clamp(3.5rem, 6vw, 5rem);
+  padding-bottom: clamp(5.5rem, 9vw, 7.5rem);
+}
+
+/* Integración visual con siguiente sección */
+#devpath::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  bottom: -120px;
+  height: 140px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(12, 18, 25, 0.45),
+    rgba(12, 18, 25, 0.18),
+    rgba(12, 18, 25, 0)
+  );
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================================================
+   LAYOUT MACRO 
+   ============================================================================ */
 
 .about-devpath {
   position: relative;
 
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  align-items: start;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
 
-  gap: clamp(var(--space-lg), 5vw, var(--space-xl));
-  max-width: 1150px;
-
-  margin-left: clamp(-4rem, -6vw, -8rem);
-  margin-right: auto;
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
-/* Separador vertical */
+/* Separador vertical solo se activará en desktop */
 .about-devpath::after {
-  content: "";
-  position: absolute;
-
-  top: 4%;
-  bottom: 8%;
-
-  left: calc(100% * 1.25 / (1.25 + 0.75));
-  width: 1px;
-
-  background: linear-gradient(to bottom, transparent, var(--color-accent-soft), transparent);
+  content: none;
 }
 
 /* ============================================================================
-    TEXTO EDITORIAL
-    ============================================================================ */
+   COLUMNAS BASE
+   ============================================================================ */
 
 .about-intro {
   display: flex;
   flex-direction: column;
-  max-width: 64ch;
-  margin-left: auto;
-  margin-right: auto;
+  gap: var(--space-sm);
 
-  align-items: center;
+  width: 100%;
+  max-width: 64ch;
+
+  margin-inline: auto;
 }
 
+.about-right {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* ============================================================================
+   BLOQUE DE TEXTO
+   ============================================================================ */
+
 .about-intro > p {
-  font-size: 0.98rem;
+  font-size: var(--text-md);
   line-height: var(--line-loose);
 }
 
-/* Lead principal */
+/* --------------------------------------------------------------------------
+   LEAD PRINCIPAL
+   -------------------------------------------------------------------------- */
+
 .about-lead {
   position: relative;
 
-  font-size: 1.08rem;
+  font-size: var(--text-lg);
   line-height: 1.75;
+
   color: var(--color-text-main);
 
   padding-left: 1.6rem;
@@ -73,19 +109,23 @@
   left: 0;
   top: 0.15rem;
 
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
   letter-spacing: 0.08em;
 
   color: var(--color-accent);
   opacity: 0.6;
 }
 
-/* Bloques secundarios */
+/* --------------------------------------------------------------------------
+   BLOQUES SECUNDARIOS
+   -------------------------------------------------------------------------- */
+
 .about-block {
-  margin-top: 0.5rem;
-  font-size: 0.97rem;
-  line-height: 1.85;
+  margin-top: var(--space-2xs);
+
+  font-size: var(--text-md);
+  line-height: var(--line-loose);
 }
 
 .about-block.is-reflection {
@@ -93,40 +133,55 @@
   color: var(--color-text-soft);
 }
 
-/* Separador narrativo */
+/* --------------------------------------------------------------------------
+   SEPARADOR NARRATIVO
+   -------------------------------------------------------------------------- */
+
 .about-divider {
   width: 42px;
   height: 1px;
-  margin: 1.2rem 0;
+
+  margin: var(--space-md) 0;
 
   background: linear-gradient(to right, var(--color-accent), transparent);
 
   opacity: 0.6;
 }
 
-/* Énfasis conceptual */
+/* --------------------------------------------------------------------------
+   ÉNFASIS CONCEPTUAL
+   -------------------------------------------------------------------------- */
+
 .about-intro em {
   font-style: normal;
-  font-weight: 500;
+  font-weight: var(--font-medium);
   color: var(--color-accent);
 }
 
 /* ============================================================================
-    COVER EDITORIAL
-    ============================================================================ */
+   COVER
+   ============================================================================ */
 
 .devpath-cover {
   position: relative;
   isolation: isolate;
 
+  width: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
 
   box-shadow: var(--shadow-strong);
+
+  width: 100%;
+  margin-inline: auto;
+  max-width: 100%;
 }
 
+/* Imagen base */
 .devpath-cover img {
   width: 100%;
+  height: auto;
+
   aspect-ratio: 16 / 5;
 
   object-fit: cover;
@@ -135,7 +190,7 @@
   filter: brightness(0.75) contrast(1.05);
 }
 
-/* Degradado de integración */
+/* Overlay de integración */
 .devpath-cover::after {
   content: "";
   position: absolute;
@@ -145,13 +200,8 @@
 }
 
 /* ============================================================================
-    ESQUEMA DEVPATH – CONTENEDOR
-    ============================================================================ */
-
-.about-right {
-  display: flex;
-  justify-content: center;
-}
+   ESQUEMA DEVPATH: CONTENEDOR
+   ============================================================================ */
 
 .devpath-scheme {
   position: relative;
@@ -161,7 +211,7 @@
 
   display: grid;
   grid-template-rows: repeat(5, auto);
-  gap: 1.4rem;
+  gap: clamp(1rem, 3vw, 1.4rem);
 
   padding: var(--space-md) var(--space-sm);
   border-radius: var(--radius-xl);
@@ -173,7 +223,10 @@
     inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Línea central del camino */
+/* --------------------------------------------------------------------------
+   LÍNEA CENTRAL DEL CAMINO
+   -------------------------------------------------------------------------- */
+
 .devpath-scheme::before {
   content: "";
   position: absolute;
@@ -181,8 +234,8 @@
   top: var(--space-md);
   bottom: var(--space-md);
   left: 50%;
-  transform: translateX(-50%);
 
+  transform: translateX(-50%);
   width: 2px;
 
   background: linear-gradient(
@@ -196,23 +249,23 @@
 }
 
 /* ============================================================================
-    NODOS DEVPATH
-    ============================================================================ */
+   NODOS DEVPATH: ESTADO BASE
+   ============================================================================ */
 
-/* Estado base (reposo) */
 .devpath-scheme .node {
   position: relative;
 
-  height: 54px;
-  padding: 0 1.6rem;
+  min-height: 54px;
+  padding: 0 clamp(1rem, 3vw, 1.6rem);
+
   border-radius: var(--radius-lg);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
   letter-spacing: 0.03em;
 
   color: #e6f6ff;
@@ -232,55 +285,74 @@
     border-color 0.35s ease;
 }
 
-/* Estado visible */
+/* --------------------------------------------------------------------------
+   ESTADO VISIBLE: controlado por JS
+   -------------------------------------------------------------------------- */
+
 .animate-devpath.is-visible .devpath-scheme .node {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Estado activo */
+/* --------------------------------------------------------------------------
+   ESTADO ACTIVO
+   -------------------------------------------------------------------------- */
+
 .devpath-scheme .node.is-active {
   animation: node-float 12s ease-in-out infinite;
   box-shadow: 0 20px 60px rgba(0, 200, 255, 0.25);
 }
 
-/* Desfase lateral */
+/* --------------------------------------------------------------------------
+   DESFASE LATERAL
+   -------------------------------------------------------------------------- */
+
 .devpath-scheme .node:nth-child(1) {
   justify-self: start;
   margin-left: 0.4rem;
 }
+
 .devpath-scheme .node:nth-child(2) {
   justify-self: end;
   margin-right: 0.4rem;
 }
+
 .devpath-scheme .node:nth-child(3) {
   justify-self: start;
   margin-left: 1.1rem;
 }
+
 .devpath-scheme .node:nth-child(4) {
   justify-self: end;
   margin-right: 1.1rem;
 }
+
 .devpath-scheme .node:nth-child(5) {
   justify-self: center;
 }
 
-/* Hover consciente */
+/* --------------------------------------------------------------------------
+   HOVER 
+   -------------------------------------------------------------------------- */
+
 .devpath-scheme .node:hover {
   transform: translateY(-3px) scale(1.02);
   border-color: var(--color-accent);
   box-shadow: 0 12px 30px rgba(0, 200, 255, 0.25);
 }
 
-/* Accesibilidad */
+/* --------------------------------------------------------------------------
+   ACCESIBILIDAD
+   -------------------------------------------------------------------------- */
+
 .devpath-scheme .node:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
 /* ============================================================================
-    ANIMACIONES
-    ============================================================================ */
+   ANIMACIÓN
+   ============================================================================ */
 
 @keyframes node-float {
   0% {
@@ -295,19 +367,19 @@
 }
 
 /* ============================================================================
-    CINTA EDITORIAL – MANIFIESTO
-    ============================================================================ */
+   CINTA INFINITA
+   ============================================================================ */
 
 .section-quote {
-  margin-top: clamp(3.2rem, 6vw, 4.4rem);
+  margin-top: clamp(3rem, 6vw, 4.4rem);
   padding: 1.1rem 0;
 
   background: rgba(255, 255, 255, 0.04);
   border-left: 3px solid var(--color-accent);
 
   color: var(--color-accent);
-  font-size: 0.92rem;
-  font-weight: 600;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
   letter-spacing: 0.02em;
 
   overflow: hidden;
@@ -335,8 +407,8 @@
 }
 
 /* ============================================================================
-    ACCESIBILIDAD
-    ============================================================================ */
+   ACCESIBILIDAD 
+   ============================================================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .devpath-scheme .node {
@@ -344,140 +416,131 @@
     transform: none !important;
     opacity: 1 !important;
   }
+
+  .quote-track {
+    animation: none !important;
+  }
 }
 
 /* ============================================================================
-    RESPONSIVE
-    ============================================================================ */
+   RESPONSIVE 
+   ============================================================================ */
 
-@media (max-width: 900px) {
-  .about-devpath {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+/* --------------------------------------------------------------------------
+   TABLET (≥768px)
+   -------------------------------------------------------------------------- */
 
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .about-devpath::after {
-    display: none;
-  }
-
-  .about-lead::before {
-    content: "—";
-  }
-
-  .devpath-cover img {
-    object-position: center 30%;
-  }
-}
-
-@media (max-width: 768px) {
-  #devpath {
-    padding-bottom: clamp(2rem, 8vw, 3.5rem);
-  }
+@media (min-width: 768px) {
   #devpath::after {
     bottom: -130px;
     height: 120px;
   }
+
   .about-intro {
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
     gap: var(--space-md);
   }
-  .about-intro > p {
-    text-align: center;
-  }
+
   .devpath-cover img {
     object-position: center 35%;
   }
 }
 
+/* --------------------------------------------------------------------------
+   LAPTOP (≥1024px)
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .about-devpath {
+    grid-template-columns: 1.25fr 0.75fr;
+    align-items: start;
+
+    max-width: var(--container-max-lg); /* vuelve a usar sistema */
+    gap: clamp(var(--space-lg), 5vw, var(--space-xl));
+  }
+
+  /* Separador vertical solo en desktop */
+  .about-devpath::after {
+    content: "";
+    position: absolute;
+
+    top: 4%;
+    bottom: 8%;
+
+    left: calc(100% * 1.25 / (1.25 + 0.75));
+    width: 1px;
+
+    background: linear-gradient(to bottom, transparent, var(--color-accent-soft), transparent);
+  }
+
+  .about-lead::before {
+    content: "</>";
+  }
+}
+
+/* --------------------------------------------------------------------------
+   WIDE SCREENS (≥1600px)
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 1600px) {
+  .devpath-scheme {
+    max-width: 460px;
+  }
+}
+
 /* ============================================================================
-   SANGRADO EDITORIAL
+   LANDSCAPE MOBILE CONTROL
    ============================================================================ */
 
-#devpath {
-  position: relative;
-  overflow: visible;
-
-  padding-top: clamp(3.5rem, 6vw, 5rem);
-  padding-bottom: clamp(5.5rem, 9vw, 7.5rem);
-}
-
-#devpath::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  bottom: -120px;
-  height: 140px;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(12, 18, 25, 0.45),
-    rgba(12, 18, 25, 0.18),
-    rgba(12, 18, 25, 0)
-  );
-
-  pointer-events: none;
-  z-index: 1;
-}
-
-@media (max-width: 768px) {
-  #devpath {
-    padding-bottom: clamp(6.5rem, 12vw, 8.5rem);
-  }
-
-  #devpath::after {
-    bottom: -140px;
-    height: 160px;
-  }
-}
-
-/* ============================================================
-   LANDSCAPE MOBILE FIX
-   ============================================================ */
-
 @media (max-height: 500px) and (orientation: landscape) {
-  .about-me-stack {
-    height: 180px;
-    max-height: 180px;
-  }
-
-  .about-me-gallery {
-    gap: 0.6rem;
-  }
-
-  .about-me-caption {
-    padding: 1rem;
-  }
-
   .about-devpath {
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
-
-    margin-left: auto;
-    margin-right: auto;
   }
 
   .about-devpath::after {
-    display: none;
+    content: none;
   }
 
   .devpath-scheme {
     max-width: 360px;
-  }
-
-  .devpath-scheme {
     gap: 1rem;
     padding: var(--space-sm);
   }
 
   .devpath-scheme .node {
-    height: 46px;
-    font-size: 0.85rem;
+    min-height: 46px;
+    font-size: var(--text-xs);
+  }
+}
+
+/* ============================================================================
+   SMALL HEIGHT DEVICES (≤500px)
+   ============================================================================ */
+
+@media (max-height: 500px) {
+  #devpath {
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-lg);
+  }
+
+  .about-devpath {
+    gap: var(--space-md);
+  }
+
+  .about-intro {
+    gap: var(--space-xs);
+  }
+
+  .devpath-cover img {
+    aspect-ratio: 16 / 7;
+  }
+
+  .devpath-scheme {
+    padding: var(--space-sm);
+    gap: 0.9rem;
+  }
+
+  .devpath-scheme .node {
+    min-height: 42px;
+    font-size: var(--text-xs);
   }
 }
