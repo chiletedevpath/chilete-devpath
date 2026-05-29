@@ -1,6 +1,27 @@
 /* ============================================================
-   SKILLS.CSS | HABILIDADES 
+   SKILLS.CSS | HABILIDADES (RESPONSIVE HARDENED)
+   Mantiene el diseno y refuerza la adaptacion para:
+   - micro mobile / mobile / tablet / laptop / desktop / ultra-wide/TV
+   - portrait/landscape
    ============================================================ */
+
+/* ============================================================
+   TOKENS LOCALES DE SECCION
+   ============================================================ */
+
+:root {
+  --skills-gap: clamp(2.5rem, 4vw, 4.5rem);
+  --skills-step-gap: clamp(1.4rem, 2vw, 1.8rem);
+  --skills-dot-size: clamp(22px, 2.2vw, 28px);
+  --skills-content-max: clamp(420px, 42vw, 520px);
+
+  /* Marquee: escala progresiva. */
+  --skills-marquee-w: clamp(220px, 22vw, 320px);
+  --skills-marquee-img-w: clamp(200px, 20vw, 280px);
+  --skills-marquee-fadeY: clamp(60px, 8vh, 92px);
+  --skills-marquee-fadeX: clamp(20px, 2vw, 34px);
+  --skills-marquee-speed: 28s;
+}
 
 /* ============================================================
    HEADER
@@ -8,7 +29,7 @@
 
 #habilidades .section-header {
   text-align: center;
-  margin-bottom: 3.2rem;
+  margin-bottom: clamp(2.4rem, 4vw, 3.2rem);
 }
 
 #habilidades .section-intro {
@@ -22,8 +43,11 @@
 
 .skills-layout {
   display: grid;
-  grid-template-columns: 1fr 0.6fr;
-  gap: 4.5rem;
+
+  /* minmax(0, ...) evita overflow en grid children. */
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.6fr);
+
+  gap: var(--skills-gap);
   align-items: start;
 }
 
@@ -37,7 +61,7 @@
 
   display: flex;
   flex-direction: column;
-  gap: 2.8rem;
+  gap: clamp(2rem, 3vw, 2.8rem);
 
   align-self: flex-start;
   min-height: 0;
@@ -47,11 +71,13 @@
 .skills-timeline::before {
   content: "";
   position: absolute;
-  left: 14px;
-  top: 14px;
+
+  /* Centrado usando el tamano real del dot. */
+  left: calc(var(--skills-dot-size) / 2);
+  top: calc(var(--skills-dot-size) / 2);
 
   width: 2px;
-  height: calc(100% - 28px);
+  height: calc(100% - var(--skills-dot-size));
 
   background: linear-gradient(
     to bottom,
@@ -68,21 +94,22 @@
 
 .skill-step {
   display: flex;
-  gap: 1.8rem;
+  gap: var(--skills-step-gap);
   align-items: flex-start;
 }
 
 .step-dot {
   z-index: 2;
-  width: 28px;
-  height: 28px;
+
+  width: var(--skills-dot-size);
+  height: var(--skills-dot-size);
 
   border-radius: 50%;
   background-color: var(--color-bg-main);
   border: 2px solid var(--color-border-soft);
 
   box-shadow:
-    0 0 0 6px rgba(255, 255, 255, 0.02),
+    0 0 0 clamp(4px, 0.6vw, 6px) rgba(255, 255, 255, 0.02),
     0 0 12px rgba(0, 0, 0, 0.35);
 }
 
@@ -91,12 +118,12 @@
    ============================================================ */
 
 .step-content {
-  max-width: 520px;
+  max-width: var(--skills-content-max);
 }
 
 .step-content h3 {
   margin-bottom: 0.55rem;
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
   font-weight: 700;
 }
 
@@ -106,7 +133,7 @@
 }
 
 .skills-list li {
-  font-size: 0.9rem;
+  font-size: clamp(0.82rem, 1vw, 0.9rem);
   line-height: 1.65;
   color: var(--color-text-muted);
 
@@ -120,7 +147,7 @@
    ============================================================ */
 
 .skills-list i {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
 }
 
 .fa-java {
@@ -149,7 +176,7 @@
 }
 
 /* ============================================================
-   VARIANTES DE STACK 
+   VARIANTES DE STACK
    ============================================================ */
 
 .step-foundation.step-dot {
@@ -190,11 +217,12 @@
 
 /* ====== Campo real de la cinta ====== */
 .skills-marquee {
-  --marquee-w: 280px;
-  --img-w: 260px;
-  --fadeY: 92px;
-  --fadeX: 28px;
-  --speed: 25s;
+  /* Variables locales (se ajustan en responsive) */
+  --marquee-w: var(--skills-marquee-w);
+  --img-w: var(--skills-marquee-img-w);
+  --fadeY: var(--skills-marquee-fadeY);
+  --fadeX: var(--skills-marquee-fadeX);
+  --speed: var(--skills-marquee-speed);
 
   position: relative;
   width: var(--marquee-w);
@@ -218,6 +246,7 @@
       transparent 100%
     );
   -webkit-mask-composite: source-in;
+
   mask-image:
     linear-gradient(
       to bottom,
@@ -236,6 +265,7 @@
   mask-composite: intersect;
 }
 
+/* Fallback cuando mask no existe */
 @supports not (
   (-webkit-mask-image: linear-gradient(#000, #000)) or (mask-image: linear-gradient(#000, #000))
 ) {
@@ -272,7 +302,7 @@
 
   display: flex;
   flex-direction: column;
-  gap: 2.2rem;
+  gap: clamp(1.6rem, 2vw, 2.2rem);
 
   animation: skills-scroll-vertical var(--speed) linear infinite;
   will-change: transform;
@@ -321,32 +351,7 @@
   }
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-
-@media (max-width: 900px) {
-  .skills-layout {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-  }
-
-  .skills-visual-vertical {
-    height: 420px; /* decorativa en mobile */
-  }
-
-  .skills-marquee {
-    --marquee-w: 320px;
-    --img-w: 280px;
-    --fadeX: 34px;
-    --speed: 62s;
-  }
-
-  #habilidades::before {
-    display: none;
-  }
-}
-
+/* Pulso del dot "current" */
 @keyframes pulse-green {
   0% {
     box-shadow:
@@ -372,14 +377,14 @@
 .skills-end-note {
   position: relative;
 
-  margin-top: 3.2rem;
+  margin-top: clamp(2.6rem, 3.5vw, 3.2rem);
   padding-top: 1.4rem;
 
   max-width: 62ch;
   margin-inline: auto;
 
   text-align: center;
-  font-size: 0.9rem;
+  font-size: clamp(0.82rem, 1vw, 0.9rem);
   font-weight: 600;
   line-height: 1.7;
 
@@ -434,6 +439,7 @@
 #habilidades {
   position: relative;
   overflow: visible;
+  min-height: calc(100svh - var(--header-height, 0px));
 }
 
 #habilidades::after {
@@ -474,4 +480,78 @@
 
   pointer-events: none;
   opacity: 0.45;
+}
+
+/* ============================================================
+   RESPONSIVE (POR RANGOS + ORIENTACIÓN)
+   ============================================================ */
+
+/* ============================================================
+   1 COLUMNA - CENTRADO LIMPIO Y CONTROLADO
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  /* Layout en una columna. */
+  .skills-layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* Centrado horizontal del timeline. */
+  .skills-timeline {
+    width: 100%;
+    max-width: 620px;
+    margin-inline: auto;
+  }
+
+  /* Cinta centrada y reducida en alto. */
+  .skills-visual-vertical {
+    margin-inline: auto;
+    height: 140px; /* ya reducido */
+  }
+
+  /* Conector vertical oculto en layout compacto. */
+  #habilidades::before {
+    display: none;
+  }
+}
+
+/* <= 900: compatibilidad con el breakpoint mobile general. */
+@media (max-width: 900px) {
+  .skills-marquee {
+    /* Mas ancho en mobile y animacion mas lenta. */
+    --fadeX: clamp(26px, 6vw, 34px);
+    --speed: 62s;
+  }
+}
+
+/* Landscape bajo: moviles girados con poca altura. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .skills-visual-vertical {
+    height: 280px;
+  }
+
+  .skills-marquee {
+    --speed: 45s;
+    --fadeY: 52px;
+  }
+}
+
+/* Ultra-wide / TV: reforzar proporciones y aire */
+@media (min-width: 1800px) {
+  .skills-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(360px, 0.85fr);
+    gap: clamp(4rem, 3vw, 6rem);
+  }
+
+  .step-content {
+    max-width: clamp(520px, 38vw, 620px);
+  }
+
+  /* En ultra-wide, el conector vertical necesita mayor alcance. */
+  #habilidades::before {
+    left: calc(50% - 360px);
+    height: 140px;
+    bottom: -140px;
+    opacity: 0.35;
+  }
 }

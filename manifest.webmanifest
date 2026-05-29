@@ -3,7 +3,7 @@
   "name": "Chilete DevPath",
   "short_name": "Chilete DevPath",
 
-  "description": "Camino real y documentado en el desarrollo de software. Desde Chilete, Cajamarca, Perú.",
+  "description": "Camino real y documentado en el desarrollo de software. Desde Chilete, Cajamarca, Peru.",
 
   "start_url": "./",
   "scope": "./",
@@ -66,7 +66,7 @@
     {
       "name": "Conversemos",
       "short_name": "Contacto",
-      "description": "Abrir la sección de contacto",
+      "description": "Abrir la seccion de contacto",
       "url": "./#conversemos",
       "icons": [
         {
