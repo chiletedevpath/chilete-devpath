@@ -28,7 +28,6 @@ To work as the main showcase for my personal brand. Unlike `learning-labs` and `
 
 - `learning-labs`: evidence of progressive technical learning.
 - `academic-projects`: academic projects and formal deliverables.
-- `chiletedevpath-roadmap`: roadmap and progress tracking.
 
 ## Live Site
 

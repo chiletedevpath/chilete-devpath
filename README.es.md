@@ -28,7 +28,6 @@ Servir como vitrina principal de marca personal. A diferencia de `learning-labs`
 
 - `learning-labs`: evidencia de aprendizaje tecnico progresivo.
 - `academic-projects`: proyectos academicos y entregas formales.
-- `chiletedevpath-roadmap`: plan de avance y seguimiento.
 
 ## Sitio Publicado
 
